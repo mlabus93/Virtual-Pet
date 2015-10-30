@@ -1,0 +1,197 @@
+fileFormatVersion: 2
+guid: 55ac3a67873a21740a098267ad4128b6
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: animal_arm_L_joint
+    100002: animal_arm_R_joint
+    100004: //RootNode
+    100006: animal_ch_R_hand_position
+    100008: animal_ear_L_joint
+    100010: animal_ear_R_joint
+    100012: animal_ear_R_joint 1
+    100014: animal_foot_L_joint
+    100016: animal_foot_R_joint
+    100018: animal_forearm_L_joint
+    100020: animal_forearm_R_joint
+    100022: animal_hips_joint
+    100024: animal_leg_L_joint
+    100026: animal_leg_R_joint
+    100028: animal_mouth_joint
+    100030: animal_shoulder_L_joint
+    100032: animal_shoulder_R_joint
+    100034: animal_spine2_joint
+    100036: animal_spine_joint
+    100038: animal_tail2_joint
+    100040: animal_tail3_joint
+    100042: animal_tail4_joint
+    100044: animal_tail_joint
+    100046: animal_toe_L_joint
+    100048: animal_toe_R_joint
+    100050: prefix_animal_arm_L_joint
+    100052: prefix_animal_arm_R_joint
+    100054: prefix_animal_ch_R_hand_position
+    100056: prefix_animal_ear_L_joint
+    100058: prefix_animal_ear_R_joint
+    100060: prefix_animal_foot_L_joint
+    100062: prefix_animal_foot_R_joint
+    100064: prefix_animal_forearm_L_joint
+    100066: prefix_animal_forearm_R_joint
+    100068: prefix_animal_head_joint
+    100070: prefix_animal_hips_joint
+    100072: prefix_animal_leg_L_joint
+    100074: prefix_animal_leg_R_joint
+    100076: prefix_animal_mouth_joint
+    100078: prefix_animal_shoulder_L_joint
+    100080: prefix_animal_shoulder_R_joint
+    100082: prefix_animal_spine2_joint
+    100084: prefix_animal_spine_joint
+    100086: prefix_animal_tail2_joint
+    100088: prefix_animal_tail3_joint
+    100090: prefix_animal_tail4_joint
+    100092: prefix_animal_tail_joint
+    100094: prefix_animal_toe_L_joint
+    100096: prefix_animal_toe_R_joint
+    100098: animal_head_joint
+    400000: animal_arm_L_joint
+    400002: animal_arm_R_joint
+    400004: //RootNode
+    400006: animal_ch_R_hand_position
+    400008: animal_ear_L_joint
+    400010: animal_ear_R_joint
+    400012: animal_ear_R_joint 1
+    400014: animal_foot_L_joint
+    400016: animal_foot_R_joint
+    400018: animal_forearm_L_joint
+    400020: animal_forearm_R_joint
+    400022: animal_hips_joint
+    400024: animal_leg_L_joint
+    400026: animal_leg_R_joint
+    400028: animal_mouth_joint
+    400030: animal_shoulder_L_joint
+    400032: animal_shoulder_R_joint
+    400034: animal_spine2_joint
+    400036: animal_spine_joint
+    400038: animal_tail2_joint
+    400040: animal_tail3_joint
+    400042: animal_tail4_joint
+    400044: animal_tail_joint
+    400046: animal_toe_L_joint
+    400048: animal_toe_R_joint
+    400050: prefix_animal_arm_L_joint
+    400052: prefix_animal_arm_R_joint
+    400054: prefix_animal_ch_R_hand_position
+    400056: prefix_animal_ear_L_joint
+    400058: prefix_animal_ear_R_joint
+    400060: prefix_animal_foot_L_joint
+    400062: prefix_animal_foot_R_joint
+    400064: prefix_animal_forearm_L_joint
+    400066: prefix_animal_forearm_R_joint
+    400068: prefix_animal_head_joint
+    400070: prefix_animal_hips_joint
+    400072: prefix_animal_leg_L_joint
+    400074: prefix_animal_leg_R_joint
+    400076: prefix_animal_mouth_joint
+    400078: prefix_animal_shoulder_L_joint
+    400080: prefix_animal_shoulder_R_joint
+    400082: prefix_animal_spine2_joint
+    400084: prefix_animal_spine_joint
+    400086: prefix_animal_tail2_joint
+    400088: prefix_animal_tail3_joint
+    400090: prefix_animal_tail4_joint
+    400092: prefix_animal_tail_joint
+    400094: prefix_animal_toe_L_joint
+    400096: prefix_animal_toe_R_joint
+    400098: animal_head_joint
+    7400000: A_holdup
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 0
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: A_holdup
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
