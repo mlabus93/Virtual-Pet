@@ -1,0 +1,11 @@
+#pragma kernel Solver_IndexGridClear
+#pragma kernel Solver_IndexGridAdd
+#pragma kernel Solver_NeighborSearch
+#pragma kernel Solver_DensityPressure
+#pragma kernel Solver_SurfaceTension
+#pragma kernel Solver_Forces
+#pragma kernel Solver_BoundaryForces
+#pragma kernel Solver_Turbulence
+#pragma kernel Solver_ExternalForces
+#pragma kernel Solver_Constraints
+#include "ComputeShader.cginc"
