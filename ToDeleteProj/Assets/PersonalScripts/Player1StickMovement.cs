@@ -59,7 +59,6 @@ public class Player1StickMovement : MonoBehaviour {
             groundNormal = Vector3.up;
             //_anim.applyRootMotion = false;
         }
-        Debug.Log(_isGrounded);
     }
 
 

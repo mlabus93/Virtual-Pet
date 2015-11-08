@@ -21,6 +21,4 @@ public class Animal
         _hunger = 100;
     }
 
-
-
 }
