@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
     public static Animal _player;
     public static int _coins;
 
+    public void AddCoins(int Amount)
+    {
+        _coins += Amount;
+    }
     void Awake()
     {
         // creates a singleton

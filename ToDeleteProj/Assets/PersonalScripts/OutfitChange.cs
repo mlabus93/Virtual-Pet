@@ -49,7 +49,6 @@ public class OutfitChange : MonoBehaviour {
         _mats = _skinMesh.materials;
         _materialOrig = _skinMesh.materials; // NOTE: must never be modified
         int work = _mats.GetLength(0);
-        Debug.Log(work);
         _blink = false;
         _changeFit = false;
 
@@ -90,7 +89,6 @@ public class OutfitChange : MonoBehaviour {
                     Blink();
                 }
             }
-            Debug.Log("open time: " + _timeToBeOpened + " closed time " + _timeToBeClosed);
         }
         
     }
@@ -103,12 +101,10 @@ public class OutfitChange : MonoBehaviour {
             if (currentEyeSelected == 0)
             {
                 _mats[EYE_RENDER_INDEX] = _materialOrig[(int)Faces.EyesAOpen];
-                Debug.Log("currently selected 0 after");
             }
             else
             {
                 _mats[EYE_RENDER_INDEX] = _materialOrig[(int)Faces.EyesBOpen];
-                Debug.Log("currently selected 1 after");
             }
             _skinMesh.materials = _mats;
         }
@@ -118,12 +114,10 @@ public class OutfitChange : MonoBehaviour {
             if (currentEyeSelected == 0)
             {
                 _mats[EYE_RENDER_INDEX] = _materialOrig[(int)Faces.EyesAClosed];
-                Debug.Log("currently selected 0");
             }
             else
             {
                 _mats[EYE_RENDER_INDEX] = _materialOrig[(int)Faces.EyesBClosed];
-                Debug.Log("currently selected 1");
             }
 
             _skinMesh.materials = _mats;

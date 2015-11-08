@@ -11,7 +11,7 @@ public class Player1StickMovement : MonoBehaviour {
     public Animator _anim;
     Vector3 groundNormal;
     public float _groundCheckDistance = .5f;
-    bool _isGrounded;
+    public bool _isGrounded;
     
 	// Use this for initialization
 	void Start () 
@@ -51,25 +51,27 @@ public class Player1StickMovement : MonoBehaviour {
         {
             groundNormal = hitInfo.normal;
             _isGrounded = true;
-            //_anim.applyRootMotion = true;
         }
         else
         {
             _isGrounded = false;
             groundNormal = Vector3.up;
-            //_anim.applyRootMotion = false;
         }
     }
 
-
-    // TODO: fix jump to lerp or add force vertically
     public void Jump(float jumpForce)
     {
-        _isGrounded = true;
+        
+        //_isGrounded = true;
         if (_isGrounded)
+        {
             _anim.SetTrigger("Jump");
-            transform.Translate(new Vector3(0, jumpForce, 0));
-        //transform.position = Vector3.Lerp(transform.position, transform.position, 15f);
+            //transform.position += Vector3.up * 2F;
+            transform.position = Vector3.Lerp(transform.position, transform.position + (Vector3.up * 30f), .05f);
+            //transform.Translate(new Vector3(0, jumpForce, 0));
+        }
+            
+        
 
     }
 
