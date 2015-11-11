@@ -7,6 +7,9 @@ public class EnemyManager : MonoBehaviour
     public float spawnTime = 3f;
     public Transform[] spawnPoints;
 
+    static int dollCount = 0;
+
+    int maxDolls = 10;
 
     void Start ()
     {
@@ -16,13 +19,15 @@ public class EnemyManager : MonoBehaviour
 
     void Spawn ()
     {
-        if(playerHealth.currentHealth <= 0f)
+        if(playerHealth.currentHealth <= 0f || dollCount >= maxDolls)
         {
+            //dollCount = 0;
             return;
         }
 
         int spawnPointIndex = Random.Range (0, spawnPoints.Length);
 
         Instantiate (enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+        dollCount++;
     }
 }
