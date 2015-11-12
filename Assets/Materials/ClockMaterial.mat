@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 4
+  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -10,7 +10,9 @@ Material:
   m_Shader: {fileID: 45, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _LIGHTMAPPING_DYNAMIC_LIGHTMAPS _LIGHTMAPPING_REALTIME _NORMALMAP
     _SPECGLOSSMAP _UVSEC_UV1
+  m_LightmapFlags: 5
   m_CustomRenderQueue: -1
+  stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -18,7 +20,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: efa9e000e09a8e04e9d2e9030bcc78fb, type: 3}
+          m_Texture: {fileID: 2800000, guid: bb14626fa3aa3aa4ba0c22e62cfd8b58, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -44,6 +46,13 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _SpecGlossMap
+        second:
+          m_Texture: {fileID: 2800000, guid: a9b9ddf6fe2c8a34d94a0f40cc7288c0, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _ParallaxMap
         second:
           m_Texture: {fileID: 0}
@@ -51,16 +60,9 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Occlusion
+          name: _OcclusionMap
         second:
           m_Texture: {fileID: 2800000, guid: bb14626fa3aa3aa4ba0c22e62cfd8b58, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _SpecGlossMap
-        second:
-          m_Texture: {fileID: 2800000, guid: a9b9ddf6fe2c8a34d94a0f40cc7288c0, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -79,24 +81,12 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _OcclusionMap
+          name: _Occlusion
         second:
           m_Texture: {fileID: 2800000, guid: bb14626fa3aa3aa4ba0c22e62cfd8b58, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
-      data:
-        first:
-          name: _Shininess
-        second: 1
-      data:
-        first:
-          name: _AlphaTestRef
-        second: .5
-      data:
-        first:
-          name: _Lightmapping
-        second: 1
       data:
         first:
           name: _SrcBlend
@@ -107,12 +97,16 @@ Material:
         second: 0
       data:
         first:
-          name: _Parallax
-        second: .0199999996
+          name: _Cutoff
+        second: .5
       data:
         first:
-          name: _ZWrite
+          name: _Shininess
         second: 1
+      data:
+        first:
+          name: _AlphaTestRef
+        second: .5
       data:
         first:
           name: _Glossiness
@@ -120,6 +114,18 @@ Material:
       data:
         first:
           name: _BumpScale
+        second: 1
+      data:
+        first:
+          name: _EmissionScaleUI
+        second: 1
+      data:
+        first:
+          name: _Parallax
+        second: .0199999996
+      data:
+        first:
+          name: _ZWrite
         second: 1
       data:
         first:
@@ -139,7 +145,7 @@ Material:
         second: 0
       data:
         first:
-          name: _EmissionScaleUI
+          name: _Lightmapping
         second: 1
     m_Colors:
       data:
@@ -156,13 +162,13 @@ Material:
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _SpecularColor
-        second: {r: .200000003, g: .200000003, b: .200000003, a: 1}
-      data:
-        first:
           name: _EmissionColorUI
         second: {r: 0, g: 0, b: 0, a: 1}
       data:
         first:
           name: _EmissionColorWithMapUI
         second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _SpecularColor
+        second: {r: .200000003, g: .200000003, b: .200000003, a: 1}
