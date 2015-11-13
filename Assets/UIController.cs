@@ -17,6 +17,7 @@ public class UIController : MonoBehaviour {
     public Slider hungerSlider;
     public Slider thirstSlider;
     public Slider bladderSlider;
+    public GameObject player;
 
 	// Use this for initialization
 	void Start ()
@@ -31,6 +32,12 @@ public class UIController : MonoBehaviour {
             HideStatsBtn();
             ShowStatsPanel();
         }
+    }
+
+    public void ChangeOutfit()
+    {
+        OutfitChange script = player.GetComponent<OutfitChange>();
+        script.ChangeOutfit(0, true);
     }
 
     private void ShowStatsPanel()
