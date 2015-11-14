@@ -71,24 +71,9 @@ public class Player1StickMovement : MonoBehaviour {
             //transform.Translate(new Vector3(0, jumpForce, 0));
         }
             
-        
-
     }
 
-    public void Eat(float calorieAmt, float eatTime)
-    {
-        _anim.SetTrigger("Eat");
-    }
 
-    public void StopEating()
-    {
-        _anim.SetTrigger("DoneEating");
-    }
-
-    public void Sleep()
-    {
-        _anim.SetTrigger("Sleep");
-    }
 
     public void Attack1()
     {
@@ -100,44 +85,5 @@ public class Player1StickMovement : MonoBehaviour {
         _anim.SetTrigger("Attack2");
     }
 
-    public void SayGoodbye()
-    {
-        _anim.SetTrigger("Bye");
-    }
-
-    public void StopSayingGoodbye()
-    {
-        _anim.SetTrigger("DoneBye");
-    }
-
-    public void Putup()
-    {
-        _anim.SetTrigger("Putup");
-    }
-
-    public void PutDown()
-    {
-        _anim.SetTrigger("PutDown");
-    }
-
-    public void Talk(float convoTime)
-    {
-        _anim.SetTrigger("Talk");
-    }
-
-    public void StopTalking()
-    {
-        _anim.SetTrigger("DoneTalk");
-    }
-
-    public void TakeUp()
-    {
-        _anim.SetTrigger("TakeUp");
-    }
-
-    public void TakeDown()
-    {
-        _anim.SetTrigger("TakeDown");
-    }
     
 }

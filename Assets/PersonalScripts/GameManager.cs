@@ -5,14 +5,19 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEngine;
 
+
 public class GameManager : MonoBehaviour
 {
+
+
     // These are static because there should be only one game manager
     // and only one player
     public static GameManager _manager;
-    public static Animal _player;
+    public static IAnimalCharacter _player;
     public static int _coins;
 
+    PlayableCharacters characterSelection;
+    
     public void AddCoins(int Amount)
     {
         _coins += Amount;
@@ -33,13 +38,14 @@ public class GameManager : MonoBehaviour
 
     public void Save()
     {
+        
         // creates file reader in binary format
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
         // creates new data object with values from player's current state
         // *must be written this way in order for it to be serialized
-        PlayerData data = new PlayerData(_player._hunger, _player._thirst, 
-            _player._happiness, _player._health, _player._fatigue, _player._bladder);
+        PlayerData data = new PlayerData(_player.hunger, _player.thirst, 
+            _player.happiness, _player.health, _player.fatigue, _player.bladderCapacity);
         // writes to binary file and closes
         bf.Serialize(file, data);
         file.Close();
@@ -58,16 +64,34 @@ public class GameManager : MonoBehaviour
     }
 }
 
+
+[Serializable]
+class GameData
+{
+    public int _volumeLevel;
+    public int _musicLevel;
+    public int _petSelection;
+    public PlayableCharacters _playerSpecies;
+
+    public GameData(int vol, int musiclv, PlayableCharacters species)
+    {
+        _volumeLevel = vol;
+        _musicLevel = musiclv;
+        _playerSpecies = species;
+    }
+}
+
+
 [Serializable]
 class PlayerData
 {
-    public float _hunger;
-    public float _thirst;
-    public float _happiness;
-    public float _health;
-    public float _fatigue;
-    public float _bladder;
-    public PlayerData(float hunger, float thirst, float happiness, float health, float fatigue, float bladder)
+    public int _hunger;
+    public int _thirst;
+    public int _happiness;
+    public int _health;
+    public int _fatigue;
+    public int _bladder;
+    public PlayerData(int hunger, int thirst, int happiness, int health, int fatigue, int bladder)
     {
         _hunger = hunger;
         _thirst = thirst;

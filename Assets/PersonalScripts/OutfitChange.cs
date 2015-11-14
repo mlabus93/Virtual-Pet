@@ -20,6 +20,15 @@ public class OutfitChange : MonoBehaviour {
     public bool enableBlinking; // true if blinking
     private float _timeToBeClosed, _timeToBeOpened; // blink rates
 
+
+    public int GetCurrentOutfitIndex()
+    {
+        return currentOutfitIndex;
+    }
+    public int GetCurrentEyeSelected()
+    {
+        return currentEyeSelected;
+    }
     // IMPORTANT: these enumeration pertain to the index in
     // Materials array in Skinned Mesh Renderer, Must remain consistent
     // on each character object

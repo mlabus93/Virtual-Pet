@@ -61,6 +61,14 @@ public class GameManager : MonoBehaviour
 [Serializable]
 class PlayerData
 {
+    // Game settings
+    public int _coinAmnt; // total amount of coins available
+    public int _volumeLevel;
+    public int _soundLevel;
+    // TODO: enumerate all animal prefabs
+    public int _animalIndex;// which pet is loaded
+
+
     public float _hunger;
     public float _thirst;
     public float _happiness;
