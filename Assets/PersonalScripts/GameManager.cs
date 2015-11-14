@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        //_player = GameObject.FindObjectOfType<CatCharacter>();
     }
 
     public void Save()

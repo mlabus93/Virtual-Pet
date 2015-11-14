@@ -13,7 +13,7 @@ public class CatCharacter : MonoBehaviour, IAnimalCharacter
     int _happiness, _happinessDepletionRate = 5;
     int _fatigue, _fatigueDepeletionRate = 5;
     int _bladderCapacity, _bladderCapacityDepletionRate = 10;
-    int _boredom, _boredomDepletionRate;
+    int _boredom, _boredomDepletionRate = 4;
     int _health; // NOTE: Health is calculated as an average of all of the other status fields
     // setters and getters for traits
     [SerializeField]
@@ -78,7 +78,7 @@ public class CatCharacter : MonoBehaviour, IAnimalCharacter
         if (false)
         Debug.Log("TimeLeft: " + _petAgeTimer.GetTimeLeft() + " Stoptime: " + _petAgeTimer._stopTime + " isTimeup: " + _petAgeTimer._timeUp);
 
-        if (false)
+        if (true)
             Debug.Log("hunger: " + hunger + " thirst: " + thirst + " happiness: " + happiness + " fatigue: " + fatigue + "\nbladder: " + bladderCapacity + " boredom: " + boredom
             + " health: " + health);
     }
@@ -93,6 +93,10 @@ public class CatCharacter : MonoBehaviour, IAnimalCharacter
         bladderCapacity -= _bladderCapacityDepletionRate;
         boredom -= _boredomDepletionRate;
         CalculateHealth();
+
+        float tiredness = fatigue / FULL;
+        // NOTE: had to swap values in animator for this logic to work
+        _anim.SetFloat("Tired", (float)fatigue);
     }
 
     public void CalculateHealth()

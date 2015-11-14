@@ -12,7 +12,7 @@ public class sliderController : MonoBehaviour {
 	_statusSliders = GetComponentsInChildren<Slider>();
     _PlayerObj = GameObject.FindGameObjectWithTag("Player");
 
-    _player = _PlayerObj.GetComponent<IAnimalCharacter>();
+    _player = GameObject.FindObjectOfType<CatCharacter>();
 
 
     if (_player != null)
@@ -24,6 +24,17 @@ public class sliderController : MonoBehaviour {
     }
 	}
 	
+    public void ChangeSliderRightText(Text[] txts, int val)
+    {
+        for (int j = 0; j < txts.Length; j++)
+        {
+            string lblName = txts[j].name;
+            if (lblName == "value")
+            {
+                txts[j].text = val.ToString();
+            }
+        }
+    }
 	// Update is called once per frame
 	void Update () 
     {
@@ -34,7 +45,60 @@ public class sliderController : MonoBehaviour {
             
             if (name == "HealthSlider")
             {
-                _statusSliders[i].value = 5;
+                // changes slider's length
+                _statusSliders[i].value = _player.health;
+
+                // changes text next to slider to appropriate value
+                Text[] txts =_statusSliders[i].GetComponentsInChildren<Text>();
+                ChangeSliderRightText(txts, _player.health);
+            }
+            if (name == "HappinessSlider")
+            {
+                _statusSliders[i].value = _player.happiness;
+
+                // changes text next to slider to appropriate value
+                Text[] txts = _statusSliders[i].GetComponentsInChildren<Text>();
+                ChangeSliderRightText(txts, _player.happiness);
+            }
+            if (name == "FatigueSlider")
+            {
+                _statusSliders[i].value = _player.fatigue;
+
+                // changes text next to slider to appropriate value
+                Text[] txts = _statusSliders[i].GetComponentsInChildren<Text>();
+                ChangeSliderRightText(txts, _player.fatigue);
+            }
+            if (name == "HungerSlider")
+            {
+                _statusSliders[i].value = _player.hunger;
+
+                // changes text next to slider to appropriate value
+                Text[] txts = _statusSliders[i].GetComponentsInChildren<Text>();
+                ChangeSliderRightText(txts, _player.hunger);
+            }
+            if (name == "ThirstSlider")
+            {
+                _statusSliders[i].value = _player.thirst;
+
+                // changes text next to slider to appropriate value
+                Text[] txts = _statusSliders[i].GetComponentsInChildren<Text>();
+                ChangeSliderRightText(txts, _player.thirst);
+            }
+            if (name == "BladderSlider")
+            {
+                _statusSliders[i].value = _player.bladderCapacity;
+
+                // changes text next to slider to appropriate value
+                Text[] txts = _statusSliders[i].GetComponentsInChildren<Text>();
+                ChangeSliderRightText(txts, _player.bladderCapacity);
+            }
+            if (name == "BoredomSlider")
+            {
+                _statusSliders[i].value = _player.boredom;
+
+                // changes text next to slider to appropriate value
+                Text[] txts = _statusSliders[i].GetComponentsInChildren<Text>();
+                ChangeSliderRightText(txts, _player.boredom);
             }
         }
 	}
