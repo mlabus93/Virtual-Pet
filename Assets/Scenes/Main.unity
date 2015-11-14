@@ -3520,7 +3520,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 449696, guid: 70450a794154d3945a6836e6ec61ad6a, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 449696, guid: 70450a794154d3945a6836e6ec61ad6a, type: 2}
       propertyPath: m_LocalScale.x
@@ -3546,6 +3546,10 @@ Prefab:
       propertyPath: _speed
       value: .5
       objectReference: {fileID: 0}
+    - target: {fileID: 9576728, guid: 70450a794154d3945a6836e6ec61ad6a, type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5296755953edac840b351d965e21cfb4, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 70450a794154d3945a6836e6ec61ad6a, type: 2}
   m_IsPrefabParent: 0
@@ -3994,7 +3998,7 @@ MonoBehaviour:
   hungerSlider: {fileID: 609875322}
   thirstSlider: {fileID: 423496647}
   bladderSlider: {fileID: 1120164073}
-  player: {fileID: 123931165}
+  player: {fileID: 1315678752}
 --- !u!4 &750467421
 Transform:
   m_ObjectHideFlags: 0
