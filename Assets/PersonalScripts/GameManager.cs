@@ -105,7 +105,6 @@ public class GameManager : MonoBehaviour
 
     private void LoadPetInfo(int i = 0)
     {
-        //NOTE: this assumes there is only one animal in list
         AnimalContainer ac = AnimalContainer.Load(Path.Combine(Application.persistentDataPath, "Animalnfo.xml"));
         if (ac != null)
         {
@@ -167,9 +166,44 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
-        _player = GameObject.FindObjectOfType<CatCharacter>();
-        Save();
+        // clears player reference
+        _player = null;
+        // determines Player animal type, there should only be 1 player
+        // there could possibly be more than 1 animal
+        GameObject holder = GameObject.FindGameObjectWithTag("Player");
+
+        // if-else structure to determine exact animal type
+        if(_player == null)
+        {
+            _player = holder.GetComponent<CatCharacter>();
+            if (_player == null)
+            {
+                _player = holder.GetComponent<DogCharacter>();
+                if (_player == null)
+                {
+                    _player = holder.GetComponent<RabbitCharacter>();
+                    if (_player == null)
+                    {
+                        _player = holder.GetComponent<FoxCharacter>();
+                        if (_player == null)
+                        {
+                            _player = holder.GetComponent<PenguinCharacter>();
+                            if (_player == null)
+                            {
+                                _player = holder.GetComponent<PandaCharacter>();
+                                // if player has not been assigned by this point there was an error
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError("NO PLAYER OBJECT FOUND!");
+        }
+        Debug.Log(_player.GetNickName());
+        //Save();
     }
 
 

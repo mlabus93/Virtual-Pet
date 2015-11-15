@@ -9,21 +9,55 @@ public class sliderController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	_statusSliders = GetComponentsInChildren<Slider>();
-    _PlayerObj = GameObject.FindGameObjectWithTag("Player");
+	    _statusSliders = GetComponentsInChildren<Slider>();
+        _PlayerObj = GameObject.FindGameObjectWithTag("Player");
 
-    _player = GameObject.FindObjectOfType<CatCharacter>();
+        FindExactAnimal();
+        //_player = GameObject.FindObjectOfType<CatCharacter>();
 
 
-    if (_player != null)
-        Debug.Log("It is not NULL");
-    else
-    {
-        Debug.Log("it is null");
-        Debug.Log(_PlayerObj.name);
-    }
+        if (_PlayerObj != null)
+            Debug.Log("It is not NULL");
+        else
+        {
+            Debug.Log("it is null");
+            Debug.Log(_PlayerObj.name);
+        }
 	}
 	
+    private void FindExactAnimal()
+    {
+        // if-else structure to determine exact animal type
+        if (_player == null)
+        {
+            _player = _PlayerObj.GetComponent<CatCharacter>();
+            if (_player == null)
+            {
+                _player = _PlayerObj.GetComponent<DogCharacter>();
+                if (_player == null)
+                {
+                    _player = _PlayerObj.GetComponent<RabbitCharacter>();
+                    if (_player == null)
+                    {
+                        _player = _PlayerObj.GetComponent<FoxCharacter>();
+                        if (_player == null)
+                        {
+                            _player = _PlayerObj.GetComponent<PenguinCharacter>();
+                            if (_player == null)
+                            {
+                                _player = _PlayerObj.GetComponent<PandaCharacter>();
+                                // if player has not been assigned by this point there was an error
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError("NO PLAYER OBJECT FOUND!");
+        }
+    }
     public void ChangeSliderRightText(Text[] txts, int val)
     {
         for (int j = 0; j < txts.Length; j++)

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RabbitCharacterCharacter : MonoBehaviour, IAnimalCharacter
+public class RabbitCharacter : MonoBehaviour, IAnimalCharacter
 {
     private const int FULL = 100;
     private const int EMPTY = 0;

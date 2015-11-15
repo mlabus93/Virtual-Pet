@@ -9,13 +9,52 @@ public class TouchMovementController : MonoBehaviour {
     int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
     float camRayLength = 100f;          // The length of the ray from the camera into the scene.
     Rigidbody _rigidBody;
+    GameObject _player;
 
 	// Use this for initialization
 	void Awake () {
         txt = GetComponent<Text>();
         floorMask = LayerMask.GetMask("Floor");
-        _rigidBody = GameObject.FindObjectOfType<CatCharacter>().GetComponent<Rigidbody>();
+        _player = GameObject.FindGameObjectWithTag("Player");
+        _rigidBody = _player.GetComponent<Rigidbody>();
+        //_rigidBody = GameObject.FindObjectOfType<CatCharacter>().GetComponent<Rigidbody>();
 	}
+
+    void DetermineExactAnimal()
+    {
+        /*
+        // if-else structure to determine exact animal type
+        if (_player != null)
+        {
+            _player = GetComponent<CatCharacter>();
+            if (_player == null)
+            {
+                _player = GetComponent<DogCharacter>();
+                if (_player == null)
+                {
+                    _player = GetComponent<RabbitCharacter>();
+                    if (_player == null)
+                    {
+                        _player = GetComponent<FoxCharacter>();
+                        if (_player == null)
+                        {
+                            _player = GetComponent<PenguinCharacter>();
+                            if (_player == null)
+                            {
+                                _player = GetComponent<PandaCharacter>();
+                                // if player has not been assigned by this point there was an error
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError("NO PLAYER OBJECT FOUND!");
+        }
+         * */
+    }
 
     void OnGUI()
     {

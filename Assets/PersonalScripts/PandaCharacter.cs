@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PandaCharacterCharacter : MonoBehaviour, IAnimalCharacter
+public class PandaCharacter : MonoBehaviour, IAnimalCharacter
 {
     private const int FULL = 100;
     private const int EMPTY = 0;
