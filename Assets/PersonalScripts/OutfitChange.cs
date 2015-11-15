@@ -158,7 +158,7 @@ public class OutfitChange : MonoBehaviour {
             {
                 if (currentlyBeingRendered == _materialOrig[k])
                 {
-                    currentOutfitIndex = k;
+                    currentEyeSelected = k;
                     return k;
                 }
             }
@@ -180,12 +180,13 @@ public class OutfitChange : MonoBehaviour {
             ChangeEyes();
             _blink = false;
         }
-
+        /*
         if (_changeFit)
         {
             ChangeOutfit(1,true);
             _changeFit = false;
         }
+         **/
 	}
 
     public void ChangeOutfit(int outfitIndex = -1, bool loop = false)
