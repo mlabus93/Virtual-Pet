@@ -2,25 +2,12 @@
 using System.Collections;
 
 public class ToggleCameras : MonoBehaviour {
-    public GameObject[] cameras = new GameObject[8];
-
-    enum CameraPosition
-    {
-        Overhead = 0,
-        LivingRoom1,
-        LivingRoom2,
-        ToyRoom1,
-        ToyRoom2,
-        BedRoom1,
-        BedRoom2,
-        BathRoom
-    };
-
+    public static GameObject[] cameras = new GameObject[8];
 
     // Use this for initialization
     void Start()
     {
-        switchCameras(0);
+        SwitchCameras(CameraPosition.LivingRoom1);
     }
 
     //TEMP CODE TO DEBUG CAMERAS
@@ -31,16 +18,16 @@ public class ToggleCameras : MonoBehaviour {
         if(int.TryParse(Input.inputString, out keyPress))
 
         {
-            switchCameras(keyPress);
+            SwitchCameras((CameraPosition)keyPress);
         }
 
     }
 
-    private void switchCameras(int keyNum)
+    public static void SwitchCameras(CameraPosition keyNum)
     {
         for (int i = 0; i < cameras.Length - 1; i++)
         {
-            if (cameras[i] != null && keyNum != i)
+            if (cameras[i] != null && (int)keyNum != i)
             {
                 // turn camera off
                 cameras[i].GetComponent<Camera>().enabled = false;
