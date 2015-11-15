@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class CameraRoomSwitch : MonoBehaviour {
+    public ToggleCameras cameraToggle;
 
 
     void ChangeRooms(Collider doorway)
@@ -42,31 +43,31 @@ public class CameraRoomSwitch : MonoBehaviour {
         switch (currentRoom)
         {
             case Room.Bathroom:
-                ToggleCameras.SwitchCameras(CameraPosition.BedRoom1);
+                    cameraToggle.SwitchCameras(CameraPosition.BedRoom1);
                 break;
             case Room.BedRoom:
 
                 if (destinationRoom == Room.LivingRoom)
                 {
-                    ToggleCameras.SwitchCameras(CameraPosition.LivingRoom1);
+                    cameraToggle.SwitchCameras(CameraPosition.LivingRoom1);
                 }
                 else
                 {
-                    ToggleCameras.SwitchCameras(CameraPosition.BathRoom);
+                    cameraToggle.SwitchCameras(CameraPosition.BathRoom);
                 }
                 break;
             case Room.LivingRoom:
 
                 if (destinationRoom == Room.ToyRoom)
                 {
-                    ToggleCameras.SwitchCameras(CameraPosition.ToyRoom1);
+                    cameraToggle.SwitchCameras(CameraPosition.ToyRoom1);
                 } else
                 {
-                    ToggleCameras.SwitchCameras(CameraPosition.BedRoom1);
+                    cameraToggle.SwitchCameras(CameraPosition.BedRoom1);
                 }
                 break;
             case Room.ToyRoom:
-                ToggleCameras.SwitchCameras(CameraPosition.LivingRoom1);
+                cameraToggle.SwitchCameras(CameraPosition.LivingRoom1);
                 break;
             default:
                 break;
