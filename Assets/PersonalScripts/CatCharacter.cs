@@ -3,9 +3,10 @@ using System.Collections;
 
 public class CatCharacter : MonoBehaviour, IAnimalCharacter
 {
-
     private const int FULL = 100;
     private const int EMPTY = 0;
+    string _nickName = "Mr.Kitty";
+
     // animal status traits and depletion rates
     public AnimalPreferences _catPrefs;
     int _hunger, _hungerDepletionRate = 5;
@@ -51,6 +52,19 @@ public class CatCharacter : MonoBehaviour, IAnimalCharacter
     {
         return PlayableCharacters.Cat;
     }
+    public Vector3 GetAnimalPosition()
+    {
+        return GetComponent<Rigidbody>().position;
+    }
+    public void SetAnimalPosition(Vector3 loci)
+    {
+        Rigidbody rigid= GetComponent<Rigidbody>();
+        rigid.position = loci;
+    }
+    public string GetNickName()
+    {
+        return _nickName;
+    }
 
     public void ResetStatuses()
     {
@@ -78,7 +92,7 @@ public class CatCharacter : MonoBehaviour, IAnimalCharacter
         if (false)
         Debug.Log("TimeLeft: " + _petAgeTimer.GetTimeLeft() + " Stoptime: " + _petAgeTimer._stopTime + " isTimeup: " + _petAgeTimer._timeUp);
 
-        if (true)
+        if (false)
             Debug.Log("hunger: " + hunger + " thirst: " + thirst + " happiness: " + happiness + " fatigue: " + fatigue + "\nbladder: " + bladderCapacity + " boredom: " + boredom
             + " health: " + health);
     }

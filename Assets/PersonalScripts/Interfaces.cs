@@ -67,6 +67,9 @@ public interface IAnimalCharacter
     void PlayWithAnimal(IToy toy);
     void RotateThroughFits();
     void ChangeIntoSpecificFit(int fitIndex);
+    Vector3 GetAnimalPosition();
+    void SetAnimalPosition(Vector3 loci);
+    string GetNickName();
     void CalculateHealth();
     void AgePet();
     void SayGoodbye();

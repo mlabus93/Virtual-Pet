@@ -1,27 +1,160 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEngine;
 
+using System.Collections.Generic;
+using System.Xml.Serialization;
+
 
 public class GameManager : MonoBehaviour
 {
-
-
     // These are static because there should be only one game manager
     // and only one player
     public static GameManager _manager;
     public static IAnimalCharacter _player;
     public static int _coins;
-
-    PlayableCharacters characterSelection;
+    public int _volumeLevel;
+    public int _musicLevel;
+    public string _userName;
+    // saving utility
+    AnimalContainer animalCollection = new AnimalContainer();
+    GameContainer gameCollection = new GameContainer();
+    
     
     public void AddCoins(int Amount)
     {
         _coins += Amount;
     }
+
+    public void LoadXMLData()
+    {
+        // parses the xml data for gamesaves and character data
+        LoadGameSave();
+        LoadPetInfo();
+    }
+
+    public void SaveXMLData()
+    {
+        // saves relevant information from game and pet
+        SaveGameSave();
+        SavePetInfo();
+    }
+
+    private void SaveGameSave(int i = 0)
+    {
+        if (gameCollection.gameSaves.Count < 1)
+        {
+            // creates new game
+            gameCollection.gameSaves.Add(new GameSave(name, _volumeLevel,_musicLevel,_coins));
+        }
+        else
+        {
+            // saves to given index, defaulted to 0
+            gameCollection.gameSaves[i].CoinAmount = _coins;
+            gameCollection.gameSaves[i].MusicLevel = _musicLevel;
+            gameCollection.gameSaves[i].VolumeLevel = _volumeLevel;
+        }
+        gameCollection.Save(Path.Combine(Application.persistentDataPath, "Gamenfo.xml"));
+    }
+
+    private void SavePetInfo(int i = 0)
+    {
+        if (animalCollection.animals.Count < 1)
+        {
+            // creates new animal
+            animalCollection.animals.Add(new Animal("SampleName"));
+        }
+        else
+        {
+            // saves to given index, defaulted to 0
+            // saves animals species and nickname
+            animalCollection.animals[i].species = _player.GetAnimalType();
+            animalCollection.animals[i].Name = _player.GetNickName();
+            // saves animals outfit
+            animalCollection.animals[i]._playerFit.EyeIndex = _player.SetandReturnOutfitSystem().GetCurrentEyeSelected();
+            animalCollection.animals[i]._playerFit.OutFitIndex = _player.SetandReturnOutfitSystem().GetCurrentOutfitIndex();
+            // saves animal statuses
+            animalCollection.animals[i]._playerStats.Happiness = _player.happiness;
+            animalCollection.animals[i]._playerStats.Health = _player.health;
+            animalCollection.animals[i]._playerStats.Hunger = _player.hunger;
+            animalCollection.animals[i]._playerStats.Thirst = _player.thirst;
+            animalCollection.animals[i]._playerStats.Fatigue = _player.fatigue;
+            animalCollection.animals[i]._playerStats.Boredom = _player.boredom;
+            animalCollection.animals[i]._playerStats.BladderCapacity = _player.bladderCapacity;
+            // saves animal location
+            animalCollection.animals[i]._playerLoci.xpos = _player.GetAnimalPosition().x;
+            animalCollection.animals[i]._playerLoci.ypos = _player.GetAnimalPosition().y;
+            animalCollection.animals[i]._playerLoci.zpos = _player.GetAnimalPosition().z;
+        }
+        animalCollection.Save(Path.Combine(Application.persistentDataPath, "Animalnfo.xml"));
+    }
+    private void LoadGameSave(int i = 0)
+    {
+        // loads gamedata from given index, defaulted to 0
+        GameContainer gme = GameContainer.Load(Path.Combine(Application.persistentDataPath, "Gamenfo.xml"));
+        if (gme != null)
+        {
+            _coins = gme.gameSaves[i].CoinAmount;
+            _volumeLevel = gme.gameSaves[i].VolumeLevel;
+            _musicLevel = gme.gameSaves[i].MusicLevel;
+        }
+        
+    }
+
+    private void LoadPetInfo(int i = 0)
+    {
+        //NOTE: this assumes there is only one animal in list
+        AnimalContainer ac = AnimalContainer.Load(Path.Combine(Application.persistentDataPath, "Animalnfo.xml"));
+        if (ac != null)
+        {
+            // sets player status info
+            _player.hunger = ac.animals[i]._playerStats.Hunger;
+            _player.thirst = ac.animals[i]._playerStats.Thirst;
+            _player.happiness = ac.animals[i]._playerStats.Happiness;
+            _player.fatigue = ac.animals[i]._playerStats.Fatigue;
+            _player.bladderCapacity = ac.animals[i]._playerStats.BladderCapacity;
+            _player.boredom = ac.animals[i]._playerStats.Boredom;
+            _player.health = ac.animals[i]._playerStats.Health;
+
+            // sets player location info
+            _player.SetAnimalPosition(new Vector3(ac.animals[i]._playerLoci.xpos, ac.animals[i]._playerLoci.ypos, ac.animals[i]._playerLoci.zpos));
+
+            // sets player outfit info
+            _player.SetandReturnOutfitSystem().ChangeOutfit(ac.animals[i]._playerFit.OutFitIndex, false);
+            if (_player.SetandReturnOutfitSystem().GetCurrentEyeSelected() != ac.animals[i]._playerFit.EyeIndex)
+                _player.SetandReturnOutfitSystem().ChangeEyes();
+
+            // TODO: set weapon information
+        }
+
+    }
+    public void SaveAnimal(string path)
+ 	{
+ 		var serializer = new XmlSerializer(typeof(GameManager));
+ 		using(var stream = new FileStream(path, FileMode.Create))
+ 		{
+ 			serializer.Serialize(stream, this);
+ 		}
+ 	}
+ 
+ 	public static GameManager LoadAnimal(string path)
+ 	{
+ 		var serializer = new XmlSerializer(typeof(GameManager));
+ 		using(var stream = new FileStream(path, FileMode.Open))
+ 		{
+ 			return serializer.Deserialize(stream) as GameManager;
+ 		}
+ 	}
+ 
+         //Loads the xml directly from the given string. Useful in combination with www.text.
+         public static GameManager LoadFromText(string text) 
+ 	{
+ 		var serializer = new XmlSerializer(typeof(GameManager));
+ 		return serializer.Deserialize(new StringReader(text)) as GameManager;
+ 	}
+
     void Awake()
     {
         // creates a singleton
@@ -34,15 +167,28 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        //_player = GameObject.FindObjectOfType<CatCharacter>();
+        
+        _player = GameObject.FindObjectOfType<CatCharacter>();
+        Save();
     }
+
 
     public void Save()
     {
-        
+       
+        FileStream file;
         // creates file reader in binary format
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+        try
+        {
+            file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+        }
+        catch (FileNotFoundException)
+        {
+            // NEW GAME
+            file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
+        }
+        Debug.Log("Now Saving to " + Application.persistentDataPath + "/playerInfo.dat" );
         // creates new data object with values from player's current state
         // *must be written this way in order for it to be serialized
         PlayerData data = new PlayerData(_player.hunger, _player.thirst, 
@@ -50,6 +196,8 @@ public class GameManager : MonoBehaviour
         // writes to binary file and closes
         bf.Serialize(file, data);
         file.Close();
+
+        SaveXMLData();
     }
 
     public void Load()
@@ -58,30 +206,24 @@ public class GameManager : MonoBehaviour
         {
             // if file exists read it into the Player object
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
-            PlayerData data = (PlayerData)bf.Deserialize(file);
-            
+            FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);  
         }
+        LoadXMLData();
     }
 }
-
 
 [Serializable]
 class GameData
 {
-    public int _volumeLevel;
-    public int _musicLevel;
+
     public int _petSelection;
     public PlayableCharacters _playerSpecies;
 
     public GameData(int vol, int musiclv, PlayableCharacters species)
     {
-        _volumeLevel = vol;
-        _musicLevel = musiclv;
         _playerSpecies = species;
     }
 }
-
 
 [Serializable]
 class PlayerData
