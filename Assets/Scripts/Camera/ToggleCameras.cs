@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class ToggleCameras : MonoBehaviour {
-    public GameObject[] cameras = new GameObject[8];
+    public Camera[] cameras = new Camera[9];
 
     // Use this for initialization
     void Start()
@@ -27,28 +27,41 @@ public class ToggleCameras : MonoBehaviour {
 
     public void SwitchCameras(CameraPosition desiredCam)
     {
-        for (int i = 0; i < cameras.Length - 1; i++)
+        for (int i = 0; i < cameras.Length; i++)
         {
-           
-
             if (cameras[i] != null && (int)desiredCam != i)
             {
                 // turn camera off
-                cameras[i].GetComponent<Camera>().enabled = false;
+                cameras[i].enabled = false;
+                cameras[i].tag = "Untagged";
             }
             else
             {
                 // turn camera on
-                cameras[i].GetComponent<Camera>().enabled = true;
+                cameras[i].enabled = true;
+                cameras[i].tag = "MainCamera";
             }
         }
     }
 
-    void ChangeCameraRoom()
+    private Camera GetCurrentCamera()
     {
-        CameraPosition currentCam = (CameraPosition)System.Enum.Parse(typeof(CameraPosition), Camera.current.tag);
+        foreach(Camera camera in cameras)
+        {
+            if(camera.isActiveAndEnabled)
+            {
+                return camera;
+            }
+        }
+        return cameras[0];
+    }
 
-        switch(currentCam)
+    public void ChangeCameraRoom()
+    {
+        Camera currentCam = GetCurrentCamera();
+        CameraPosition currentCamPos = (CameraPosition)System.Enum.Parse(typeof(CameraPosition), currentCam.name);
+
+        switch(currentCamPos)
         {
             case CameraPosition.BedRoom1:
                 SwitchCameras(CameraPosition.BedRoom2);

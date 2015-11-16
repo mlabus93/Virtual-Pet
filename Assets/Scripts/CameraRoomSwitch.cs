@@ -3,10 +3,31 @@ using System.Collections;
 
 public class CameraRoomSwitch : MonoBehaviour {
     public ToggleCameras cameraToggle;
+    public GameObject toyroomTrigger;
+    public GameObject bathroomTrigger;
+    public GameObject bedroomTrigger;
 
+    void OnPointerClick()
+    {
+        if(true)
+        {
+
+
+
+        }
+
+    }
 
     void ChangeRooms(Collider doorway)
     {
+
+       // if(toyroomTrigger.GetComponent<Collider>.)
+
+        //Collider doorway;
+
+
+
+
         Room currentRoom = 0;
         Room destinationRoom = (Room)System.Enum.Parse(typeof(Room), doorway.tag);
 

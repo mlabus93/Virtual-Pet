@@ -631,7 +631,7 @@ GameObject:
   - 92: {fileID: 114697273}
   - 81: {fileID: 114697272}
   m_Layer: 0
-  m_Name: LivingRoomCam1
+  m_Name: LivingRoom1
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -643,8 +643,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 114697270}
-  m_LocalRotation: {x: -.366487831, y: .314935505, z: -.133390397, w: -.865279913}
-  m_LocalPosition: {x: 95.1800003, y: 30.2399998, z: -46.1800003}
+  m_LocalRotation: {x: -.24321045, y: .3303653, z: -.0885211229, w: -.907673657}
+  m_LocalPosition: {x: 90.6200027, y: 33.4599991, z: -48.6500015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1082159267}
@@ -2443,6 +2443,92 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: .943242371, y: 1.69416142, z: 1.70556414}
   m_Center: {x: .392046183, y: -.409929276, z: .572487772}
+--- !u!1 &440121658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 440121659}
+  - 20: {fileID: 440121663}
+  - 124: {fileID: 440121662}
+  - 92: {fileID: 440121661}
+  - 81: {fileID: 440121660}
+  m_Layer: 0
+  m_Name: FirstPerson
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &440121659
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 440121658}
+  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
+  m_LocalPosition: {x: 91.8000031, y: 200, z: 49.5999985}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1082159267}
+  m_RootOrder: 8
+--- !u!81 &440121660
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 440121658}
+  m_Enabled: 1
+--- !u!92 &440121661
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 440121658}
+  m_Enabled: 1
+--- !u!124 &440121662
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 440121658}
+  m_Enabled: 1
+--- !u!20 &440121663
+Camera:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 440121658}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: .300000012
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: .0219999999
+  m_StereoMirrorMode: 0
 --- !u!1 &447005456
 GameObject:
   m_ObjectHideFlags: 0
@@ -2583,7 +2669,7 @@ GameObject:
   - 92: {fileID: 504632720}
   - 81: {fileID: 504632719}
   m_Layer: 0
-  m_Name: ToyRoomCam1
+  m_Name: ToyRoom1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2689,6 +2775,10 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: .5, y: .5}
+--- !u!1 &547067145 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 120552, guid: 2d3ffc34e806600489c157ed0fd1068c, type: 2}
+  m_PrefabInternal: {fileID: 1138918587}
 --- !u!1 &550058589
 GameObject:
   m_ObjectHideFlags: 0
@@ -3551,7 +3641,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 14
   m_CollisionDetection: 0
 --- !u!65 &693833041
 BoxCollider:
@@ -4481,7 +4571,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 5440906, guid: 96c724a7d546d4033846bb4a17e8d8b3, type: 2}
       propertyPath: m_Constraints
-      value: 64
+      value: 78
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11467126, guid: 96c724a7d546d4033846bb4a17e8d8b3, type: 2}
@@ -4568,7 +4658,7 @@ GameObject:
   - 92: {fileID: 783438182}
   - 81: {fileID: 783438181}
   m_Layer: 0
-  m_Name: ToyRoomCam2
+  m_Name: ToyRoom2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6031,6 +6121,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1082159267}
   - 114: {fileID: 1082159268}
+  - 114: {fileID: 1082159269}
   m_Layer: 0
   m_Name: Cameras
   m_TagString: Untagged
@@ -6056,6 +6147,7 @@ Transform:
   - {fileID: 1697674479}
   - {fileID: 1689553903}
   - {fileID: 1370481082}
+  - {fileID: 440121659}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!114 &1082159268
@@ -6070,14 +6162,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameras:
-  - {fileID: 1743577173}
-  - {fileID: 114697270}
-  - {fileID: 1103215482}
-  - {fileID: 504632718}
-  - {fileID: 783438180}
-  - {fileID: 1689553898}
-  - {fileID: 1370481081}
-  - {fileID: 1697674474}
+  - {fileID: 1743577177}
+  - {fileID: 114697275}
+  - {fileID: 1103215486}
+  - {fileID: 504632722}
+  - {fileID: 783438184}
+  - {fileID: 1689553902}
+  - {fileID: 1370481086}
+  - {fileID: 1697674478}
+  - {fileID: 440121663}
+--- !u!114 &1082159269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1082159266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb1332b1b5dd474cb8d631775db0376, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraToggle: {fileID: 1082159268}
+  toyroomTrigger: {fileID: 547067145}
+  bathroomTrigger: {fileID: 2039618390}
+  bedroomTrigger: {fileID: 1650952056}
 --- !u!1 &1084671913
 GameObject:
   m_ObjectHideFlags: 0
@@ -6175,7 +6283,7 @@ GameObject:
   - 92: {fileID: 1103215484}
   - 81: {fileID: 1103215483}
   m_Layer: 0
-  m_Name: LivingRoomCam2
+  m_Name: LivingRoom2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7202,7 +7310,7 @@ GameObject:
   - 92: {fileID: 1370481084}
   - 81: {fileID: 1370481083}
   m_Layer: 0
-  m_Name: BedRoomCam2
+  m_Name: BedRoom2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8373,12 +8481,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1550685996}
-        m_MethodName: 
+      - m_Target: {fileID: 1082159268}
+        m_MethodName: ChangeCameraRoom
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8817,6 +8925,10 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: .0500000007, y: .0700000003, z: .360000014}
   m_Center: {x: 0, y: .0599999987, z: -.0299999993}
+--- !u!1 &1650952056 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 114650, guid: 93728afe5e4828e4690d5a2e2b545646, type: 2}
+  m_PrefabInternal: {fileID: 1590572999}
 --- !u!1 &1656641266
 GameObject:
   m_ObjectHideFlags: 0
@@ -8902,7 +9014,7 @@ GameObject:
   - 92: {fileID: 1689553900}
   - 81: {fileID: 1689553899}
   m_Layer: 0
-  m_Name: BedRoomCam1
+  m_Name: BedRoom1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8988,7 +9100,7 @@ GameObject:
   - 92: {fileID: 1697674476}
   - 81: {fileID: 1697674475}
   m_Layer: 0
-  m_Name: BathroomCam
+  m_Name: Bathroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9156,7 +9268,7 @@ GameObject:
   - 92: {fileID: 1743577175}
   - 81: {fileID: 1743577174}
   m_Layer: 0
-  m_Name: OverheadCam
+  m_Name: Overhead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9189,7 +9301,7 @@ Camera:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1743577173}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
@@ -10218,7 +10330,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 14
   m_CollisionDetection: 0
 --- !u!65 &1908426292
 BoxCollider:
@@ -10809,7 +10921,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 14
   m_CollisionDetection: 0
 --- !u!65 &1953422040
 BoxCollider:
@@ -11372,6 +11484,10 @@ Transform:
   m_Children: []
   m_Father: {fileID: 772665851}
   m_RootOrder: 1
+--- !u!1 &2039618390 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 180254, guid: ac3db88fbe6e64c469691492b6a5ad70, type: 2}
+  m_PrefabInternal: {fileID: 1038278387}
 --- !u!1 &2045582015
 GameObject:
   m_ObjectHideFlags: 0
@@ -11780,7 +11896,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 14
   m_CollisionDetection: 0
 --- !u!65 &2095011053
 BoxCollider:
