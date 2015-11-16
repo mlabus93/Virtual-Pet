@@ -3621,6 +3621,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: .5
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5d8d87842098577449127755ec7550f0, type: 3}
+      propertyPath: m_Name
+      value: Pork Ribs
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d8d87842098577449127755ec7550f0, type: 3}
   m_IsPrefabParent: 0
@@ -4172,7 +4176,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &766362534
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5643,7 +5647,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1020825978
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7962,7 +7966,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1511705625
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10310,6 +10314,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 836cc7a316378b74584113d460f31745, type: 2}
+    - target: {fileID: 100000, guid: 250379aed46ac6b40b1e054ae8afc993, type: 3}
+      propertyPath: m_Name
+      value: Chicken Leg
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 250379aed46ac6b40b1e054ae8afc993, type: 3}
   m_IsPrefabParent: 0
@@ -10901,6 +10909,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 47cc15a13003d674ea7d73b4329269fd, type: 2}
+    - target: {fileID: 100000, guid: 03824a96f3f16fa49ad1bced2f243748, type: 3}
+      propertyPath: m_Name
+      value: Turkey
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03824a96f3f16fa49ad1bced2f243748, type: 3}
   m_IsPrefabParent: 0
@@ -11113,7 +11125,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1991133029
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11876,6 +11888,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dffc957797b5e8f4c963a52e87b3866e, type: 2}
+    - target: {fileID: 100000, guid: bfbedc791ccb8994db3328d04cb6bd9c, type: 3}
+      propertyPath: m_Name
+      value: Ham
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bfbedc791ccb8994db3328d04cb6bd9c, type: 3}
   m_IsPrefabParent: 0
