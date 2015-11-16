@@ -8,8 +8,9 @@ public class UIController : MonoBehaviour {
     public Button statsBtn;
     public Button outfitBtn;
     public Button miniGameBtn;
-    public Button settingsBtn;
+    public Button optionsBtn;
     public GameObject statsPanel;
+    public GameObject optionsPanel;
     public GameObject canvas;
     public Slider healthSlider;
     public Slider happinessSlider;
@@ -31,6 +32,15 @@ public class UIController : MonoBehaviour {
         {
             HideStatsBtn();
             ShowStatsPanel();
+        }
+    }
+
+    public void ShowOptions()
+    {
+        if (optionsBtn.gameObject.activeSelf)
+        {
+            HideOptionsBtn();
+            ShowOptionsPanel();
         }
     }
 
@@ -59,13 +69,55 @@ public class UIController : MonoBehaviour {
     {
         statsBtn.gameObject.SetActive(false);
     }
+
+    private void ShowOptionsPanel()
+    {
+        optionsPanel.gameObject.SetActive(true);
+    }
+
+    private void HideOptionsPanel()
+    {
+        optionsPanel.gameObject.SetActive(false);
+    }
+
+    private void ShowOptionsBtn()
+    {
+        optionsBtn.gameObject.SetActive(true);
+    }
+
+    private void HideOptionsBtn()
+    {
+        optionsBtn.gameObject.SetActive(false);
+    }
+
+    private void HidePanels()
+    {
+        HideStatsPanel();
+        HideOptionsPanel();
+    }
+
+    private void ShowBtns()
+    {
+        ShowStatsBtn();
+        ShowOptionsBtn();
+    }
+
+    private bool CheckForActivePanels()
+    {
+        if (statsPanel.gameObject.activeSelf || optionsPanel.gameObject.activeSelf)
+        {
+            return true;
+        }
+        return false;
+    }
+
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetButtonDown("Fire1") && !(statsBtn.gameObject.activeSelf))
+        if (Input.GetButtonDown("Fire1") && CheckForActivePanels())
         {
-            HideStatsPanel();
-            ShowStatsBtn();
+            HidePanels();
+            ShowBtns();
         }
     }
 }
