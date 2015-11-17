@@ -46,33 +46,34 @@ public class ToggleCameras : MonoBehaviour {
 
     public void SwitchCameras(CameraPosition desiredCam)
     {
-        for (int i = 0; i < cameras.Length; i++)
+        foreach (Camera camera in cameras)
         {
-            if (cameras[i] != null && (int)desiredCam != i)
+            if (camera != null && (desiredCam != GetCamPosition(camera)))
             {
                 // turn camera off
-                cameras[i].enabled = false;
-                cameras[i].tag = "Untagged";
+                camera.enabled = false;
+                camera.tag = "Untagged";
             }
             else
             {
                 // turn camera on
-                cameras[i].enabled = true;
-                cameras[i].tag = "MainCamera";
+                camera.enabled = true;
+                camera.tag = "MainCamera";
             }
         }
     }
 
     private Camera GetCurrentCamera()
     {
-        foreach(Camera camera in cameras)
-        {
-            if(camera.isActiveAndEnabled)
-            {
-                return camera;
-            }
-        }
-        return cameras[0];
+        //foreach(Camera camera in cameras)
+        //{
+        //    if(camera.isActiveAndEnabled)
+        //    {
+        //        return camera;
+        //    }
+        //}
+        //return cameras[0];
+        return Camera.main;
     }
 
     private CameraPosition GetCamPosition(Camera currentCam)
@@ -120,13 +121,8 @@ public class ToggleCameras : MonoBehaviour {
     }
 
     // Will need to add it to button later, but currently no collider calls it
-    void ChangeRooms(Collider doorway)
+    public void ChangeRooms(GameObject doorway)
     {
-
-        // if(toyroomTrigger.GetComponent<Collider>.)
-
-        //Collider doorway;
-
         Room currentRoom = 0;
         Room destinationRoom = (Room)System.Enum.Parse(typeof(Room), doorway.tag);
 
@@ -155,7 +151,7 @@ public class ToggleCameras : MonoBehaviour {
             default:
                 break;
         }
-        SetCamera(currentRoom, destinationRoom);
+        SetCamera(destinationRoom, currentRoom);
     }
 
     private void SetCamera(Room destinationRoom, Room currentRoom)
@@ -168,7 +164,7 @@ public class ToggleCameras : MonoBehaviour {
                 break;
             case Room.BedRoom:
 
-                if (destinationRoom == Room.LivingRoom)
+                if (destinationRoom == Room.BedRoom)
                 {
                     SwitchCameras(CameraPosition.LivingRoom1);
                 }
