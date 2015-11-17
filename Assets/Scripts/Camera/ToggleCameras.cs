@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ToggleCameras : MonoBehaviour {
     public Camera[] cameras = new Camera[9];
+    private Camera lastCamera = new Camera();
 
     // Use this for initialization
     void Start()
@@ -23,6 +24,24 @@ public class ToggleCameras : MonoBehaviour {
             SwitchCameras((CameraPosition)keyPress);
         }
 
+    }
+
+    public void ToggleOverheadCameraView()
+    {
+        lastCamera = GetCurrentCamera();
+        SwitchCameras(CameraPosition.Overhead);
+    }
+
+    public void ToggleSecurityCameraView()
+    {
+        if (GetCamPosition(lastCamera) == CameraPosition.Overhead)
+        {
+            SwitchCameras(CameraPosition.LivingRoom1);
+        }
+        else
+        {
+            SwitchCameras(GetCamPosition(lastCamera));
+        }
     }
 
     public void SwitchCameras(CameraPosition desiredCam)
@@ -54,6 +73,11 @@ public class ToggleCameras : MonoBehaviour {
             }
         }
         return cameras[0];
+    }
+
+    private CameraPosition GetCamPosition(Camera currentCam)
+    {
+        return (CameraPosition)System.Enum.Parse(typeof(CameraPosition), currentCam.name);
     }
 
     public void ChangeCameraRoom()

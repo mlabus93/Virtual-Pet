@@ -50,6 +50,12 @@ public class UIController : MonoBehaviour {
         script.ChangeOutfit(0, true);
     }
 
+    public void CloseOptionsPanel()
+    {
+        HideOptionsPanel();
+        ShowOptionsBtn();
+    }
+
     private void ShowStatsPanel()
     {
         statsPanel.gameObject.SetActive(true);
@@ -114,7 +120,7 @@ public class UIController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetButtonDown("Fire1") && CheckForActivePanels())
+        if (Input.GetButtonDown("Fire1") && statsPanel.gameObject.activeSelf)
         {
             HidePanels();
             ShowBtns();
