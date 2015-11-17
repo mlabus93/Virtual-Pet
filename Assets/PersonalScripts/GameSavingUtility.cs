@@ -56,7 +56,7 @@ public class GameSave
     public int VolumeLevel;
     public int MusicLevel;
     public int CoinAmount;
-    
+    public float GameSpeed;
 
     // needs default constructor for w.e. reason
     public GameSave()

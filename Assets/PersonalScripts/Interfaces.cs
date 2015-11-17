@@ -88,4 +88,6 @@ public interface IAnimalCharacter
     void StopEating();
     void Sleep();
     void Sleep(float sleepTime);
+    void AdjustAgingRate(float ageRate);
+    float GetAgeRate();
 }

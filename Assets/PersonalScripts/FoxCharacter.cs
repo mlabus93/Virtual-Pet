@@ -41,6 +41,16 @@ public class FoxCharacter : MonoBehaviour, IAnimalCharacter
         return val;
     }
 
+    public void AdjustAgingRate(float ageRate)
+    {
+        _petAgeTimer.SetTimer(_petAgeTimer._stopTime + ageRate);
+    }
+
+    public float GetAgeRate()
+    {
+        return _petAgeTimer._stopTime;
+    }
+
     OutfitChange _outfitSystem;
     public Animator _anim;
     public Timer _petAgeTimer;

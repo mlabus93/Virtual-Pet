@@ -32,6 +32,16 @@ public class RabbitCharacter : MonoBehaviour, IAnimalCharacter
     [SerializeField]
     public int boredom { get { return (_boredom); } set { _boredom = ClampAtFull(value); } }
 
+    public void AdjustAgingRate(float ageRate)
+    {
+        _petAgeTimer.SetTimer(_petAgeTimer._stopTime + ageRate);
+    }
+
+    public float GetAgeRate()
+    {
+        return _petAgeTimer._stopTime;
+    }
+
     public int ClampAtFull(int val)
     {
         if (val > FULL)

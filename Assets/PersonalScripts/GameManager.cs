@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public static int _coins;
     public int _volumeLevel;
     public int _musicLevel;
+    public float _gameSpeed;
     public string _userName;
     // saving utility
     AnimalContainer animalCollection = new AnimalContainer();
@@ -42,6 +43,21 @@ public class GameManager : MonoBehaviour
         SavePetInfo();
     }
 
+    public void AdjustVolume(float nwVolume)
+    {
+        _volumeLevel = (int)nwVolume;
+    }
+
+    public void AdjustMusicLevel(float nwMusiclvl)
+    {
+        _musicLevel = (int)nwMusiclvl;
+    }
+
+    public void AdjustGameSpeed(float nwGameSpeed)
+    {
+        _player.AdjustAgingRate(nwGameSpeed);
+        _gameSpeed = _player.GetAgeRate(); 
+    }
     private void SaveGameSave(int i = 0)
     {
         if (gameCollection.gameSaves.Count < 1)
@@ -55,6 +71,7 @@ public class GameManager : MonoBehaviour
             gameCollection.gameSaves[i].CoinAmount = _coins;
             gameCollection.gameSaves[i].MusicLevel = _musicLevel;
             gameCollection.gameSaves[i].VolumeLevel = _volumeLevel;
+            gameCollection.gameSaves[i].GameSpeed = _gameSpeed;
         }
         gameCollection.Save(Path.Combine(Application.persistentDataPath, "Gamenfo.xml"));
     }
@@ -99,6 +116,8 @@ public class GameManager : MonoBehaviour
             _coins = gme.gameSaves[i].CoinAmount;
             _volumeLevel = gme.gameSaves[i].VolumeLevel;
             _musicLevel = gme.gameSaves[i].MusicLevel;
+            _gameSpeed = gme.gameSaves[i].GameSpeed;
+            AdjustGameSpeed(_gameSpeed);
         }
         
     }

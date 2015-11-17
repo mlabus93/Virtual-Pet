@@ -66,9 +66,18 @@ public class CatCharacter : MonoBehaviour, IAnimalCharacter
         return _nickName;
     }
 
+    public void AdjustAgingRate(float ageRate)
+    {
+        _petAgeTimer.SetTimer(_petAgeTimer._stopTime + ageRate);
+    }
+
+    public float GetAgeRate()
+    {
+        return _petAgeTimer._stopTime;
+    }
+
     public void ResetStatuses()
     {
-        
         // all statuses 
         hunger = FULL;
         thirst = FULL;
@@ -78,6 +87,8 @@ public class CatCharacter : MonoBehaviour, IAnimalCharacter
         bladderCapacity = FULL;
         boredom = FULL;
     }
+
+
 
     public void Update()
     {
