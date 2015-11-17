@@ -6923,7 +6923,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 480250, guid: ac3db88fbe6e64c469691492b6a5ad70, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11453010, guid: ac3db88fbe6e64c469691492b6a5ad70, type: 2}
@@ -7261,7 +7261,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1082159267}
   - 114: {fileID: 1082159268}
-  - 114: {fileID: 1082159269}
   m_Layer: 0
   m_Name: Cameras
   m_TagString: Untagged
@@ -7311,17 +7310,6 @@ MonoBehaviour:
   - {fileID: 1370481086}
   - {fileID: 1697674478}
   - {fileID: 440121663}
---- !u!114 &1082159269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1082159266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbb1332b1b5dd474cb8d631775db0376, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1084671913
 GameObject:
   m_ObjectHideFlags: 0

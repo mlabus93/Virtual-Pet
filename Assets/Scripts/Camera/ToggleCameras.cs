@@ -164,7 +164,7 @@ public class ToggleCameras : MonoBehaviour {
                 break;
             case Room.BedRoom:
 
-                if (destinationRoom == Room.LivingRoom)
+                if (destinationRoom == Room.BedRoom)
                 {
                     SwitchCameras(CameraPosition.LivingRoom1);
                 }
