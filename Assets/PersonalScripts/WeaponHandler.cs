@@ -18,7 +18,7 @@ public class WeaponHandler : MonoBehaviour
         Axe
     }
 
-    void DisableAllWeapons()
+    public void DisableAllWeapons()
     {
         // same as no weapons
         _currentWeaponIndex = 0;
@@ -70,11 +70,6 @@ public class WeaponHandler : MonoBehaviour
 
     public void Attack(int attackType)
     {
-        /*
-        ChangeWeapons();
-        ChangeWeapons();
-        ChangeWeapons();
-        */
         if (attackType == 1)
         {
             DisableEnableColliders(true);

@@ -47,7 +47,23 @@ public class CatCharacter : MonoBehaviour, IAnimalCharacter
     public int _TimeLapseRate = 5; // rate at which animal traits deplete/ refresh in sec
     [SerializeField]
     public int TimeLapseRate { get { return _TimeLapseRate; } set { _TimeLapseRate = value;} }
-
+    public WeaponHandler _weaponHandler;
+    public void Attack(int attackType)
+    {
+        _weaponHandler.Attack(attackType);
+    }
+    public void DisableAllWeapons()
+    {
+        _weaponHandler.DisableAllWeapons();
+    }
+    public void ChangeWeapons()
+    {
+        _weaponHandler.ChangeWeapons();
+    }
+    public void ChangeWeapons(int index, bool loop = true)
+    {
+        _weaponHandler.ChangeWeapons(index, loop);
+    }
     public PlayableCharacters GetAnimalType()
     {
         return PlayableCharacters.Cat;
@@ -144,6 +160,7 @@ public class CatCharacter : MonoBehaviour, IAnimalCharacter
         ResetStatuses();
         SetandReturnOutfitSystem();
         _anim = GetComponent<Animator>();
+        _weaponHandler = GetComponent<WeaponHandler>();
         // sets up cat's preferences
         _catPrefs = new AnimalPreferences(70, 10, 50, 75, 40, 15, 3);
         _petAgeTimer = gameObject.AddComponent<Timer>();

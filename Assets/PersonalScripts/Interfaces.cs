@@ -92,4 +92,8 @@ public interface IAnimalCharacter
     void Sleep(float sleepTime);
     void AdjustAgingRate(float ageRate);
     float GetAgeRate();
+    void Attack(int attackType);
+    void DisableAllWeapons();
+    void ChangeWeapons();
+    void ChangeWeapons(int index, bool loop = true);
 }

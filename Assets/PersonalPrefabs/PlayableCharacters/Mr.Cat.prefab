@@ -1356,6 +1356,7 @@ MonoBehaviour:
   _anim: {fileID: 0}
   _petAgeTimer: {fileID: 0}
   _TimeLapseRate: 5
+  _weaponHandler: {fileID: 0}
 --- !u!114 &11476224
 MonoBehaviour:
   m_ObjectHideFlags: 1

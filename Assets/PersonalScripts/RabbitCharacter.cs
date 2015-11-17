@@ -58,6 +58,23 @@ public class RabbitCharacter : MonoBehaviour, IAnimalCharacter
     [SerializeField]
     public int TimeLapseRate { get { return _TimeLapseRate; } set { _TimeLapseRate = value; } }
 
+    public WeaponHandler _weaponHandler;
+    public void Attack(int attackType)
+    {
+        _weaponHandler.Attack(attackType);
+    }
+    public void DisableAllWeapons()
+    {
+        _weaponHandler.DisableAllWeapons();
+    }
+    public void ChangeWeapons()
+    {
+        _weaponHandler.ChangeWeapons();
+    }
+    public void ChangeWeapons(int index, bool loop = true)
+    {
+        _weaponHandler.ChangeWeapons(index, loop);
+    }
     public PlayableCharacters GetAnimalType()
     {
         return PlayableCharacters.Rabbit;
@@ -150,6 +167,7 @@ public class RabbitCharacter : MonoBehaviour, IAnimalCharacter
         // begin aging process
         _petAgeTimer.SetTimer(TimeLapseRate);
         _petAgeTimer.PauseUnPause();
+        _weaponHandler = GetComponent<WeaponHandler>();
     }
 
     // this function only needs to be called once
