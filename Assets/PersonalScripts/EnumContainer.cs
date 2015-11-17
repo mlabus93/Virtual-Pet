@@ -13,7 +13,7 @@ public enum Room
     LivingRoom = 0,
     ToyRoom,
     BedRoom,
-    Bathroom
+    BathRoom
 }
 
 public enum CameraPosition

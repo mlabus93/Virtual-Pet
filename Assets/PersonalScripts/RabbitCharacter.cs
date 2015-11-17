@@ -76,6 +76,14 @@ public class RabbitCharacter : MonoBehaviour, IAnimalCharacter
         return _nickName;
     }
 
+    public void ChangeHats()
+    {
+        _outfitSystem.ChangeHats();
+    }
+    public void ChangeHats(int index, bool loop = true)
+    {
+        _outfitSystem.ChangeHats(index, loop);
+    }
     public void ResetStatuses()
     {
 

@@ -69,6 +69,8 @@ public interface IAnimalCharacter
     void ChangeIntoSpecificFit(int fitIndex);
     Vector3 GetAnimalPosition();
     void SetAnimalPosition(Vector3 loci);
+    void ChangeHats();
+    void ChangeHats(int index, bool loop = true);
     string GetNickName();
     void CalculateHealth();
     void AgePet();

@@ -87,6 +87,7 @@ public class OutfitChange : MonoBehaviour {
             _hats[i].SetActive(false);
         }
     }
+
     public void ChangeHats()
     {
         ChangeHats(0);

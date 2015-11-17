@@ -65,7 +65,14 @@ public class CatCharacter : MonoBehaviour, IAnimalCharacter
     {
         return _nickName;
     }
-
+    public void ChangeHats()
+    {
+        _outfitSystem.ChangeHats();
+    }
+    public void ChangeHats(int index, bool loop = true)
+    {
+        _outfitSystem.ChangeHats(index, loop);
+    }
     public void AdjustAgingRate(float ageRate)
     {
         _petAgeTimer.SetTimer(_petAgeTimer._stopTime + ageRate);

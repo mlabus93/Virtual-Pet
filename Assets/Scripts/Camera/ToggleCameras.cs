@@ -106,6 +106,9 @@ public class ToggleCameras : MonoBehaviour {
             case CameraPosition.LivingRoom2:
                 SwitchCameras(CameraPosition.LivingRoom1);
                 break;
+            case CameraPosition.BathRoom:
+                SwitchCameras(CameraPosition.BathRoom);
+                break;
              // For when I added a camera for first person (may not be used)
             //case CameraPosition.Overhead:
             //    ToggleCameras.SwitchCameras(CameraPosition.FirstPerson);
@@ -132,7 +135,7 @@ public class ToggleCameras : MonoBehaviour {
         switch (currentCamPos)
         {
             case CameraPosition.BathRoom:
-                currentRoom = Room.Bathroom;
+                currentRoom = Room.BathRoom;
                 break;
             case CameraPosition.BedRoom1:
             case CameraPosition.BedRoom2:
@@ -159,7 +162,7 @@ public class ToggleCameras : MonoBehaviour {
 
         switch (currentRoom)
         {
-            case Room.Bathroom:
+            case Room.BathRoom:
                 SwitchCameras(CameraPosition.BedRoom1);
                 break;
             case Room.BedRoom:
