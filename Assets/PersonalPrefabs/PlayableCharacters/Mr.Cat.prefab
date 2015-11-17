@@ -63,6 +63,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1 &110836
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 457606}
+  - 65: {fileID: 6593012}
+  m_Layer: 0
+  m_Name: Fist
+  m_TagString: Weapon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &117896
 GameObject:
   m_ObjectHideFlags: 1
@@ -91,11 +107,11 @@ GameObject:
   - 65: {fileID: 6526938}
   m_Layer: 0
   m_Name: animal_pr_picax01_01
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &124264
 GameObject:
   m_ObjectHideFlags: 1
@@ -197,10 +213,9 @@ GameObject:
   - 4: {fileID: 421872}
   - 95: {fileID: 9500478}
   - 65: {fileID: 6529174}
-  - 114: {fileID: 11425978}
   m_Layer: 0
   m_Name: animal_pr_sword01_01
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -513,6 +528,7 @@ GameObject:
   - 114: {fileID: 11443970}
   - 114: {fileID: 11475314}
   - 114: {fileID: 11476224}
+  - 114: {fileID: 11449498}
   m_Layer: 0
   m_Name: Mr.Cat
   m_TagString: Player
@@ -776,7 +792,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 178502}
   m_LocalRotation: {x: 0, y: .70710659, z: 0, w: -.707106948}
-  m_LocalPosition: {x: 78, y: 0, z: 37}
+  m_LocalPosition: {x: -6.25251675, y: 5.50576657e-16, z: -24.7957687}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children:
   - {fileID: 461088}
@@ -795,6 +811,7 @@ Transform:
   m_Children:
   - {fileID: 421872}
   - {fileID: 420476}
+  - {fileID: 457606}
   m_Father: {fileID: 443108}
   m_RootOrder: 0
 --- !u!4 &457166
@@ -810,6 +827,18 @@ Transform:
   - {fileID: 416162}
   m_Father: {fileID: 498176}
   m_RootOrder: 1
+--- !u!4 &457606
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110836}
+  m_LocalRotation: {x: 0, y: .70710665, z: 0, w: .707107008}
+  m_LocalPosition: {x: .0810000002, y: .00800000038, z: .0320000015}
+  m_LocalScale: {x: .0499999896, y: .0499999896, z: .0499999896}
+  m_Children: []
+  m_Father: {fileID: 452600}
+  m_RootOrder: 2
 --- !u!4 &457626
 Transform:
   m_ObjectHideFlags: 1
@@ -1151,6 +1180,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: .389999986, y: .0599999987, z: .0900000036}
   m_Center: {x: 0, y: 0, z: .379999995}
+--- !u!65 &6593012
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110836}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 3, z: 3}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &9500478
 Animator:
   serializedVersion: 3
@@ -1236,17 +1277,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11425978
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 139906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79f6221829025384db679e3f1facb65c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11443970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1260,11 +1290,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100
   currentHealth: 0
-  healthSlider: {fileID: 0}
   damageImage: {fileID: 0}
   deathClip: {fileID: 0}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: .100000001}
+--- !u!114 &11449498
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 178502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79f6221829025384db679e3f1facb65c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weapons: []
+  _currentWeaponIndex: 0
+  _swordPower: 17
+  _axePower: 20
+  _fistPower: 10
 --- !u!114 &11454768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1279,6 +1324,7 @@ MonoBehaviour:
   _blink: 0
   _changeFit: 0
   enableBlinking: 0
+  _currentHatIndex: 0
 --- !u!114 &11470804
 MonoBehaviour:
   m_ObjectHideFlags: 1
