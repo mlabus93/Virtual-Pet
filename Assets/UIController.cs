@@ -23,7 +23,7 @@ public class UIController : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-
+        player = GameObject.FindGameObjectWithTag("Player");
 	}
 
     public void ShowStats()
@@ -46,7 +46,7 @@ public class UIController : MonoBehaviour {
 
     public void ChangeOutfit()
     {
-        OutfitChange script = player.GetComponent<OutfitChange>();
+        OutfitChange script = player.GetComponentInChildren<OutfitChange>();//GetComponent<OutfitChange>();
         script.ChangeOutfit(0, true);
     }
 

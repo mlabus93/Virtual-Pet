@@ -13,13 +13,14 @@ public class OutfitChange : MonoBehaviour {
     private Material[] _materialOrig;
     public bool _blink;
     public bool _changeFit;
-    private int currentOutfitIndex;
+    private int currentOutfitIndex = 0;
     private int currentEyeSelected; // 0 = a, 1 = b
     private const int EYE_RENDER_INDEX = 7, BODY_RENDER_INDEX = 0, EYES = 0, BODY = 1;
     bool _eOpened; // true if eyes are opened
     public bool enableBlinking; // true if blinking
     private float _timeToBeClosed, _timeToBeOpened; // blink rates
-
+    public int _currentHatIndex;
+    private GameObject[] _hats;
 
     public int GetCurrentOutfitIndex()
     {
@@ -51,6 +52,14 @@ public class OutfitChange : MonoBehaviour {
         EyesBOpen
     };
 
+    // Total Hats in game
+    enum Hats
+    {
+        NoHat = 0,
+        JailHat,
+        SortingHat // Harry Potter reference
+    }
+
 	// Use this for initialization
 	void Start () 
     {
@@ -64,7 +73,52 @@ public class OutfitChange : MonoBehaviour {
         enableBlinking = true;
         _timeToBeOpened = 2f;
         _timeToBeClosed = .3f;
+        // NOTE: this logic causes all hats in the scene to change
+        _hats = GameObject.FindGameObjectsWithTag("HAT");
+        DisableAllHats();
 	}
+
+    void DisableAllHats()
+    {
+        // same as no hat
+        _currentHatIndex = 0;
+        for (int i = 0; i <  _hats.Length; i++)
+        {
+            _hats[i].SetActive(false);
+        }
+    }
+    public void ChangeHats()
+    {
+        ChangeHats(0);
+    }
+    public void ChangeHats(int index, bool loop = true)
+    {
+        // NOTE: In order for this logic to work players must initially have both
+        // hats activated, once the list is acquired we can then loop through the
+        // array of hats objects
+
+        // save current index and clear hats
+        int tempHatIndex = _currentHatIndex;
+        int newIndex = (tempHatIndex + 1) % 3; // there are 3 head types
+        DisableAllHats();
+        if (newIndex == 2)
+        {
+            _currentHatIndex = newIndex;
+            return;
+        }
+            
+        if (loop)
+        {
+            Debug.Log(newIndex);
+            _hats[newIndex].SetActive(true);
+            _currentHatIndex = newIndex;
+        }
+        else
+        {
+            _hats[index].SetActive(true);
+            _currentHatIndex = index;
+        }
+    }
 
     void FixedUpdate()
     {
@@ -136,10 +190,10 @@ public class OutfitChange : MonoBehaviour {
 	
     int FindCurrentIndex(int matType)
     {
-        Material currentlyBeingRendered;
+        Material currentlyBeingRendered = null;
         if (matType == BODY)
         {
-            currentlyBeingRendered = _mats[BODY_RENDER_INDEX];
+            currentlyBeingRendered = this._mats[BODY_RENDER_INDEX];
             for (int k = 0; k < _mats.Length; k++)
             {
                 if (currentlyBeingRendered == _materialOrig[k])
