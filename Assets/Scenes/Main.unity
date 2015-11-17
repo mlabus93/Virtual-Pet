@@ -3543,6 +3543,18 @@ RectTransform:
 GameObject:
   m_PrefabParentObject: {fileID: 120552, guid: 2d3ffc34e806600489c157ed0fd1068c, type: 2}
   m_PrefabInternal: {fileID: 1138918587}
+--- !u!114 &547067146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 547067145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2523d9a6c30da74c865baf36fdfbb21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraObject: {fileID: 1082159266}
 --- !u!1 &550058589
 GameObject:
   m_ObjectHideFlags: 0
@@ -6913,7 +6925,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11453010, guid: ac3db88fbe6e64c469691492b6a5ad70, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: ac3db88fbe6e64c469691492b6a5ad70, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1044150920
@@ -7309,10 +7322,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb1332b1b5dd474cb8d631775db0376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraToggle: {fileID: 1082159268}
-  toyroomTrigger: {fileID: 547067145}
-  bathroomTrigger: {fileID: 2039618390}
-  bedroomTrigger: {fileID: 1650952056}
 --- !u!1 &1084671913
 GameObject:
   m_ObjectHideFlags: 0
@@ -7619,7 +7628,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11441240, guid: 2d3ffc34e806600489c157ed0fd1068c, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 2d3ffc34e806600489c157ed0fd1068c, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1143267644
@@ -10462,7 +10472,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11411578, guid: 93728afe5e4828e4690d5a2e2b545646, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 93728afe5e4828e4690d5a2e2b545646, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1608787281 stripped
@@ -10722,6 +10733,18 @@ BoxCollider:
 GameObject:
   m_PrefabParentObject: {fileID: 114650, guid: 93728afe5e4828e4690d5a2e2b545646, type: 2}
   m_PrefabInternal: {fileID: 1590572999}
+--- !u!114 &1650952057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1650952056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2523d9a6c30da74c865baf36fdfbb21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraObject: {fileID: 1082159266}
 --- !u!1 &1656641266
 GameObject:
   m_ObjectHideFlags: 0
@@ -10893,7 +10916,7 @@ GameObject:
   - 92: {fileID: 1697674476}
   - 81: {fileID: 1697674475}
   m_Layer: 0
-  m_Name: Bathroom
+  m_Name: BathRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13525,6 +13548,18 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 180254, guid: ac3db88fbe6e64c469691492b6a5ad70, type: 2}
   m_PrefabInternal: {fileID: 1038278387}
+--- !u!114 &2039618391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2039618390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2523d9a6c30da74c865baf36fdfbb21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraObject: {fileID: 1082159266}
 --- !u!1 &2045582015
 GameObject:
   m_ObjectHideFlags: 0

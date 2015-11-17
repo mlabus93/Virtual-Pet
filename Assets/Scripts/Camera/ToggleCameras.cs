@@ -48,7 +48,8 @@ public class ToggleCameras : MonoBehaviour {
     {
         for (int i = 0; i < cameras.Length; i++)
         {
-            if (cameras[i] != null && (int)desiredCam != i)
+            // if (cameras[i] != null && (int)desiredCam != i)
+            if (cameras[i] != null && (desiredCam != GetCamPosition(cameras[i])))
             {
                 // turn camera off
                 cameras[i].enabled = false;
@@ -65,14 +66,15 @@ public class ToggleCameras : MonoBehaviour {
 
     private Camera GetCurrentCamera()
     {
-        foreach(Camera camera in cameras)
-        {
-            if(camera.isActiveAndEnabled)
-            {
-                return camera;
-            }
-        }
-        return cameras[0];
+        //foreach(Camera camera in cameras)
+        //{
+        //    if(camera.isActiveAndEnabled)
+        //    {
+        //        return camera;
+        //    }
+        //}
+        //return cameras[0];
+        return Camera.main;
     }
 
     private CameraPosition GetCamPosition(Camera currentCam)
@@ -120,13 +122,8 @@ public class ToggleCameras : MonoBehaviour {
     }
 
     // Will need to add it to button later, but currently no collider calls it
-    void ChangeRooms(Collider doorway)
+    public void ChangeRooms(GameObject doorway)
     {
-
-        // if(toyroomTrigger.GetComponent<Collider>.)
-
-        //Collider doorway;
-
         Room currentRoom = 0;
         Room destinationRoom = (Room)System.Enum.Parse(typeof(Room), doorway.tag);
 
@@ -155,7 +152,7 @@ public class ToggleCameras : MonoBehaviour {
             default:
                 break;
         }
-        SetCamera(currentRoom, destinationRoom);
+        SetCamera(destinationRoom, currentRoom);
     }
 
     private void SetCamera(Room destinationRoom, Room currentRoom)
