@@ -46,20 +46,19 @@ public class ToggleCameras : MonoBehaviour {
 
     public void SwitchCameras(CameraPosition desiredCam)
     {
-        for (int i = 0; i < cameras.Length; i++)
+        foreach (Camera camera in cameras)
         {
-            // if (cameras[i] != null && (int)desiredCam != i)
-            if (cameras[i] != null && (desiredCam != GetCamPosition(cameras[i])))
+            if (camera != null && (desiredCam != GetCamPosition(camera)))
             {
                 // turn camera off
-                cameras[i].enabled = false;
-                cameras[i].tag = "Untagged";
+                camera.enabled = false;
+                camera.tag = "Untagged";
             }
             else
             {
                 // turn camera on
-                cameras[i].enabled = true;
-                cameras[i].tag = "MainCamera";
+                camera.enabled = true;
+                camera.tag = "MainCamera";
             }
         }
     }
