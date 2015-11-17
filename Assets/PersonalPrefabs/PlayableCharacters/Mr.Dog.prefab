@@ -28,7 +28,7 @@ GameObject:
   - 114: {fileID: 11410732}
   m_Layer: 0
   m_Name: animal_pr_sword01_01
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,6 +181,22 @@ GameObject:
   m_Layer: 0
   m_Name: animal_arm_R_joint
   m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &138784
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 414710}
+  - 65: {fileID: 6555318}
+  m_Layer: 0
+  m_Name: Fist
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -369,6 +385,7 @@ GameObject:
   - 114: {fileID: 11444040}
   - 114: {fileID: 11406206}
   - 114: {fileID: 11403342}
+  - 114: {fileID: 11443420}
   m_Layer: 0
   m_Name: Mr.Dog
   m_TagString: Player
@@ -419,11 +436,11 @@ GameObject:
   - 65: {fileID: 6501380}
   m_Layer: 0
   m_Name: animal_pr_picax01_01
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &170134
 GameObject:
   m_ObjectHideFlags: 1
@@ -572,6 +589,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 403626}
   m_RootOrder: 0
+--- !u!4 &414710
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138784}
+  m_LocalRotation: {x: 0, y: -.70710665, z: -0, w: -.707106948}
+  m_LocalPosition: {x: -.0160000008, y: -0, z: .0289999992}
+  m_LocalScale: {x: .00249999901, y: .00249999901, z: .00249999901}
+  m_Children: []
+  m_Father: {fileID: 495428}
+  m_RootOrder: 2
 --- !u!4 &417728
 Transform:
   m_ObjectHideFlags: 1
@@ -671,7 +700,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 62.409462, y: -4.62410506e-17, z: 20.825119}
+  m_LocalPosition: {x: 48.0499992, y: -7.38985557e-17, z: 33.2809486}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children:
   - {fileID: 470946}
@@ -949,6 +978,7 @@ Transform:
   m_Children:
   - {fileID: 433022}
   - {fileID: 488310}
+  - {fileID: 414710}
   m_Father: {fileID: 434552}
   m_RootOrder: 0
 --- !u!4 &495894
@@ -1127,6 +1157,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: .0599999987, y: .0299999993, z: .529999971}
   m_Center: {x: 0, y: 0, z: .189999998}
+--- !u!65 &6555318
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138784}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 3, z: 3}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &6558020
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1263,7 +1305,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100
   currentHealth: 0
-  healthSlider: {fileID: 0}
   damageImage: {fileID: 0}
   deathClip: {fileID: 0}
   flashSpeed: 5
@@ -1279,6 +1320,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79f6221829025384db679e3f1facb65c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _weapons: []
+  _currentWeaponIndex: 0
+  _swordPower: 17
+  _axePower: 20
+  _fistPower: 10
+--- !u!114 &11443420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79f6221829025384db679e3f1facb65c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weapons: []
+  _currentWeaponIndex: 0
+  _swordPower: 17
+  _axePower: 20
+  _fistPower: 10
 --- !u!114 &11444040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1326,6 +1388,7 @@ MonoBehaviour:
   _blink: 1
   _changeFit: 0
   enableBlinking: 0
+  _currentHatIndex: 0
 --- !u!136 &13662564
 CapsuleCollider:
   m_ObjectHideFlags: 1

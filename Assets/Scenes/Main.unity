@@ -4527,6 +4527,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79f6221829025384db679e3f1facb65c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _weapons: []
+  _currentWeaponIndex: 0
+  _swordPower: 17
+  _axePower: 20
+  _fistPower: 10
 --- !u!65 &1255526917
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5405,23 +5410,23 @@ Prefab:
       objectReference: {fileID: 750467420}
     - target: {fileID: 22452628, guid: a1dab57e51f47ac4e95791c7d7749753, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22452628, guid: a1dab57e51f47ac4e95791c7d7749753, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22461204, guid: a1dab57e51f47ac4e95791c7d7749753, type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22461204, guid: a1dab57e51f47ac4e95791c7d7749753, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22461204, guid: a1dab57e51f47ac4e95791c7d7749753, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22423226, guid: a1dab57e51f47ac4e95791c7d7749753, type: 2}
       propertyPath: m_AnchorMax.x
@@ -5445,23 +5450,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22433746, guid: a1dab57e51f47ac4e95791c7d7749753, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22433746, guid: a1dab57e51f47ac4e95791c7d7749753, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22407588, guid: a1dab57e51f47ac4e95791c7d7749753, type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22407588, guid: a1dab57e51f47ac4e95791c7d7749753, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22407588, guid: a1dab57e51f47ac4e95791c7d7749753, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a1dab57e51f47ac4e95791c7d7749753, type: 2}
