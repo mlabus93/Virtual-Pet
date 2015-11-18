@@ -47,7 +47,6 @@ public class LevelManager : MonoBehaviour {
 
     public void OnGameOver()
     {
-        Debug.Log("GAME OVER BIHH");
         text.text = "Game Over!!";
         _alreadyGavePoints = true;
         // handles glitch where player consistently gets points before returning

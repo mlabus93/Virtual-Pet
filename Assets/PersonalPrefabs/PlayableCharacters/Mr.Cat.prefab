@@ -148,11 +148,11 @@ GameObject:
   - 95: {fileID: 9570756}
   m_Layer: 0
   m_Name: animal_pr_hat_a
-  m_TagString: Untagged
+  m_TagString: HAT
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &126104
 GameObject:
   m_ObjectHideFlags: 1
@@ -342,7 +342,7 @@ GameObject:
   - 95: {fileID: 9566772}
   m_Layer: 0
   m_Name: animal_pr_hat_b
-  m_TagString: Untagged
+  m_TagString: HAT
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -778,8 +778,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147544}
   m_LocalRotation: {x: 0, y: .70710659, z: 0, w: -.707106948}
-  m_LocalPosition: {x: .487541199, y: 0, z: 4.1394043}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: 64.1272888, y: -2.75748532e-17, z: 12.4186087}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children:
   - {fileID: 422648}
   - {fileID: 403194}
@@ -1368,7 +1368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotateSpeed: 2
-  _speed: .0799999982
+  _speed: .800000012
   _rigid: {fileID: 0}
   _anim: {fileID: 0}
   _groundCheckDistance: .5

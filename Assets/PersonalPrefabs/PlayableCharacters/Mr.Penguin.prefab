@@ -113,7 +113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &123670
 GameObject:
   m_ObjectHideFlags: 1
@@ -318,7 +318,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &167168
 GameObject:
   m_ObjectHideFlags: 1
@@ -414,7 +414,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &175416
 GameObject:
   m_ObjectHideFlags: 1
@@ -572,7 +572,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110816}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 43.2220993, y: -6.63982775e-17, z: 29.9031239}
+  m_LocalPosition: {x: 65.8273544, y: -3.27467173e-17, z: 14.7478104}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children:
   - {fileID: 438836}
@@ -1389,6 +1389,7 @@ MonoBehaviour:
   _anim: {fileID: 0}
   _petAgeTimer: {fileID: 0}
   _TimeLapseRate: 5
+  _weaponHandler: {fileID: 0}
 --- !u!136 &13620994
 CapsuleCollider:
   m_ObjectHideFlags: 1

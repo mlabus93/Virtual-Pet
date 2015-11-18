@@ -77,7 +77,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &120822
 GameObject:
   m_ObjectHideFlags: 1
@@ -169,7 +169,6 @@ GameObject:
   - 136: {fileID: 13654574}
   - 54: {fileID: 5429150}
   - 114: {fileID: 11472728}
-  - 114: {fileID: 11407412}
   - 114: {fileID: 11416666}
   - 114: {fileID: 11410046}
   - 114: {fileID: 11407402}
@@ -395,7 +394,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &171188
 GameObject:
   m_ObjectHideFlags: 1
@@ -700,7 +699,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 131596}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 47.9379921, y: -7.68787882e-17, z: 34.623127}
+  m_LocalPosition: {x: 165.979492, y: 6.25505914e-18, z: 76.1829681}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children:
   - {fileID: 488642}
@@ -1294,22 +1293,6 @@ MonoBehaviour:
   _swordPower: 17
   _axePower: 20
   _fistPower: 10
---- !u!114 &11407412
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 131596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9b9d14572410594cb85d40eedfb150c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingHealth: 100
-  currentHealth: 0
-  sinkSpeed: 2.5
-  scoreValue: 10
-  deathClip: {fileID: 0}
 --- !u!114 &11410046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1324,6 +1307,7 @@ MonoBehaviour:
   _anim: {fileID: 0}
   _petAgeTimer: {fileID: 0}
   _TimeLapseRate: 5
+  _weaponHandler: {fileID: 0}
 --- !u!114 &11416666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1342,6 +1326,7 @@ MonoBehaviour:
   deathClip: {fileID: 0}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: .100000001}
+  isDead: 0
 --- !u!114 &11445158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1370,7 +1355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotateSpeed: 3
-  _speed: .0500000007
+  _speed: .800000012
   _rigid: {fileID: 0}
   _anim: {fileID: 0}
   _groundCheckDistance: .5

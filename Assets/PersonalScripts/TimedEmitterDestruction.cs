@@ -36,7 +36,6 @@ public class TimedEmitterDestruction : MonoBehaviour {
         if (_beginParticleLifespan)
         {
             _particleLifespan -= Time.deltaTime;
-            Debug.Log(_particleLifespan);
         }
 
         if (_particleLifespan <= 0)

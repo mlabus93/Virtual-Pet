@@ -233,7 +233,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &147664
 GameObject:
   m_ObjectHideFlags: 1
@@ -521,7 +521,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &194886
 GameObject:
   m_ObjectHideFlags: 1
@@ -782,7 +782,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169428}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 59.4040451, y: -9.13248623e-17, z: 41.1290588}
+  m_LocalPosition: {x: 165.510742, y: 1.20434488e-18, z: 78.4576111}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children:
   - {fileID: 468320}
@@ -1341,6 +1341,7 @@ MonoBehaviour:
   _anim: {fileID: 0}
   _petAgeTimer: {fileID: 0}
   _TimeLapseRate: 5
+  _weaponHandler: {fileID: 0}
 --- !u!114 &11480570
 MonoBehaviour:
   m_ObjectHideFlags: 1
