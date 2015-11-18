@@ -19,18 +19,39 @@ public class UIController : MonoBehaviour {
     public Slider thirstSlider;
     public Slider bladderSlider;
     public GameObject player;
+    public PlayerHealth playerHealth;
     GameObject healthBar;
     Slider healthBarSlider;
+    Slider[] sliders;
     IAnimalCharacter iAnimal;
 
 	// Use this for initialization
 	void Start ()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        playerHealth = player.GetComponent<PlayerHealth>();
         iAnimal = player.GetComponent<IAnimalCharacter>();
-        //healthBar = GameObject.FindGameObjectWithTag("HealthBar");
+        healthBarSlider = FindObjectOfType<Slider>();
         //healthBarSlider = healthBar.GetComponent<Slider>();
 	}
+
+    private void UpdateHealthBar()
+    {
+        if (healthBarSlider != null)
+        {
+            GameObject healthValue = GameObject.Find("HealthValue");
+            Text value = healthValue.GetComponent<Text>();
+            healthBarSlider.value = playerHealth.currentHealth;
+            if (playerHealth.currentHealth >= 0)
+            {
+                value.text = playerHealth.currentHealth.ToString();
+            }
+            else
+            {
+                value.text = "0";
+            }
+        }
+    }
 
     public void ShowStats()
     {
@@ -126,6 +147,7 @@ public class UIController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        UpdateHealthBar();
         if (Input.GetButtonDown("Fire1") && statsPanel.gameObject.activeSelf)
         {
             HidePanels();
