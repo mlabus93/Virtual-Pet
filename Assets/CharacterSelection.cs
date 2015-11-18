@@ -22,6 +22,7 @@ public class CharacterSelection : MonoBehaviour {
         currentCharacter = characters[characterIndex];
         SetCharactersInactive();
         iAnimal = currentCharacter.GetComponent<IAnimalCharacter>();
+        iAnimal.SetandReturnOutfitSystem();
     }
 
     private void SetCharactersInactive()
@@ -39,6 +40,7 @@ public class CharacterSelection : MonoBehaviour {
         ResetRotation();
         GetNextCharacter();
         iAnimal = currentCharacter.GetComponent<IAnimalCharacter>();
+        iAnimal.SetandReturnOutfitSystem();
         outfitIndex = 0;
         hatIndex = 0;
     }
@@ -49,6 +51,7 @@ public class CharacterSelection : MonoBehaviour {
         ResetRotation();
         GetPrevCharacter();
         iAnimal = currentCharacter.GetComponent<IAnimalCharacter>();
+        iAnimal.SetandReturnOutfitSystem();
         outfitIndex = 0;
         hatIndex = 0;
     }
