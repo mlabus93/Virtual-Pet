@@ -8,7 +8,8 @@ public class LevelManager : MonoBehaviour {
     Text text;                      // Reference to the Text component.
     public Timer _timer;                   // The time until the level is complete.
     private GameManager _gameManager;      // Reference to GameManager
-
+    public float _levelLength = 30f;
+    bool _alreadyGavePoints = false;
     void Awake()
     {
         // Set up the reference
@@ -18,7 +19,9 @@ public class LevelManager : MonoBehaviour {
         score = 0;
         // create new timer
         _timer = gameObject.AddComponent<Timer>();
-        _timer.SetTimer(30f);
+        _timer.SetTimer(_levelLength);
+        _timer._isPaused = false;
+       
         // Get GameManager
         _gameManager = transform.GetComponent<GameManager>();
     }
@@ -28,19 +31,40 @@ public class LevelManager : MonoBehaviour {
         score += Amount;
     }
 
+    void FixedUpdate()
+    {
+        _timer._stopTime -= Time.deltaTime;
+    }
+
     void Update()
     {
         // Set the displayed text to be the word "Score" followed by the score value.
-        if (_timer._timeUp)
-            text.text = "Score: " + score + "\tTime: " + (int)_timer.GetTimeLeft();
-        else
+        if (_timer._timeUp && GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().currentHealth > 0)
+            text.text = "Score: " + score + "\tTime: " + (int)_timer._stopTime;
+        if ((int)_timer._stopTime <= 0)
             OnGameOver();  
     }
 
-    void OnGameOver()
+    public void OnGameOver()
     {
+        Debug.Log("GAME OVER BIHH");
         text.text = "Game Over!!";
-        _gameManager.AddCoins(score);
+        _alreadyGavePoints = true;
+        // handles glitch where player consistently gets points before returning
+        // to main game
+        if (!_alreadyGavePoints)
+            _gameManager.AddCoins(score);
+        // save points
+        _gameManager.Save();
     }
 
+    public void RestartLevel()
+    {
+        Application.LoadLevel(Application.loadedLevel);
+    }
+
+    public void ReturnToMain()
+    {
+        Application.LoadLevel("Main");
+    }
 }

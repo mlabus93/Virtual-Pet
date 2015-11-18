@@ -222,7 +222,6 @@ public class GameManager : MonoBehaviour
             Debug.LogError("NO PLAYER OBJECT FOUND!");
         }
         Debug.Log(_player.GetNickName());
-        //Save();
     }
 
 

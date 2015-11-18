@@ -14,6 +14,7 @@ public class EnemyManager : MonoBehaviour
     void Start ()
     {
         InvokeRepeating ("Spawn", spawnTime, spawnTime);
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
     }
 
 

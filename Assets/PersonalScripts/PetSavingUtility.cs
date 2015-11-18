@@ -17,9 +17,6 @@ public class AnimalContainer
 
     public AnimalContainer()
     {
-        //animals.Add(kid);
-        //animals.Add(mom);
-        //animals.Add(Zap);
     }
     public void Save(string path)
     {

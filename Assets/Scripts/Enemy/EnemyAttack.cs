@@ -48,6 +48,7 @@ public class EnemyAttack : MonoBehaviour
 
         if(timer >= timeBetweenAttacks && playerInRange && enemyHealth.currentHealth > 0)
         {
+            Debug.Log("Now Attacking");
             Attack ();
         }
 

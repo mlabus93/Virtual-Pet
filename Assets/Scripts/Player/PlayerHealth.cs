@@ -26,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
         anim = GetComponent <Animator> ();
         playerAudio = GetComponent <AudioSource> ();
         playerMovement = GetComponent <PlayerMovement> ();
-        playerShooting = GetComponentInChildren <PlayerShooting> ();
+        //playerShooting = GetComponentInChildren <PlayerShooting> ();
         currentHealth = startingHealth;
     }
 
@@ -53,7 +53,7 @@ public class PlayerHealth : MonoBehaviour
 
         //healthSlider.value = currentHealth;
 
-        playerAudio.Play ();
+        //playerAudio.Play ();
 
         if(currentHealth <= 0 && !isDead)
         {
@@ -66,15 +66,21 @@ public class PlayerHealth : MonoBehaviour
     {
         isDead = true;
 
-        playerShooting.DisableEffects ();
+        // play dead
+        anim.SetFloat("Tired", .8f);
+        anim.SetTrigger("Sleep");
+        GetComponent<Player1StickMovement>().enabled = false;
+        // perform gameover stuff
+        GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>().OnGameOver();
+        //playerShooting.DisableEffects ();
 
-        anim.SetTrigger ("Die");
+        //anim.SetTrigger ("Die");
 
-        playerAudio.clip = deathClip;
-        playerAudio.Play ();
+        //playerAudio.clip = deathClip;
+        //playerAudio.Play ();
 
-        playerMovement.enabled = false;
-        playerShooting.enabled = false;
+        //playerMovement.enabled = false;
+        //playerShooting.enabled = false;
     }
 
 

@@ -112,7 +112,7 @@ public class WeaponHandler : MonoBehaviour
         int tempWeapon = _currentWeaponIndex;
         int newIndex = (tempWeapon + 1) % 3; // there are 3 head types
         DisableAllWeapons();
-        Debug.Log("New Index " + newIndex + " NumWeapons: " + _weapons.Length);
+        //Debug.Log("New Index " + newIndex + " NumWeapons: " + _weapons.Length);
         if (loop)
         {
             Debug.Log(newIndex);
