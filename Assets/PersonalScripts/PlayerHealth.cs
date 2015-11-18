@@ -59,6 +59,12 @@ namespace CompleteProject
         }
 
 
+        public int GetCurrentHealth()
+        {
+            return currentHealth;
+        }
+
+
         public void TakeDamage(int amount, Vector3 hitPoint)
         {
             // Set the damaged flag so the screen will flash.

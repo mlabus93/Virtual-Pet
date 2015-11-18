@@ -11,6 +11,8 @@ TagManager:
   - Weapon
   - Damageable
   - LevelManager
+  - Bathroom
+  - HealthBar
   layers:
   - Default
   - TransparentFX

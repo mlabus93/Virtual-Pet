@@ -19,11 +19,17 @@ public class UIController : MonoBehaviour {
     public Slider thirstSlider;
     public Slider bladderSlider;
     public GameObject player;
+    GameObject healthBar;
+    Slider healthBarSlider;
+    IAnimalCharacter iAnimal;
 
 	// Use this for initialization
 	void Start ()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        iAnimal = player.GetComponent<IAnimalCharacter>();
+        //healthBar = GameObject.FindGameObjectWithTag("HealthBar");
+        //healthBarSlider = healthBar.GetComponent<Slider>();
 	}
 
     public void ShowStats()
