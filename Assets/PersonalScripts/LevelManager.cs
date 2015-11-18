@@ -66,4 +66,9 @@ public class LevelManager : MonoBehaviour {
     {
         Application.LoadLevel("Main");
     }
+
+    public void ReturnToStartMenu()
+    {
+        Application.LoadLevel("StartMenu");
+    }
 }
