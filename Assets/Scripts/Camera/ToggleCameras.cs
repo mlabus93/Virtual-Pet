@@ -65,14 +65,6 @@ public class ToggleCameras : MonoBehaviour {
 
     private Camera GetCurrentCamera()
     {
-        //foreach(Camera camera in cameras)
-        //{
-        //    if(camera.isActiveAndEnabled)
-        //    {
-        //        return camera;
-        //    }
-        //}
-        //return cameras[0];
         return Camera.main;
     }
 
@@ -105,9 +97,6 @@ public class ToggleCameras : MonoBehaviour {
                 break;
             case CameraPosition.LivingRoom2:
                 SwitchCameras(CameraPosition.LivingRoom1);
-                break;
-            case CameraPosition.BathRoom:
-                SwitchCameras(CameraPosition.BathRoom);
                 break;
              // For when I added a camera for first person (may not be used)
             //case CameraPosition.Overhead:
