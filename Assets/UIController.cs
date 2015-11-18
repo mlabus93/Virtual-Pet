@@ -9,6 +9,9 @@ public class UIController : MonoBehaviour {
     public Button outfitBtn;
     public Button miniGameBtn;
     public Button optionsBtn;
+    public Button pauseBtn;
+    public Button resumeBtn;
+    public GameObject pauseParentPanel;
     public GameObject statsPanel;
     public GameObject optionsPanel;
     public GameObject canvas;
@@ -50,6 +53,25 @@ public class UIController : MonoBehaviour {
             {
                 value.text = "0";
             }
+        }
+    }
+
+    public void ShowPausePanel()
+    {
+        if (pauseBtn.gameObject.activeSelf)
+        {
+            pauseBtn.gameObject.SetActive(false);
+            pauseParentPanel.gameObject.SetActive(true);
+            resumeBtn.gameObject.SetActive(true);
+        }
+    }
+
+    public void HidePausePanel()
+    {
+        if (pauseParentPanel.gameObject.activeSelf)
+        {
+            pauseParentPanel.gameObject.SetActive(false);
+            pauseBtn.gameObject.SetActive(true);
         }
     }
 
