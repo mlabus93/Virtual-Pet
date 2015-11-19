@@ -71,4 +71,9 @@ public class LevelManager : MonoBehaviour {
     {
         Application.LoadLevel("StartMenu");
     }
+
+    public void GoToCharacterSelect()
+    {
+        Application.LoadLevel("CharacterSelect");
+    }
 }
