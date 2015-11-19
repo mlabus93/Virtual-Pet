@@ -25,6 +25,18 @@ public class GameManager : MonoBehaviour
     GameContainer gameCollection = new GameContainer();
     
     
+    public void TogglePauseGame()
+    {
+        if (Time.timeScale == 1)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+    }
+
     public void AddCoins(int Amount)
     {
         _coins += Amount;

@@ -13,6 +13,11 @@ TagManager:
   - LevelManager
   - Bathroom
   - HealthBar
+  - Food Table
+  - Bed
+  - Toy Ball
+  - Toy Doll
+  - Toilet
   layers:
   - Default
   - TransparentFX

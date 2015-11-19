@@ -33,15 +33,18 @@ public class PlayerHealth : MonoBehaviour
 
     void Update ()
     {
-        if(damaged)
+        if (damageImage != null)
         {
-            //damageImage.color = flashColour;
+            if (damaged)
+            {
+                damageImage.color = flashColour;
+            }
+            else
+            {
+                damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
+            }
+            damaged = false;
         }
-        else
-        {
-            //damageImage.color = Color.Lerp (damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
-        }
-        damaged = false;
     }
 
 
@@ -76,8 +79,8 @@ public class PlayerHealth : MonoBehaviour
 
         //anim.SetTrigger ("Die");
 
-        //playerAudio.clip = deathClip;
-        //playerAudio.Play ();
+        playerAudio.clip = deathClip;
+        playerAudio.Play ();
 
         //playerMovement.enabled = false;
         //playerShooting.enabled = false;

@@ -16,6 +16,16 @@ public enum Room
     BathRoom
 }
 
+public enum Food
+{
+    Ribs = 0,
+    Turkey,
+    Chicken,
+    Fish,
+    Beef,
+    Treat
+}
+
 public enum CameraPosition
 {
     Overhead = 0,
