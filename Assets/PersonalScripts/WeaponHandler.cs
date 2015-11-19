@@ -29,13 +29,31 @@ public class WeaponHandler : MonoBehaviour
     }
     void Awake()
     {
+   
+        //_weapons = GameObject.FindGameObjectsWithTag("Weapon");
+        GameObject[] temp = GameObject.FindGameObjectsWithTag("Weapon");
         _weapons = GameObject.FindGameObjectsWithTag("Weapon");
+        // sorts the weapons
+        for (int i = 0; i < temp.Length; i++ )
+        {
+            if (_weapons[i].name == "Sword")
+                _weapons[(int)WeaponType.Sword] = temp[i];
+            if (_weapons[i].name == "Axe")
+                _weapons[(int)WeaponType.Axe] = temp[i];
+            if (_weapons[i].name == "Fist")
+                _weapons[(int)WeaponType.Hands] = temp[i];
+        }
+
         _anim = GetComponent<Animator>();
         DisableAllWeapons();
         DisableEnableColliders(false);
         ChangeWeapons();
         ChangeWeapons();
         ChangeWeapons();
+        Debug.Log("Current Weapon index before" + _currentWeaponIndex);
+        //forces weapon to be hands
+        ChangeWeapons((int)WeaponType.Hands, false);
+        Debug.Log("Current Weapon index" + _currentWeaponIndex);
     }
 
     void OnTriggerEnter(Collider other)
@@ -111,10 +129,9 @@ public class WeaponHandler : MonoBehaviour
         int tempWeapon = _currentWeaponIndex;
         int newIndex = (tempWeapon + 1) % 3; // there are 3 head types
         DisableAllWeapons();
-        //Debug.Log("New Index " + newIndex + " NumWeapons: " + _weapons.Length);
+        Debug.Log("New Index " + newIndex + " NumWeapons: " + _weapons.Length);
         if (loop)
         {
-            Debug.Log(newIndex);
             _weapons[newIndex].SetActive(true);
             _currentWeaponIndex = newIndex;
         }

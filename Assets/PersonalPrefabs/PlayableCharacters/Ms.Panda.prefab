@@ -517,7 +517,7 @@ GameObject:
   - 95: {fileID: 9557190}
   m_Layer: 0
   m_Name: animal_pr_hat_b
-  m_TagString: Untagged
+  m_TagString: HAT
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -782,8 +782,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169428}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 165.510742, y: 1.20434488e-18, z: 78.4576111}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalPosition: {x: 1.83177948, y: 0, z: 6.64920807}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 468320}
   - {fileID: 472286}
@@ -1291,6 +1291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100
   currentHealth: 0
+  healthSlider: {fileID: 0}
   damageImage: {fileID: 0}
   deathClip: {fileID: 0}
   flashSpeed: 5

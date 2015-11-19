@@ -18,7 +18,7 @@ public class PenguinCharacter : Character
         _TimeLapseRate = 5; // rate at which animal traits deplete/ refresh in sec
     }
 
-    public void Start()
+    public override void Start()
     {
         ResetStatuses();
         SetandReturnOutfitSystem();
@@ -32,5 +32,9 @@ public class PenguinCharacter : Character
         _weaponHandler = GetComponent<WeaponHandler>();
     }
 
+    public override PlayableCharacters GetAnimalType()
+    {
+        return PlayableCharacters.Penguin;
+    }
  
 }

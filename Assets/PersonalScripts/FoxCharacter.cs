@@ -17,7 +17,7 @@ public class FoxCharacter : Character
         _TimeLapseRate = 5; // rate at which animal traits deplete/ refresh in sec
     }
 
-    public void Start()
+    public override void Start()
     {
         ResetStatuses();
         SetandReturnOutfitSystem();
@@ -29,6 +29,11 @@ public class FoxCharacter : Character
         _petAgeTimer.SetTimer(TimeLapseRate);
         _petAgeTimer.PauseUnPause();
         _weaponHandler = GetComponent<WeaponHandler>();
+    }
+
+    public override PlayableCharacters GetAnimalType()
+    {
+        return PlayableCharacters.Fox;
     }
  
 }

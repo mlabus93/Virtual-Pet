@@ -19,7 +19,7 @@ public class Character : MonoBehaviour, IAnimalCharacter
     protected int _bladderCapacity, _bladderCapacityDepletionRate = 10;
     protected int _boredom, _boredomDepletionRate = 4;
     protected int _health; // NOTE: Health is calculated as an average of all of the other status fields
-
+    protected bool _inMainGame = true;
 
     protected void Fear(string nickName)
     {
@@ -73,9 +73,9 @@ public class Character : MonoBehaviour, IAnimalCharacter
     {
         _weaponHandler.ChangeWeapons(index, loop);
     }
-    public PlayableCharacters GetAnimalType()
+    virtual public PlayableCharacters GetAnimalType()
     {
-        return PlayableCharacters.Cat;
+        return PlayableCharacters.Panda;
     }
     public Vector3 GetAnimalPosition()
     {
@@ -118,6 +118,7 @@ public class Character : MonoBehaviour, IAnimalCharacter
         fatigue = FULL;
         bladderCapacity = FULL;
         boredom = FULL;
+        //_anim.SetFloat("Tired", 0f);
     }
 
 
@@ -126,7 +127,9 @@ public class Character : MonoBehaviour, IAnimalCharacter
     {
         if (_petAgeTimer.GetTimeLeft() <= 0)
         {
-            AgePet();
+            // only age pet if its in main game
+            if(_inMainGame)
+                AgePet();
             _petAgeTimer.ResetTimer();
             _petAgeTimer.timer = 10f;
         }
@@ -163,7 +166,7 @@ public class Character : MonoBehaviour, IAnimalCharacter
         float healthAVG = (float)(hunger + thirst + happiness + fatigue + bladderCapacity + boredom) / ((float)(FULL) * numTraits);
         health = (int)(healthAVG * FULL);
     }
-    public void Start()
+    public virtual void Start()
     {
         ResetStatuses();
         SetandReturnOutfitSystem();

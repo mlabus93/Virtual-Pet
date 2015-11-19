@@ -10,7 +10,6 @@ public class TimedEmitterDestruction : MonoBehaviour {
     void Awake()
     {
         _epEmitters = transform.GetComponentsInChildren<EllipsoidParticleEmitter>();
-        Debug.Log(_epEmitters.Length);
 
         // Stops particle systems from showing
         foreach (EllipsoidParticleEmitter emitter in _epEmitters)

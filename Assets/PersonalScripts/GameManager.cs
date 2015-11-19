@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public int _musicLevel;
     public float _gameSpeed;
     public string _userName;
+    public GameObject[] PlayableAnimals;
     // saving utility
     AnimalContainer animalCollection = new AnimalContainer();
     GameContainer gameCollection = new GameContainer();
@@ -81,7 +82,7 @@ public class GameManager : MonoBehaviour
         if (animalCollection.animals.Count < 1)
         {
             // creates new animal
-            animalCollection.animals.Add(new Animal("SampleName"));
+            animalCollection.animals.Add(new Animal(_player.GetNickName()));
         }
         else
         {

@@ -16,7 +16,7 @@ public class CatCharacter : Character
         _TimeLapseRate = 5; // rate at which animal traits deplete/ refresh in sec
     }
 
-    public void Start()
+    public override void Start()
     {
         ResetStatuses();
         SetandReturnOutfitSystem();
@@ -28,6 +28,11 @@ public class CatCharacter : Character
         // begin aging process
         _petAgeTimer.SetTimer(TimeLapseRate);
         _petAgeTimer.PauseUnPause();
+    }
+
+    public override PlayableCharacters GetAnimalType()
+    {
+        return PlayableCharacters.Cat;
     }
 
 }

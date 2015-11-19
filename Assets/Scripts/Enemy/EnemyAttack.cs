@@ -18,9 +18,17 @@ public class EnemyAttack : MonoBehaviour
     void Awake ()
     {
         player = GameObject.FindGameObjectWithTag ("Player");
+        anim = GetComponent<Animator>();
+        if (player == null)
+        {
+            Debug.LogError("NO PLAYER FOUND");
+            return;
+        }
+            
+
         playerHealth = player.GetComponent <PlayerHealth> ();
         enemyHealth = GetComponent<EnemyHealth>();
-        anim = GetComponent <Animator> ();
+        
     }
 
 
@@ -46,15 +54,14 @@ public class EnemyAttack : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(timer >= timeBetweenAttacks && playerInRange && enemyHealth.currentHealth > 0)
+        if (timer >= timeBetweenAttacks && playerInRange && enemyHealth.currentHealth > 0)
         {
-            Debug.Log("Now Attacking");
-            Attack ();
+            Attack();
         }
 
-        if(playerHealth.currentHealth <= 0)
+        if (playerHealth.currentHealth <= 0)
         {
-            anim.SetTrigger ("PlayerDead");
+            anim.SetTrigger("PlayerDead");
         }
     }
 
