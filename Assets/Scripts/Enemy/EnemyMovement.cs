@@ -12,6 +12,10 @@ public class EnemyMovement : MonoBehaviour
     void Awake ()
     {
         player = GameObject.FindGameObjectWithTag ("Player").transform;
+        if (player == null)
+        {
+            Debug.Log("NO PLAYER FOUND");
+        }
         playerHealth = player.GetComponent<PlayerHealth>();
         enemyHealth = GetComponent<EnemyHealth>();
         nav = GetComponent <NavMeshAgent> ();

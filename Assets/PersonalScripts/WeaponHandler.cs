@@ -94,7 +94,6 @@ public class WeaponHandler : MonoBehaviour
             DisableEnableColliders(false);
         }
 
-
     }
 
     public void ChangeWeapons()
