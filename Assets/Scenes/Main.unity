@@ -5429,6 +5429,9 @@ MonoBehaviour:
   outfitBtn: {fileID: 1865507530}
   miniGameBtn: {fileID: 1143267646}
   optionsBtn: {fileID: 919378995}
+  pauseBtn: {fileID: 0}
+  resumeBtn: {fileID: 0}
+  pauseParentPanel: {fileID: 0}
   statsPanel: {fileID: 1641995343}
   optionsPanel: {fileID: 336072607}
   canvas: {fileID: 292022113}
@@ -5439,6 +5442,7 @@ MonoBehaviour:
   thirstSlider: {fileID: 423496647}
   bladderSlider: {fileID: 1120164073}
   player: {fileID: 0}
+  playerHealth: {fileID: 0}
 --- !u!4 &750467421
 Transform:
   m_ObjectHideFlags: 0
