@@ -35846,6 +35846,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11498608, guid: 3f59558bfb5915e4db36604908c4b9b7, type: 2}
+      propertyPath: _speed
+      value: .0799999982
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3f59558bfb5915e4db36604908c4b9b7, type: 2}
   m_IsPrefabParent: 0
@@ -41718,6 +41722,9 @@ MonoBehaviour:
   outfitBtn: {fileID: 397360796}
   miniGameBtn: {fileID: 39323116}
   optionsBtn: {fileID: 1422062253}
+  pauseBtn: {fileID: 0}
+  resumeBtn: {fileID: 0}
+  pauseParentPanel: {fileID: 0}
   statsPanel: {fileID: 1467295701}
   optionsPanel: {fileID: 318547980}
   canvas: {fileID: 341104168}
@@ -41728,6 +41735,7 @@ MonoBehaviour:
   thirstSlider: {fileID: 897856103}
   bladderSlider: {fileID: 2100433465}
   player: {fileID: 0}
+  playerHealth: {fileID: 0}
 --- !u!4 &1822896162
 Transform:
   m_ObjectHideFlags: 0
