@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class ManageFoods : MonoBehaviour {
@@ -30,7 +30,7 @@ public class ManageFoods : MonoBehaviour {
         }
         else
         {
-            //PRINT ERROR - play mini games to earn coin to useon foods and toys
+            //PRINT ERROR - play mini games to earn coin to use on foods and toys
         }
     }
 
@@ -59,7 +59,7 @@ public class ManageFoods : MonoBehaviour {
             default:
                 break;
         }   
-}
+    }
 
 
     public bool isAble(int balance, int selection)
@@ -70,8 +70,10 @@ public class ManageFoods : MonoBehaviour {
     public void Drink()
     {
         isEating = true;
-        GameManager._player.FeedAnimal(water.GetComponent<WaterDrink>());
-        isEating = false;
+        MeshRenderer skin = turkey.GetComponent("MeshRenderer") as MeshRenderer;
+        GameManager._player.FeedAnimal((water.GetComponent("WaterDrink") as WaterDrink));
+        StartCoroutine(DelayForFeeding(water));
+
     }
 
     public void EatTurkey()
@@ -83,11 +85,11 @@ public class ManageFoods : MonoBehaviour {
             if (isAble(turkeyCount, 1))
             {
                 isEating = true;
-                turkey.SetActive(true);
-                GameManager._player.FeedAnimal(turkey.GetComponent<TurkeyFood>());
-                turkey.SetActive(false);
+                MeshRenderer skin = turkey.GetComponent("MeshRenderer") as MeshRenderer;
+                skin.enabled = true;
+                GameManager._player.FeedAnimal((turkey.GetComponent("TurkeyFood") as TurkeyFood));
+                StartCoroutine(DelayForFeeding(turkey));
                 turkeyCount--;
-                isEating = false;
             }
         }
     }
@@ -101,11 +103,11 @@ public class ManageFoods : MonoBehaviour {
             if (isAble(chickenCount, 1))
             {
                 isEating = true;
-                chicken.SetActive(true);
-                GameManager._player.FeedAnimal(chicken.GetComponent<ChickenFood>());
-                chicken.SetActive(false);
+                MeshRenderer skin = chicken.GetComponent("MeshRenderer") as MeshRenderer;
+                skin.enabled = true;
+                GameManager._player.FeedAnimal((chicken.GetComponent("ChickenFood") as ChickenFood));
+                StartCoroutine(DelayForFeeding(chicken));
                 chickenCount--;
-                isEating = false;
             }
         }
     }
@@ -119,11 +121,11 @@ public class ManageFoods : MonoBehaviour {
             if (isAble(ribCount, 1))
             {
                 isEating = true;
-                ribs.SetActive(true);
-                GameManager._player.FeedAnimal(ribs.GetComponent<RibFood>());
-                ribs.SetActive(false);
+                MeshRenderer skin = ribs.GetComponent("MeshRenderer") as MeshRenderer;
+                skin.enabled = true;
+                GameManager._player.FeedAnimal((ribs.GetComponent("RibFood") as RibFood));
+                StartCoroutine(DelayForFeeding(ribs));
                 ribCount--;
-                isEating = false;
             }
         }
     }
@@ -137,11 +139,11 @@ public class ManageFoods : MonoBehaviour {
             if (isAble(beefCount, 1))
             {
                 isEating = true;
-                beef.SetActive(true);
-                GameManager._player.FeedAnimal(beef.GetComponent<BeefFood>());
-                beef.SetActive(false);
+                MeshRenderer skin = beef.GetComponent("MeshRenderer") as MeshRenderer;
+                skin.enabled = true;
+                GameManager._player.FeedAnimal((beef.GetComponent("BeefFood") as BeefFood));
+                StartCoroutine(DelayForFeeding(beef));
                 beefCount--;
-                isEating = false;
             }
         }
     }
@@ -155,11 +157,11 @@ public class ManageFoods : MonoBehaviour {
             if (isAble(fishCount, 1))
             {
                 isEating = true;
-                fish.SetActive(true);
-                GameManager._player.FeedAnimal(fish.GetComponent<FishFood>());
-                fish.SetActive(false);
+                SkinnedMeshRenderer skin = fish.GetComponentInChildren(typeof(SkinnedMeshRenderer)) as SkinnedMeshRenderer;
+                skin.enabled = true;
+                GameManager._player.FeedAnimal((fish.GetComponent("FishFood") as FishFood));
+                StartCoroutine(DelayForFeeding(fish));
                 fishCount--;
-                isEating = false;
             }
         }
     }
@@ -173,15 +175,37 @@ public class ManageFoods : MonoBehaviour {
             if (isAble(treatCount, 1))
             {
                 isEating = true;
-                treat.SetActive(true);
-                GameManager._player.FeedAnimal(treat.GetComponent<TreatFood>());
-                treat.SetActive(false);
+                //var test =  
+                MeshRenderer skin = treat.GetComponentInChildren(typeof(MeshRenderer)) as MeshRenderer;
+                skin.enabled = true;
+                GameManager._player.FeedAnimal((treat.GetComponent("TreatFood") as TreatFood));
+                StartCoroutine(DelayForFeeding(treat));
                 treatCount--;
-                isEating = false;
             }
         }
     }
 
+    IEnumerator DelayForFeeding(GameObject selection)
+    {
+        yield return new WaitForSeconds(3f);
+        Renderer skin;
+
+        if(!selection.name.Equals("BowlWater"))
+        {
+            if (selection.name.Equals("Fish"))
+            {
+                skin = selection.GetComponentInChildren(typeof(SkinnedMeshRenderer)) as SkinnedMeshRenderer;
+            }
+            else if (selection.name.Equals("Treat"))
+            {
+                skin = selection.GetComponentInChildren(typeof(MeshRenderer)) as MeshRenderer;
+            }
+            else
+            {
+                skin = selection.GetComponent("MeshRenderer") as MeshRenderer;
+            }
+            skin.enabled = false;
+        }
+        isEating = false;
+    }     
 }
-
-
