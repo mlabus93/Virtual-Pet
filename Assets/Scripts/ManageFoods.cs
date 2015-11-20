@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
-public class ManageFoods : MonoBehaviour {
+public class ManageFoods : MonoBehaviour
+{
     public GameManager gameManager;
     public GameObject turkey;
     public GameObject ribs;
@@ -10,7 +12,8 @@ public class ManageFoods : MonoBehaviour {
     public GameObject beef;
     public GameObject treat;
     public GameObject water;
-    
+    public Text insuffientCoins;
+
     private int turkeyCount;
     private int ribCount;
     private int chickenCount;
@@ -23,7 +26,7 @@ public class ManageFoods : MonoBehaviour {
     {
         int balance = GameManager._coins;
 
-        if(isAble(balance, selection.GetComponent<IFood>().cost))
+        if (isAble(balance, selection.GetComponent<IFood>().cost))
         {
             gameManager.AddCoins(-selection.GetComponent<IFood>().cost);
             UpdateAvailablity(selection.name);
@@ -31,8 +34,11 @@ public class ManageFoods : MonoBehaviour {
         else
         {
             //PRINT ERROR - play mini games to earn coin to use on foods and toys
+            insuffientCoins.color = Color.red;
+            StartCoroutine(RemoveErrorMessage());
         }
     }
+
 
     private void UpdateAvailablity(string item)
     {
@@ -58,7 +64,7 @@ public class ManageFoods : MonoBehaviour {
                 break;
             default:
                 break;
-        }   
+        }
     }
 
 
@@ -190,7 +196,7 @@ public class ManageFoods : MonoBehaviour {
         yield return new WaitForSeconds(3f);
         Renderer skin;
 
-        if(!selection.name.Equals("BowlWater"))
+        if (!selection.name.Equals("BowlWater"))
         {
             if (selection.name.Equals("Fish"))
             {
@@ -207,5 +213,11 @@ public class ManageFoods : MonoBehaviour {
             skin.enabled = false;
         }
         isEating = false;
-    }     
+    }
+
+    IEnumerator RemoveErrorMessage()
+    {
+        yield return new WaitForSeconds(4f);
+        insuffientCoins.color = new Color(0, 0, 0, 0);
+    }
 }
