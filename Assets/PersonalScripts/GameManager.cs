@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     // and only one player
     public static GameManager _manager;
     public static IAnimalCharacter _player;
-    public static int _coins;
+    public static int _coins = 100;
     public int _volumeLevel;
     public int _musicLevel;
     public float _gameSpeed;

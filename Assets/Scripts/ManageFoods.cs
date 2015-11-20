@@ -17,6 +17,7 @@ public class ManageFoods : MonoBehaviour {
     private int fishCount;
     private int beefCount;
     private int treatCount;
+    private bool isEating;
 
     public void PurchaseFood(GameObject selection)
     {
@@ -26,7 +27,11 @@ public class ManageFoods : MonoBehaviour {
         {
             gameManager.AddCoins(-selection.GetComponent<IFood>().cost);
             UpdateAvailablity(selection.name);
-        } 
+        }
+        else
+        {
+            //PRINT ERROR - play mini games to earn coin to useon foods and toys
+        }
     }
 
     private void UpdateAvailablity(string item)
@@ -64,123 +69,119 @@ public class ManageFoods : MonoBehaviour {
 
     public void Drink()
     {
-        //DrinkWater drink = new DrinkWater();
-        //GameManager._player.FeedAnimal(drink);
+        isEating = true;
+        GameManager._player.FeedAnimal(water.GetComponent<WaterDrink>());
+        isEating = false;
     }
 
     public void EatTurkey()
     {
-        TurkeyFood james = turkey.GetComponent("TurkeyFood") as TurkeyFood;
-        TurkeyFood james2 = turkey.GetComponent<TurkeyFood>();
-        GameManager._player.FeedAnimal(james);
-        EatFood("Turkey");
+        if (!isEating)
+        {
+            PurchaseFood(turkey);
+
+            if (isAble(turkeyCount, 1))
+            {
+                isEating = true;
+                turkey.SetActive(true);
+                GameManager._player.FeedAnimal(turkey.GetComponent<TurkeyFood>());
+                turkey.SetActive(false);
+                turkeyCount--;
+                isEating = false;
+            }
+        }
     }
 
     public void EatChicken()
     {
-        EatFood("Chicken");
+        if (!isEating)
+        {
+            PurchaseFood(chicken);
+
+            if (isAble(chickenCount, 1))
+            {
+                isEating = true;
+                chicken.SetActive(true);
+                GameManager._player.FeedAnimal(chicken.GetComponent<ChickenFood>());
+                chicken.SetActive(false);
+                chickenCount--;
+                isEating = false;
+            }
+        }
     }
 
     public void EatRibs()
     {
-        EatFood("Ribs");
+        if (!isEating)
+        {
+            PurchaseFood(ribs);
+
+            if (isAble(ribCount, 1))
+            {
+                isEating = true;
+                ribs.SetActive(true);
+                GameManager._player.FeedAnimal(ribs.GetComponent<RibFood>());
+                ribs.SetActive(false);
+                ribCount--;
+                isEating = false;
+            }
+        }
     }
 
     public void EatBeef()
     {
-        EatFood("Beef");
+        if (!isEating)
+        {
+            PurchaseFood(beef);
+
+            if (isAble(beefCount, 1))
+            {
+                isEating = true;
+                beef.SetActive(true);
+                GameManager._player.FeedAnimal(beef.GetComponent<BeefFood>());
+                beef.SetActive(false);
+                beefCount--;
+                isEating = false;
+            }
+        }
     }
 
     public void EatFish()
     {
-        EatFood("Fish");
+        if (!isEating)
+        {
+            PurchaseFood(fish);
+
+            if (isAble(fishCount, 1))
+            {
+                isEating = true;
+                fish.SetActive(true);
+                GameManager._player.FeedAnimal(fish.GetComponent<FishFood>());
+                fish.SetActive(false);
+                fishCount--;
+                isEating = false;
+            }
+        }
     }
 
     public void EatTreat()
     {
-        EatFood("Treat");
-    }
-
-    private void EatFood(string selection)
-    {
-        //wait until eating animation is done to remove item
-        //while (GetComponent<Animation>().IsPlaying("A_eat")) ;
-
-        switch (selection)
+        if (!isEating)
         {
-            case "Turkey":
-                if(isAble(turkeyCount, 1))
-                {
-                    turkey.SetActive(false);
-                    turkeyCount--;
-                }
-                break;
-            case "Chicken":
-                if (isAble(chickenCount, 1))
-                {
-                    chicken.SetActive(false);
-                    chickenCount--;
-                }
-                break;
-            case "Ribs":
-                if (isAble(ribCount, 1))
-                {
-                    ribs.SetActive(false);
-                    ribCount--;
-                }
-                break;
-            case "Beef":
-                if (isAble(beefCount, 1))
-                {
-                    beef.SetActive(false);
-                    beefCount--;
-                }
-                    break;
-            case "Fish":
-                if (isAble(fishCount, 1))
-                {
-                    fish.SetActive(false);
-                    fishCount--;
-                }
-                    break;
-            case "Treat":
-                if (isAble(treatCount, 1))
-                {
-                    treat.SetActive(false);
-                    treatCount--;
-                }
-                break;
-            default:
-                break;
-        }  
-    }
+            PurchaseFood(treat);
 
-    public void SetPlate(string item)
-    {
-        switch (item)
-        {
-            case "Turkey":
-                turkey.SetActive(true);
-                break;
-            case "Chicken":
-                chicken.SetActive(true);
-                break;
-            case "Ribs":
-                ribs.SetActive(true);
-                break;
-            case "Beef":
-                beef.SetActive(true);
-                break;
-            case "Fish":
-                fish.SetActive(true);
-                break;
-            case "Treat":
+            if (isAble(treatCount, 1))
+            {
+                isEating = true;
                 treat.SetActive(true);
-                break;
-            default:
-                break;
+                GameManager._player.FeedAnimal(treat.GetComponent<TreatFood>());
+                treat.SetActive(false);
+                treatCount--;
+                isEating = false;
+            }
         }
     }
+
 }
 
 
