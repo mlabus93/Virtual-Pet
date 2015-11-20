@@ -9,7 +9,8 @@ public class ManageFoods : MonoBehaviour {
     public GameObject fish;
     public GameObject beef;
     public GameObject treat;
-
+    public GameObject water;
+    
     private int turkeyCount;
     private int ribCount;
     private int chickenCount;
@@ -61,10 +62,49 @@ public class ManageFoods : MonoBehaviour {
         return (balance - selection) >= 0 ? true : false;
     }
 
-    public void EatFood(string selection)
+    public void Drink()
+    {
+        //DrinkWater drink = new DrinkWater();
+        //GameManager._player.FeedAnimal(drink);
+    }
+
+    public void EatTurkey()
+    {
+        TurkeyFood james = turkey.GetComponent("TurkeyFood") as TurkeyFood;
+        TurkeyFood james2 = turkey.GetComponent<TurkeyFood>();
+        GameManager._player.FeedAnimal(james);
+        EatFood("Turkey");
+    }
+
+    public void EatChicken()
+    {
+        EatFood("Chicken");
+    }
+
+    public void EatRibs()
+    {
+        EatFood("Ribs");
+    }
+
+    public void EatBeef()
+    {
+        EatFood("Beef");
+    }
+
+    public void EatFish()
+    {
+        EatFood("Fish");
+    }
+
+    public void EatTreat()
+    {
+        EatFood("Treat");
+    }
+
+    private void EatFood(string selection)
     {
         //wait until eating animation is done to remove item
-        while (GetComponent<Animation>().IsPlaying("A_eat")) ;
+        //while (GetComponent<Animation>().IsPlaying("A_eat")) ;
 
         switch (selection)
         {

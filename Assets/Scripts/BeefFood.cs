@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Beef : MonoBehaviour, IFood
+public class BeefFood : MonoBehaviour, IFood
 {
     public int fishey { get; set; }
     public int meaty { get; set; }
@@ -13,7 +13,7 @@ public class Beef : MonoBehaviour, IFood
     // cost of food (in coins)
     public int cost { get; set; }
 
-    Beef()
+    public BeefFood()
     {
         fishey = 12;
         meaty = 99;
@@ -22,5 +22,4 @@ public class Beef : MonoBehaviour, IFood
 
         cost = 30;
     }
-
 }
