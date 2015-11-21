@@ -17,7 +17,6 @@ public class LetsEat : MonoBehaviour{
     {
         if (other.gameObject == player)
         {
-            playerInRange = true;
             uiController.GetComponent<UIController>().drinkBtn.gameObject.SetActive(true);
             uiController.GetComponent<UIController>().turkeyBtn.gameObject.SetActive(true);
             uiController.GetComponent<UIController>().chickenBtn.gameObject.SetActive(true);
@@ -25,6 +24,8 @@ public class LetsEat : MonoBehaviour{
             uiController.GetComponent<UIController>().ribBtn.gameObject.SetActive(true);
             uiController.GetComponent<UIController>().fishBtn.gameObject.SetActive(true);
             uiController.GetComponent<UIController>().treatBtn.gameObject.SetActive(true);
+            player.GetComponent<MoveToAction>().inTarget = true;
+            player.GetComponent<MoveToAction>().StopPlayer();
         }
     }
 
@@ -32,7 +33,6 @@ public class LetsEat : MonoBehaviour{
     {
         if (other.gameObject == player)
         {
-            playerInRange = false;
             uiController.GetComponent<UIController>().drinkBtn.gameObject.SetActive(false);
             uiController.GetComponent<UIController>().turkeyBtn.gameObject.SetActive(false);
             uiController.GetComponent<UIController>().chickenBtn.gameObject.SetActive(false);
@@ -40,6 +40,7 @@ public class LetsEat : MonoBehaviour{
             uiController.GetComponent<UIController>().ribBtn.gameObject.SetActive(false);
             uiController.GetComponent<UIController>().fishBtn.gameObject.SetActive(false);
             uiController.GetComponent<UIController>().treatBtn.gameObject.SetActive(false);
+            player.GetComponent<MoveToAction>().inTarget = false;
         }
     }
 }

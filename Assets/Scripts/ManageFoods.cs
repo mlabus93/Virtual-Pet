@@ -21,6 +21,7 @@ public class ManageFoods : MonoBehaviour
     private int beefCount;
     private int treatCount;
     private bool isEating;
+    GameObject player;
 
     public void PurchaseFood(GameObject selection)
     {
@@ -75,6 +76,8 @@ public class ManageFoods : MonoBehaviour
 
     public void Drink()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<MoveToAction>().GoToWaterBowl();
         isEating = true;
         MeshRenderer skin = turkey.GetComponent("MeshRenderer") as MeshRenderer;
         GameManager._player.FeedAnimal((water.GetComponent("WaterDrink") as WaterDrink));
