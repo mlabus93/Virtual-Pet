@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     // and only one player
     public static GameManager _manager;
     public static IAnimalCharacter _player;
-    public static int _coins;
+    public static int _coins = 100;
     public int _volumeLevel;
     public int _musicLevel;
     public float _gameSpeed;
@@ -59,11 +59,16 @@ public class GameManager : MonoBehaviour
     public void AdjustVolume(float nwVolume)
     {
         _volumeLevel = (int)nwVolume;
+		Debug.Log (_volumeLevel);
+		// Volume must be between 0 and 1
+		AudioListener.volume = (float)(.01)*nwVolume;
     }
 
     public void AdjustMusicLevel(float nwMusiclvl)
     {
         _musicLevel = (int)nwMusiclvl;
+		// Volume must be between 0 and 1
+		AudioListener.volume = (float)(.01)*nwMusiclvl;
     }
 
     public void AdjustGameSpeed(float nwGameSpeed)

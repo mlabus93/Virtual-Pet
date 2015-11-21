@@ -11,6 +11,13 @@ public class UIController : MonoBehaviour {
     public Button optionsBtn;
     public Button pauseBtn;
     public Button resumeBtn;
+    public Button drinkBtn;
+    public Button turkeyBtn;
+    public Button treatBtn;
+    public Button beefBtn;
+    public Button ribBtn;
+    public Button chickenBtn;
+    public Button fishBtn;
     public GameObject pauseParentPanel;
     public GameObject statsPanel;
     public GameObject optionsPanel;
