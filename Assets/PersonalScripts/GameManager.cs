@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     public static IAnimalCharacter _player;
     public static int _coins = 100;
     public int _volumeLevel;
-    public int _musicLevel;
     public float _gameSpeed;
     public string _userName;
     public GameObject[] PlayableAnimals;
@@ -63,13 +62,6 @@ public class GameManager : MonoBehaviour
 		AudioListener.volume = (float)(.01)*nwVolume;
     }
 
-   // public void AdjustMusicLevel(float nwMusiclvl)
-   //{
-   //   _musicLevel = (int)nwMusiclvl;
-   //   Volume must be between 0 and 1
-   //	AudioListener.volume = (float)(.01)*nwMusiclvl;
-   //}
-
     public void AdjustGameSpeed(float nwGameSpeed)
     {
         _player.AdjustAgingRate(nwGameSpeed);
@@ -80,13 +72,12 @@ public class GameManager : MonoBehaviour
         if (gameCollection.gameSaves.Count < 1)
         {
             // creates new game
-            gameCollection.gameSaves.Add(new GameSave(name, _volumeLevel,_musicLevel,_coins));
+            gameCollection.gameSaves.Add(new GameSave(name, _volumeLevel,_coins));
         }
         else
         {
             // saves to given index, defaulted to 0
             gameCollection.gameSaves[i].CoinAmount = _coins;
-            gameCollection.gameSaves[i].MusicLevel = _musicLevel;
             gameCollection.gameSaves[i].VolumeLevel = _volumeLevel;
             gameCollection.gameSaves[i].GameSpeed = _gameSpeed;
         }
@@ -132,7 +123,6 @@ public class GameManager : MonoBehaviour
         {
             _coins = gme.gameSaves[i].CoinAmount;
             _volumeLevel = gme.gameSaves[i].VolumeLevel;
-            _musicLevel = gme.gameSaves[i].MusicLevel;
             _gameSpeed = gme.gameSaves[i].GameSpeed;
             AdjustGameSpeed(_gameSpeed);
         }
@@ -288,7 +278,7 @@ class GameData
     public int _petSelection;
     public PlayableCharacters _playerSpecies;
 
-    public GameData(int vol, int musiclv, PlayableCharacters species)
+    public GameData(int vol, PlayableCharacters species)
     {
         _playerSpecies = species;
     }

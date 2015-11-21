@@ -10,9 +10,9 @@ public class GameContainer
     public List<GameSave> gameSaves = new List<GameSave>();
     
 
-    GameSave kid = new GameSave("kid", 14, 33, 4);
-    GameSave mom = new GameSave("mom", 32, 33, 4);
-    GameSave dad = new GameSave("FATHER", 53, 33, 4);
+    GameSave kid = new GameSave("kid", 33, 4);
+    GameSave mom = new GameSave("mom", 33, 4);
+    GameSave dad = new GameSave("FATHER", 33, 4);
 
     public GameContainer()
     {
@@ -54,18 +54,16 @@ public class GameSave
 
     // Game information
     public int VolumeLevel;
-    //public int MusicLevel;
     public int CoinAmount;
     public float GameSpeed;
 
     // needs default constructor for w.e. reason
     public GameSave()
     { }
-    public GameSave(string name, int vollvl, int musiclvl, int coinAmt)
+    public GameSave(string name, int vollvl, int coinAmt)
     {
         Name = name;
         VolumeLevel = vollvl;
-        //MusicLevel = musiclvl;
         CoinAmount = coinAmt;
     }
 }

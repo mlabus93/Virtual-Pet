@@ -5606,7 +5606,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _volumeLevel: 0
-  _musicLevel: 0
   _gameSpeed: 0
   _userName: 
   PlayableAnimals: []
