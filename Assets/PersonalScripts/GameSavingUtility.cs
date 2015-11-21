@@ -54,7 +54,7 @@ public class GameSave
 
     // Game information
     public int VolumeLevel;
-    public int MusicLevel;
+    //public int MusicLevel;
     public int CoinAmount;
     public float GameSpeed;
 
@@ -65,7 +65,7 @@ public class GameSave
     {
         Name = name;
         VolumeLevel = vollvl;
-        MusicLevel = musiclvl;
+        //MusicLevel = musiclvl;
         CoinAmount = coinAmt;
     }
 }
