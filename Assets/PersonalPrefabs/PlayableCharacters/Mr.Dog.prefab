@@ -25,9 +25,8 @@ GameObject:
   - 4: {fileID: 433022}
   - 95: {fileID: 9575202}
   - 65: {fileID: 6572926}
-  - 114: {fileID: 11410732}
   m_Layer: 0
-  m_Name: animal_pr_sword01_01
+  m_Name: Sword
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -386,6 +385,8 @@ GameObject:
   - 114: {fileID: 11406206}
   - 114: {fileID: 11403342}
   - 114: {fileID: 11443420}
+  - 195: {fileID: 19502516}
+  - 114: {fileID: 11476610}
   m_Layer: 0
   m_Name: Mr.Dog
   m_TagString: Player
@@ -435,7 +436,7 @@ GameObject:
   - 65: {fileID: 6558020}
   - 65: {fileID: 6501380}
   m_Layer: 0
-  m_Name: animal_pr_picax01_01
+  m_Name: Axe
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -700,7 +701,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 61.8755722, y: -2.59345474e-17, z: 11.679882}
+  m_LocalPosition: {x: 61.974205, y: -3.0089522e-17, z: 13.551115}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children:
   - {fileID: 470946}
@@ -1306,26 +1307,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100
   currentHealth: 0
+  healthSlider: {fileID: 0}
   damageImage: {fileID: 0}
   deathClip: {fileID: 0}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: .100000001}
---- !u!114 &11410732
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 106080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79f6221829025384db679e3f1facb65c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _weapons: []
-  _currentWeaponIndex: 0
-  _swordPower: 17
-  _axePower: 20
-  _fistPower: 10
 --- !u!114 &11443420
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1375,6 +1361,34 @@ MonoBehaviour:
   _anim: {fileID: 0}
   _groundCheckDistance: .5
   _isGrounded: 0
+--- !u!114 &11476610
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff06096aea0b125478641b6b33a9aa02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eatPosition: {fileID: 0}
+  drinkPosition: {fileID: 0}
+  randomPositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  inTarget: 0
+  isDrinking: 0
 --- !u!114 &11493980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1468,6 +1482,26 @@ SkinnedMeshRenderer:
     m_Center: {x: -.129868597, y: -1.49011612e-08, z: -.034015052}
     m_Extent: {x: .249964833, y: .23389636, z: .218878001}
   m_DirtyAABB: 0
+--- !u!195 &19502516
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159744}
+  m_Enabled: 1
+  m_Radius: .119999997
+  m_Speed: 20
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: .49000001
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
