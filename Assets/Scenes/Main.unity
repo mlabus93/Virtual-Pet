@@ -9174,13 +9174,44 @@ Prefab:
       propertyPath: m_Name
       value: Hellephant1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11492370, guid: 2f8e5dcb17eda3542bf9cd4ef63425e3, type: 2}
+    - {fileID: 11470714, guid: 2f8e5dcb17eda3542bf9cd4ef63425e3, type: 2}
+    - {fileID: 11474866, guid: 2f8e5dcb17eda3542bf9cd4ef63425e3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 2f8e5dcb17eda3542bf9cd4ef63425e3, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1740150314 stripped
 Transform:
   m_PrefabParentObject: {fileID: 492980, guid: 2f8e5dcb17eda3542bf9cd4ef63425e3, type: 2}
   m_PrefabInternal: {fileID: 1740150313}
+--- !u!1 &1740150315 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 104722, guid: 2f8e5dcb17eda3542bf9cd4ef63425e3, type: 2}
+  m_PrefabInternal: {fileID: 1740150313}
+--- !u!114 &1740150316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1740150315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ade3fe3193cb0439519b1b2594ffe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  currentHealth: 0
+--- !u!114 &1740150317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1740150315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 607f3d324a5afee48bf8599e14d7382a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1743577173
 GameObject:
   m_ObjectHideFlags: 0

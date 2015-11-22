@@ -76,13 +76,10 @@ public class ManageFoods : MonoBehaviour
 
     public void Drink()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<MoveToAction>().GoToWaterBowl();
         isEating = true;
         MeshRenderer skin = turkey.GetComponent("MeshRenderer") as MeshRenderer;
         GameManager._player.FeedAnimal((water.GetComponent("WaterDrink") as WaterDrink));
         StartCoroutine(DelayForFeeding(water));
-
     }
 
     public void EatTurkey()
@@ -184,7 +181,6 @@ public class ManageFoods : MonoBehaviour
             if (isAble(treatCount, 1))
             {
                 isEating = true;
-                //var test =  
                 MeshRenderer skin = treat.GetComponentInChildren(typeof(MeshRenderer)) as MeshRenderer;
                 skin.enabled = true;
                 GameManager._player.FeedAnimal((treat.GetComponent("TreatFood") as TreatFood));
