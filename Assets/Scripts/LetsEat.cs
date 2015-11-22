@@ -7,9 +7,13 @@ public class LetsEat : MonoBehaviour{
 
     bool playerInRange;
 
-    void OnMouseDown()
+    void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    void OnMouseDown()
+    {
         player.GetComponent<MoveToAction>().GoToFoodTable();
     }
 

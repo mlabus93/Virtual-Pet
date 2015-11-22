@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DollHealth : MonoBehaviour {
-    public int startingHealth = 100;
-    public int currentHealth;
-
+public class DollHealth : EnemyHealth
+{
+    new public int startingHealth = 10;
     Animator anim;
     ParticleSystem hitParticles;
-    bool isDead;
+    bool isDown;
 
     void Awake()
     {
@@ -22,9 +21,9 @@ public class DollHealth : MonoBehaviour {
         anim.SetTrigger("Idle");
     }
 
-    public void TakeDamage(int amount, Vector3 hitPoint)
+    public new void TakeDamage(int amount, Vector3 hitPoint)
     {
-        if (isDead)
+        if (isDown)
         {
             return;
         }
@@ -42,7 +41,11 @@ public class DollHealth : MonoBehaviour {
 
     void Death()
     {
-        isDead = true;
+        isDown = true;
         anim.SetTrigger("Dead");
+    }
+
+    new public void StartSinking()
+    {
     }
 }

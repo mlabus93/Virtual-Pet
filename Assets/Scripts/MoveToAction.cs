@@ -8,18 +8,20 @@ public class MoveToAction : MonoBehaviour {
     public bool inTarget = false;
     //public bool isEating = false;
     public bool isDrinking = false;
-
+    public bool moveRandom = true;
 
     Animator anim;
+    GameObject player;
     Transform table;
     Transform bed;
-    Transform toyDoll;
+    GameObject[] toyDoll;
     Transform toyBall;
     Transform toilet;
     Transform currentRandomTarget;
     NavMeshAgent nav;
     string currentTarget = "";
-    bool moveRandom = true;
+    int currentDoll = 0;
+    
     bool randomTargetFound = true;
     bool playerStopped;
 
@@ -27,10 +29,11 @@ public class MoveToAction : MonoBehaviour {
 
     // Use this for initialization
     void Awake () {
+        player = GameObject.FindGameObjectWithTag("Player");
+        anim = player.GetComponent<Animator>();
         table = GameObject.FindGameObjectWithTag("Food Table").transform;
-        anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         bed = GameObject.FindGameObjectWithTag("Bed").transform;
-        //toyDoll = GameObject.FindGameObjectWithTag("Toy Doll").transform;
+        toyDoll = GameObject.FindGameObjectsWithTag("Damageable");
         //toyBall = GameObject.FindGameObjectWithTag("Toy Ball").transform;
         toilet = GameObject.FindGameObjectWithTag("Toilet").transform;
         nav = GetComponent<NavMeshAgent>();
@@ -45,9 +48,8 @@ public class MoveToAction : MonoBehaviour {
         }
         else
         {
-            anim.SetFloat("Speed", (nav.velocity.magnitude / (Time.deltaTime * 100)));
+            anim.SetFloat("Speed", (nav.velocity.magnitude / (Time.deltaTime * 1000)));
         }
-        
     }
 
     // Update is called once per frame
@@ -63,10 +65,39 @@ public class MoveToAction : MonoBehaviour {
             //{
             //    nav.SetDestination(bed.position);
             //}
-            //else if (currentTarget.Equals("doll") && !inTarget)
-            //{
-            //    nav.SetDestination(toyDoll.position);
-            //}
+            else if (currentTarget.Equals("doll"))
+            {
+                if (currentDoll >= toyDoll.Length)
+                {
+                    currentTarget = "";
+                    moveRandom = true;
+                    inTarget = false;
+                    foreach (GameObject doll in toyDoll)
+                    {
+                        doll.GetComponent<DollHealth>().Reset();
+                    }
+                }
+            else
+                {
+                    if (inTarget)
+                    {
+                        DollHealth currentDollHealth = toyDoll[currentDoll].GetComponent("DollHealth") as DollHealth;
+                        if (currentDollHealth.currentHealth > 0)
+                        {
+                            Attack();
+                        }
+                        else
+                        {
+                            currentDoll++;
+                            inTarget = false;
+                        }
+                    }
+                    else
+                    {
+                        nav.SetDestination(toyDoll[currentDoll].transform.position);
+                    }   
+                }
+            }
             //else if (currentTarget.Equals("ball") && !inTarget)
             //{
             //    nav.SetDestination(toyBall.position);
@@ -104,6 +135,10 @@ public class MoveToAction : MonoBehaviour {
         {
             randomTargetFound = true;
         }
+        else if(other.tag.Equals("Damageable"))
+        {
+            inTarget = true;
+        }
     }
 
     public void StopPlayer()
@@ -115,13 +150,11 @@ public class MoveToAction : MonoBehaviour {
     public void GoToWaterBowl()
     {
         currentTarget = "bowl";
-        
     }
 
     public void GoToFoodPlate()
     {
         nav.SetDestination(eatPosition.transform.position);
-        //plaa
     }
 
     public void GoToFoodTable()
@@ -139,6 +172,12 @@ public class MoveToAction : MonoBehaviour {
 
     public void PlayWithDoll()
     {
+        moveRandom = false;
+
+        foreach(GameObject doll in toyDoll)
+        {
+            doll.GetComponent<ToyDollMovement>().PlayWithDoll();
+        }
         inTarget = false;
         currentTarget = "doll";
     }
@@ -153,5 +192,10 @@ public class MoveToAction : MonoBehaviour {
     {
         inTarget = false;
         currentTarget = "toilet";
+    }
+
+    void Attack()
+    {
+        player.GetComponent<WeaponHandler>().Attack(Random.Range(1, 2));
     }
 }

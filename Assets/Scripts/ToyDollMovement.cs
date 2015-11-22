@@ -15,7 +15,7 @@ public class ToyDollMovement : MonoBehaviour {
 
     public void PlayWithDoll()
     {
-        dollHealth.currentHealth = 50;
+        dollHealth.currentHealth = 10;
         isPlaying = true;
         nav.Resume();
     }
