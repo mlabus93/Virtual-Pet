@@ -74,25 +74,15 @@ public class WeaponHandler : MonoBehaviour
         }
         // only enemies and objects are damageable
         EnemyHealth enemyHealth;
-        DollHealth dollHealth;
         ObjectHealth objectHealth;
         if (other.tag == "Damageable")
         {
             enemyHealth = other.GetComponent<EnemyHealth>();
-            dollHealth = other.GetComponent<DollHealth>();
             objectHealth = other.GetComponent<ObjectHealth>();
-            if (dollHealth == null)
-            {
-                if (enemyHealth == null)
-                    objectHealth.TakeDamage(damageAmount, _weapons[_currentWeaponIndex].transform.position);
-                else
-                    enemyHealth.TakeDamage(damageAmount, _weapons[_currentWeaponIndex].transform.position);
-            }
+            if (enemyHealth == null)
+                objectHealth.TakeDamage(damageAmount, _weapons[_currentWeaponIndex].transform.position);
             else
-            {
-                dollHealth.TakeDamage(damageAmount, _weapons[_currentWeaponIndex].transform.position);
-            }
-
+                enemyHealth.TakeDamage(damageAmount, _weapons[_currentWeaponIndex].transform.position);
         }
     }
 

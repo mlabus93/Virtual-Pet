@@ -1,17 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DollHealth : EnemyHealth
+public class DollHealth : MonoBehaviour, IDamageable
 {
-    new public int startingHealth = 10;
+    public int startingHealth = 10;
+    public int currentHealth;
     Animator anim;
-    ParticleSystem hitParticles;
     bool isDown;
 
     void Awake()
     {
         anim = GetComponent<Animator>();
-        hitParticles = GetComponentInChildren<ParticleSystem>();
         currentHealth = startingHealth;
     }
 
@@ -21,16 +20,13 @@ public class DollHealth : EnemyHealth
         anim.SetTrigger("Idle");
     }
 
-    public new void TakeDamage(int amount, Vector3 hitPoint)
+    public void TakeDamage(int amount, Vector3 hitPoint)
     {
         if (isDown)
         {
             return;
         }
         currentHealth -= amount;
-
-        hitParticles.transform.position = hitPoint;
-        hitParticles.Play();
 
         if (currentHealth <= 0)
         {
@@ -39,13 +35,10 @@ public class DollHealth : EnemyHealth
     }
 
 
-    void Death()
+    public void Death()
     {
         isDown = true;
         anim.SetTrigger("Dead");
     }
 
-    new public void StartSinking()
-    {
-    }
 }

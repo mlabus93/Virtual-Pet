@@ -77,7 +77,6 @@ public class ManageFoods : MonoBehaviour
     public void Drink()
     {
         isEating = true;
-        MeshRenderer skin = turkey.GetComponent("MeshRenderer") as MeshRenderer;
         GameManager._player.FeedAnimal((water.GetComponent("WaterDrink") as WaterDrink));
         StartCoroutine(DelayForFeeding(water));
     }

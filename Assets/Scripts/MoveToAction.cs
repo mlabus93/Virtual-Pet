@@ -33,7 +33,7 @@ public class MoveToAction : MonoBehaviour {
         anim = player.GetComponent<Animator>();
         table = GameObject.FindGameObjectWithTag("Food Table").transform;
         bed = GameObject.FindGameObjectWithTag("Bed").transform;
-        toyDoll = GameObject.FindGameObjectsWithTag("Damageable");
+        toyDoll = GameObject.FindGameObjectsWithTag("Toy Doll");
         //toyBall = GameObject.FindGameObjectWithTag("Toy Ball").transform;
         toilet = GameObject.FindGameObjectWithTag("Toilet").transform;
         nav = GetComponent<NavMeshAgent>();
@@ -51,6 +51,24 @@ public class MoveToAction : MonoBehaviour {
             anim.SetFloat("Speed", (nav.velocity.magnitude / (Time.deltaTime * 1000)));
         }
     }
+
+
+    //public void PurchaseToy(GameObject selection)
+    //{
+    //    int balance = GameManager._coins;
+
+    //    if (isAble(balance, selection.GetComponent<IToy>().cost))
+    //    {
+    //        gameManager.AddCoins(-selection.GetComponent<IFood>().cost);
+    //        UpdateAvailablity(selection.name);
+    //    }
+    //    else
+    //    {
+    //        //PRINT ERROR - play mini games to earn coin to use on foods and toys
+    //        insuffientCoins.color = Color.red;
+    //        StartCoroutine(RemoveErrorMessage());
+    //    }
+    //}
 
     // Update is called once per frame
     void Update () {
@@ -84,7 +102,10 @@ public class MoveToAction : MonoBehaviour {
                         DollHealth currentDollHealth = toyDoll[currentDoll].GetComponent("DollHealth") as DollHealth;
                         if (currentDollHealth.currentHealth > 0)
                         {
-                            Attack();
+                            GameManager._player.PlayWithAnimal((toyDoll[currentDoll].GetComponent("ToySatisfaction") as ToySatisfaction));
+                            Attack(Random.Range(1, 2));
+                            currentDollHealth.TakeDamage(10, player.transform.position);
+                            
                         }
                         else
                         {
@@ -135,7 +156,7 @@ public class MoveToAction : MonoBehaviour {
         {
             randomTargetFound = true;
         }
-        else if(other.tag.Equals("Damageable"))
+        else if(other.tag.Equals("Toy Doll"))
         {
             inTarget = true;
         }
@@ -194,8 +215,15 @@ public class MoveToAction : MonoBehaviour {
         currentTarget = "toilet";
     }
 
-    void Attack()
+    void Attack(int attackType)
     {
-        player.GetComponent<WeaponHandler>().Attack(Random.Range(1, 2));
+        if (attackType == 1)
+        {
+            anim.SetTrigger("Attack1");
+        }
+        if (attackType == 2)
+        {
+            anim.SetTrigger("Attack2");
+        }
     }
 }
