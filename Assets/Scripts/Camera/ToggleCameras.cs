@@ -44,6 +44,26 @@ public class ToggleCameras : MonoBehaviour {
         }
     }
 
+    public void LivingRoomCam()
+    {
+        SwitchCameras(CameraPosition.LivingRoom1);
+    }
+
+    public void ToyRoomCam()
+    {
+        SwitchCameras(CameraPosition.ToyRoom1);
+    }
+
+    public void BedRoomCam()
+    {
+        SwitchCameras(CameraPosition.BedRoom1);
+    }
+
+    public void BathRoomCam()
+    {
+        SwitchCameras(CameraPosition.BathRoom);
+    }
+
     public void SwitchCameras(CameraPosition desiredCam)
     {
         foreach (Camera camera in cameras)

@@ -21,6 +21,7 @@ public class MoveToAction : MonoBehaviour {
     string currentTarget = "";
     bool moveRandom = true;
     bool randomTargetFound = true;
+    bool playerStopped;
 
 
 
@@ -28,15 +29,29 @@ public class MoveToAction : MonoBehaviour {
     void Awake () {
         table = GameObject.FindGameObjectWithTag("Food Table").transform;
         anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
-        //bed = GameObject.FindGameObjectWithTag("Bed").transform;
+        bed = GameObject.FindGameObjectWithTag("Bed").transform;
         //toyDoll = GameObject.FindGameObjectWithTag("Toy Doll").transform;
         //toyBall = GameObject.FindGameObjectWithTag("Toy Ball").transform;
-        //toilet = GameObject.FindGameObjectWithTag("Toilet").transform;
+        toilet = GameObject.FindGameObjectWithTag("Toilet").transform;
         nav = GetComponent<NavMeshAgent>();
     }
 	
-	// Update is called once per frame
-	void Update () {
+    void FixedUpdate()
+    {
+
+        if(playerStopped)
+        {
+            anim.SetFloat("Speed", 0);
+        }
+        else
+        {
+            anim.SetFloat("Speed", (nav.velocity.magnitude / (Time.deltaTime * 100)));
+        }
+        
+    }
+
+    // Update is called once per frame
+    void Update () {
 
         if (!moveRandom)
         {
@@ -81,9 +96,6 @@ public class MoveToAction : MonoBehaviour {
             randomTargetFound = false;
         }
         nav.SetDestination(currentRandomTarget.position);
-        anim.SetBool("Attack1", true);
-        //anim.SetFloat()
-        //anim.SetFloat("vely", velocity.y);
     }
 
     void OnTriggerEnter(Collider other)
@@ -97,6 +109,7 @@ public class MoveToAction : MonoBehaviour {
     public void StopPlayer()
     {
         nav.Stop();
+        playerStopped = true;
     }
 
     public void GoToWaterBowl()
@@ -113,6 +126,7 @@ public class MoveToAction : MonoBehaviour {
 
     public void GoToFoodTable()
     {
+        moveRandom = false;
         inTarget = false;
         currentTarget = "table";
     }
