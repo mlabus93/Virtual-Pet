@@ -18,6 +18,7 @@ TagManager:
   - Toy Ball
   - Toy Doll
   - Toilet
+  - GameManager
   layers:
   - Default
   - TransparentFX

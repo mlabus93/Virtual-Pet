@@ -21,6 +21,11 @@ public class ToySatisfaction : MonoBehaviour, IToy
 
     public ToySatisfaction()
     {
+
+    }
+
+    void Awake()
+    {
         bouncy = bounceValue;
         squishey = squishValue;
         smooth = smoothValue;

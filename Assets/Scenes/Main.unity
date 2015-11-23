@@ -4612,6 +4612,14 @@ Prefab:
       propertyPath: m_Acceleration
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 11476610, guid: 8ec979fa32d91054889ee8afdf7f2f60, type: 2}
+      propertyPath: insuffientCoins
+      value: 
+      objectReference: {fileID: 2106684661}
+    - target: {fileID: 11476610, guid: 8ec979fa32d91054889ee8afdf7f2f60, type: 2}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1241469500}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8ec979fa32d91054889ee8afdf7f2f60, type: 2}
   m_IsPrefabParent: 0
@@ -6041,9 +6049,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1084671914}
-  - 114: {fileID: 1084671915}
-  - 114: {fileID: 1084671917}
-  - 114: {fileID: 1084671916}
   m_Layer: 0
   m_Name: Toy Manager
   m_TagString: Untagged
@@ -6063,61 +6068,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 346965955}
   m_RootOrder: 0
---- !u!114 &1084671915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1084671913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76a99222b1e4a384e923ac7e86efc709, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
-  enemy: {fileID: 165540, guid: 4115f66ad3478d24ba6db6971c3147c0, type: 2}
-  spawnTime: 3
-  spawnPoints:
-  - {fileID: 835374597}
-  - {fileID: 2032719003}
-  - {fileID: 994498078}
---- !u!114 &1084671916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1084671913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76a99222b1e4a384e923ac7e86efc709, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
-  enemy: {fileID: 104722, guid: 2f8e5dcb17eda3542bf9cd4ef63425e3, type: 2}
-  spawnTime: 3
-  spawnPoints:
-  - {fileID: 835374597}
-  - {fileID: 2032719003}
-  - {fileID: 994498078}
-  - {fileID: 988603079}
---- !u!114 &1084671917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1084671913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76a99222b1e4a384e923ac7e86efc709, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
-  enemy: {fileID: 100000, guid: ffdde77c7de2ec246907b187471ed7d0, type: 2}
-  spawnTime: 3
-  spawnPoints:
-  - {fileID: 835374597}
-  - {fileID: 2032719003}
-  - {fileID: 994498078}
 --- !u!1 &1103215482
 GameObject:
   m_ObjectHideFlags: 0
