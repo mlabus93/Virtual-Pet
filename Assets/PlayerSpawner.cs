@@ -49,13 +49,13 @@ namespace PersonalScripts
         if (AnimalGameManager._player.GetNickName() == "Mr.Doggy")
         {
             // instantiates animal prefab into scene
-            GameObject playerClone = Instantiate(Resources.Load("PlayableCharacters/Mr.Dog", typeof(GameObject)), Vector3.zero, Quaternion.identity) as GameObject;
+            GameObject playerClone = Instantiate(Resources.Load("PlayableCharacters/Mr.Dog", typeof(GameObject)), transform.position, Quaternion.identity) as GameObject;
             playerClone.name = "Instantiated Player from Resources";
             // loads its values
             _manager.Load();
 
             // moves it to this objects location
-            playerClone.transform.position = transform.position;
+            //playerClone.transform.position = transform.position;
             AnimalGameManager._player = playerClone.GetComponent<DogCharacter>();
             _manager.Save();
         }
@@ -105,7 +105,7 @@ namespace PersonalScripts
             playerClone.name = "Instantiated Player from Resources";
 
             // moves it to this objects location
-            playerClone.transform.position = transform.position;
+            //playerClone.transform.position = transform.position;
             AnimalGameManager._player = playerClone.GetComponent<PandaCharacter>();
             
             // loads its values
