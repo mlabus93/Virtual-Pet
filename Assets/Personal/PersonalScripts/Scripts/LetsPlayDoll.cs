@@ -18,14 +18,14 @@ namespace PersonalScripts
 
         }
 
-        void OnTriggerExit(Collider other)
-        {
+        // void OnTriggerExit(Collider other)
+        // {
 
-            if (other.gameObject == player && player.GetComponent<MoveToAction>().moveRandom)
-            {
-                player.GetComponent<MoveToAction>().PlayWithDoll();
-            }
-        }
+            // if (other.gameObject == player && player.GetComponent<MoveToAction>().moveRandom)
+            // {
+                // player.GetComponent<MoveToAction>().PlayWithDoll();
+            // }
+        // }
     }
 }
 

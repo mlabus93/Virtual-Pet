@@ -1,17 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 namespace PersonalScripts
 {
     public class MoveToAction : MonoBehaviour
     {
-        public GameObject eatPosition;
-        public GameObject drinkPosition;
         public GameObject[] randomPositions;
+        public AnimalGameManager gameManager;
         public bool inTarget = false;
         //public bool isEating = false;
         public bool isDrinking = false;
         public bool moveRandom = true;
+        public bool randomTargetFound = true;
+        public Text insuffientCoins;
 
         Animator anim;
         GameObject player;
@@ -24,11 +26,8 @@ namespace PersonalScripts
         NavMeshAgent nav;
         string currentTarget = "";
         int currentDoll = 0;
-
-        bool randomTargetFound = true;
+        bool isPlaying;
         bool playerStopped;
-
-
 
         // Use this for initialization
         void Awake()
@@ -52,27 +51,32 @@ namespace PersonalScripts
             }
             else
             {
-                anim.SetFloat("Speed", (nav.velocity.magnitude / (Time.deltaTime * 1000)));
+                anim.SetFloat("Speed", (nav.velocity.magnitude / (Time.deltaTime * 500)));
             }
         }
 
+        public bool isAbleToBuy(int balance, int cost)
+        {
+            return (balance - cost) >= 0 ? true : false;
+        }
 
-        //public void PurchaseToy(GameObject selection)
-        //{
-        //    int balance = GameManager._coins;
+        public void PurchaseToy(int costToPlay)
+        {
+            int balance = AnimalGameManager._coins;
 
-        //    if (isAble(balance, selection.GetComponent<IToy>().cost))
-        //    {
-        //        gameManager.AddCoins(-selection.GetComponent<IFood>().cost);
-        //        UpdateAvailablity(selection.name);
-        //    }
-        //    else
-        //    {
-        //        //PRINT ERROR - play mini games to earn coin to use on foods and toys
-        //        insuffientCoins.color = Color.red;
-        //        StartCoroutine(RemoveErrorMessage());
-        //    }
-        //}
+            if (isAbleToBuy(balance, costToPlay))
+            {
+                gameManager.AddCoins(-costToPlay);
+                //(gameManager.GetComponent("GameManager") as GameManager).AddCoins(-costToPlay);
+                isPlaying = true;
+            }
+            else
+            {
+                //PRINT ERROR - play mini games to earn coin to use on foods and toys
+                insuffientCoins.color = Color.red;
+                StartCoroutine(RemoveErrorMessage());
+            }
+        }
 
         // Update is called once per frame
         void Update()
@@ -84,14 +88,11 @@ namespace PersonalScripts
                 {
                     nav.SetDestination(table.position);
                 }
-                //else if(currentTarget.Equals("bed") && !inTarget)
-                //{
-                //    nav.SetDestination(bed.position);
-                //}
                 else if (currentTarget.Equals("doll"))
                 {
                     if (currentDoll >= toyDoll.Length)
                     {
+                        currentDoll = 0;
                         currentTarget = "";
                         moveRandom = true;
                         inTarget = false;
@@ -110,7 +111,6 @@ namespace PersonalScripts
                                 AnimalGameManager._player.PlayWithAnimal((toyDoll[currentDoll].GetComponent("ToySatisfaction") as ToySatisfaction));
                                 Attack(Random.Range(1, 2));
                                 currentDollHealth.TakeDamage(10, player.transform.position);
-
                             }
                             else
                             {
@@ -128,14 +128,14 @@ namespace PersonalScripts
                 //{
                 //    nav.SetDestination(toyBall.position);
                 //}
+                //else if(currentTarget.Equals("bed") && !inTarget)
+                //{
+                //    nav.SetDestination(bed.position);
+                //}
                 //else if (currentTarget.Equals("toilet") && !inTarget)
                 //{
                 //    nav.SetDestination(toilet.position);
                 //}
-                else if (currentTarget.Equals("bowl") && !inTarget)
-                {
-                    nav.SetDestination(drinkPosition.transform.position);
-                }
             }
             else
             {
@@ -148,7 +148,7 @@ namespace PersonalScripts
             if (randomTargetFound)
             {
                 var oldTarget = currentRandomTarget;
-                int newSpot = Random.Range(0, randomPositions.Length);
+                int newSpot = Random.Range(0, randomPositions.Length - 1);
                 currentRandomTarget = randomPositions[newSpot].transform;
                 currentRandomTarget = oldTarget == null || oldTarget != currentRandomTarget ? currentRandomTarget : randomPositions[(newSpot + 1) % randomPositions.Length].transform;
                 randomTargetFound = false;
@@ -158,11 +158,11 @@ namespace PersonalScripts
 
         void OnTriggerEnter(Collider other)
         {
-            if (other.transform == currentRandomTarget)
+            if (other.transform == currentRandomTarget && moveRandom)
             {
                 randomTargetFound = true;
             }
-            else if (other.tag.Equals("Toy Doll"))
+            else if (other.tag.Equals("Toy Doll") && currentDoll <= toyDoll.Length && other.transform == toyDoll[currentDoll].transform)
             {
                 inTarget = true;
             }
@@ -179,16 +179,12 @@ namespace PersonalScripts
             currentTarget = "bowl";
         }
 
-        public void GoToFoodPlate()
-        {
-            nav.SetDestination(eatPosition.transform.position);
-        }
-
         public void GoToFoodTable()
         {
             moveRandom = false;
             inTarget = false;
             currentTarget = "table";
+            StartCoroutine(ReturnToRadom());
         }
 
         public void GoToBed()
@@ -199,14 +195,25 @@ namespace PersonalScripts
 
         public void PlayWithDoll()
         {
-            moveRandom = false;
-
+            int costToPlay = 0;
             foreach (GameObject doll in toyDoll)
             {
-                doll.GetComponent<ToyDollMovement>().PlayWithDoll();
+                costToPlay += (doll.GetComponent("ToySatisfaction") as ToySatisfaction).cost;
             }
-            inTarget = false;
-            currentTarget = "doll";
+
+            PurchaseToy(costToPlay);
+            if (isPlaying)
+            {
+                moveRandom = false;
+
+                foreach (GameObject doll in toyDoll)
+                {
+                    doll.GetComponent<ToyDollMovement>().PlayWithDoll();
+                }
+                inTarget = false;
+                currentTarget = "doll";
+                isPlaying = false;
+            }
         }
 
         public void PlayWithBall()
@@ -232,6 +239,20 @@ namespace PersonalScripts
                 anim.SetTrigger("Attack2");
             }
         }
+
+        IEnumerator RemoveErrorMessage()
+        {
+            yield return new WaitForSeconds(4f);
+            insuffientCoins.color = new Color(0, 0, 0, 0);
+        }
+
+        IEnumerator ReturnToRadom ()
+        {
+            yield return new WaitForSeconds(30f);
+            randomTargetFound = true;
+            moveRandom = true;
+            nav.Resume();
+            playerStopped = false;
+        }
     }
 }
-

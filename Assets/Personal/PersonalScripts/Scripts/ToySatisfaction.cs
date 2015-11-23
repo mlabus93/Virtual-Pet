@@ -20,8 +20,12 @@ namespace PersonalScripts
         // cost of toy (in coins)
         public int cost { get; set; }
 
-
         public ToySatisfaction()
+        {
+
+        }
+
+        void Awake()
         {
             bouncy = bounceValue;
             squishey = squishValue;
