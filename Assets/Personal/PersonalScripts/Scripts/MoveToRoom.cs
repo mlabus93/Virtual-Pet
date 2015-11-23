@@ -6,6 +6,8 @@ public class MoveToRoom : MonoBehaviour {
 
     void OnMouseDown()
     {
+        if (!EventSystem.current.IsPointerOverGameObject()){
             cameraObject.GetComponent<ToggleCameras>().ChangeRooms(gameObject);
+        }
     }
 }

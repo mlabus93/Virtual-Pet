@@ -1,5 +1,6 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 namespace PersonalScripts
 {
@@ -17,7 +18,10 @@ namespace PersonalScripts
 
         void OnMouseDown()
         {
-            player.GetComponent<MoveToAction>().GoToFoodTable();
+            if(!EventSystem.current.IsPointerOverGameObject())
+            {
+                player.GetComponent<MoveToAction>().GoToFoodTable();
+            }
         }
 
         void OnTriggerEnter(Collider other)
@@ -53,4 +57,3 @@ namespace PersonalScripts
     }
 
 }
-

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -12,7 +12,7 @@ namespace PersonalScripts
         public bool randomTargetFound = true;
 
         AnimalGameManager gameManager;
-        Text insuffientCoins;
+        GameObject insuffientCoins;
         Animator anim;
         GameObject player;
         Transform table;
@@ -42,7 +42,7 @@ namespace PersonalScripts
             //toyBall = GameObject.FindGameObjectWithTag("Toy Ball").transform;
             toilet = GameObject.FindGameObjectWithTag("Toilet").transform;
             nav = GetComponent<NavMeshAgent>();
-            insuffientCoins = GameObject.FindGameObjectWithTag("NoCoins").GetComponent<Text>();
+            insuffientCoins = (GameObject.FindWithTag("UIManager").GetComponent("UIController") as UIController).insufficientCoinsTxt;
         }
 
         void FixedUpdate()
@@ -72,13 +72,12 @@ namespace PersonalScripts
             if (isAbleToBuy(balance, costToPlay))
             {
                 gameManager.AddCoins(-costToPlay);
-                //(gameManager.GetComponent("GameManager") as GameManager).AddCoins(-costToPlay);
                 isPlaying = true;
             }
             else
             {
                 //PRINT ERROR - play mini games to earn coin to use on foods and toys
-                insuffientCoins.color = Color.red;
+                insuffientCoins.SetActive(true);
                 StartCoroutine(RemoveErrorMessage());
             }
         }
@@ -294,7 +293,7 @@ namespace PersonalScripts
         IEnumerator RemoveErrorMessage()
         {
             yield return new WaitForSeconds(4f);
-            insuffientCoins.color = new Color(0, 0, 0, 0);
+            insuffientCoins.SetActive(false);
         }
 
         IEnumerator ReturnToRadom ()
