@@ -28,11 +28,14 @@ namespace PersonalScripts
         int currentDoll = 0;
         bool isPlaying;
         bool playerStopped;
+        bool readToSleep = false;
+        Character playerScript;
 
         // Use this for initialization
-        void Awake()
+        void Start()
         {
             player = GameObject.FindGameObjectWithTag("Player");
+            playerScript = player.GetComponent("Character") as Character;
             anim = player.GetComponent<Animator>();
             table = GameObject.FindGameObjectWithTag("Food Table").transform;
             bed = GameObject.FindGameObjectWithTag("Bed").transform;
@@ -51,7 +54,7 @@ namespace PersonalScripts
             }
             else
             {
-                anim.SetFloat("Speed", (nav.velocity.magnitude / (Time.deltaTime * 500)));
+                anim.SetFloat("Speed", (nav.velocity.magnitude));/// (Time.deltaTime * 100)));
             }
         }
 
@@ -62,7 +65,7 @@ namespace PersonalScripts
 
         public void PurchaseToy(int costToPlay)
         {
-            int balance = AnimalGameManager._coins;
+            int balance = gameManager.GetCoins(); 
 
             if (isAbleToBuy(balance, costToPlay))
             {
@@ -108,7 +111,7 @@ namespace PersonalScripts
                             DollHealth currentDollHealth = toyDoll[currentDoll].GetComponent("DollHealth") as DollHealth;
                             if (currentDollHealth.currentHealth > 0)
                             {
-                                AnimalGameManager._player.PlayWithAnimal((toyDoll[currentDoll].GetComponent("ToySatisfaction") as ToySatisfaction));
+                                playerScript.PlayWithAnimal((toyDoll[currentDoll].GetComponent("ToySatisfaction") as ToySatisfaction));
                                 Attack(Random.Range(1, 2));
                                 currentDollHealth.TakeDamage(10, player.transform.position);
                             }
@@ -128,14 +131,51 @@ namespace PersonalScripts
                 //{
                 //    nav.SetDestination(toyBall.position);
                 //}
-                //else if(currentTarget.Equals("bed") && !inTarget)
-                //{
-                //    nav.SetDestination(bed.position);
-                //}
-                //else if (currentTarget.Equals("toilet") && !inTarget)
-                //{
-                //    nav.SetDestination(toilet.position);
-                //}
+                else if (currentTarget.Equals("bed"))
+                {
+                    if (inTarget)
+                    {
+                        StopPlayer();
+                        float sleepLength = Random.Range(60f,180f);
+                        playerScript.Sleep(sleepLength);
+                        StartCoroutine(ReturnFromClickState(sleepLength));
+                        inTarget = false;
+                    }
+                    else
+                    {
+                         nav.SetDestination(bed.position);
+                    }
+                    
+                }
+                else if (currentTarget.Equals("toilet"))
+                {
+                    if (inTarget)
+                    {
+                        StopPlayer();
+                        float bathroomLength = Random.Range(10f, 45f);
+                        switch(Random.Range(1, 5))
+                        {
+                            case 1:
+                                playerScript.Putup(bathroomLength);
+                                break;
+                            case 2:
+                                playerScript.SayGoodbye(bathroomLength);
+                                break;
+                            case 3:
+                                playerScript.Talk(bathroomLength);
+                                break;
+                            case 4:
+                                playerScript.TakeUp(bathroomLength);
+                                break;
+                        }
+                        StartCoroutine(ReturnFromClickState(bathroomLength));
+                        inTarget = false;
+                    }
+                    else
+                    {
+                        nav.SetDestination(toilet.position);
+                    }   
+                }
             }
             else
             {
@@ -162,7 +202,15 @@ namespace PersonalScripts
             {
                 randomTargetFound = true;
             }
-            else if (other.tag.Equals("Toy Doll") && currentDoll <= toyDoll.Length && other.transform == toyDoll[currentDoll].transform)
+            else if (other.tag.Equals("Toy Doll") && currentTarget.Equals("doll") && currentDoll <= toyDoll.Length && other.transform == toyDoll[currentDoll].transform)
+            {
+                inTarget = true;
+            }
+            else if (other.tag.Equals("Bed") && currentTarget.Equals("bed"))
+            {
+                inTarget = true;
+            }
+            else if (other.tag.Equals("Toilet") && currentTarget.Equals("toilet"))
             {
                 inTarget = true;
             }
@@ -172,11 +220,6 @@ namespace PersonalScripts
         {
             nav.Stop();
             playerStopped = true;
-        }
-
-        public void GoToWaterBowl()
-        {
-            currentTarget = "bowl";
         }
 
         public void GoToFoodTable()
@@ -189,6 +232,7 @@ namespace PersonalScripts
 
         public void GoToBed()
         {
+            moveRandom = false;
             inTarget = false;
             currentTarget = "bed";
         }
@@ -224,6 +268,7 @@ namespace PersonalScripts
 
         public void UseRestRoom()
         {
+            moveRandom = false;
             inTarget = false;
             currentTarget = "toilet";
         }
@@ -249,10 +294,17 @@ namespace PersonalScripts
         IEnumerator ReturnToRadom ()
         {
             yield return new WaitForSeconds(30f);
+            currentTarget = "";
             randomTargetFound = true;
             moveRandom = true;
             nav.Resume();
             playerStopped = false;
+        }
+
+        IEnumerator ReturnFromClickState(float amount)
+        {
+            yield return new WaitForSeconds(amount - 20f);
+            StartCoroutine(ReturnToRadom());
         }
     }
 }

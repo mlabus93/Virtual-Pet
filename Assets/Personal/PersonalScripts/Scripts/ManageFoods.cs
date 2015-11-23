@@ -23,11 +23,11 @@ namespace PersonalScripts
         private int beefCount;
         private int treatCount;
         private bool isEating;
-        GameObject player;
+        Character player;
 
         public void PurchaseFood(GameObject selection)
         {
-            int balance = AnimalGameManager._coins;
+            int balance = gameManager.GetCoins();
 
             if (isAble(balance, selection.GetComponent<IFood>().cost))
             {
@@ -42,6 +42,11 @@ namespace PersonalScripts
             }
         }
 
+        void Start()
+        {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent("Character") as Character;
+
+        }
 
         private void UpdateAvailablity(string item)
         {
@@ -78,13 +83,12 @@ namespace PersonalScripts
 
         public void Drink()
         {
-            player = GameObject.FindGameObjectWithTag("Player");
-            player.GetComponent<MoveToAction>().GoToWaterBowl();
+            //player = GameObject.FindGameObjectWithTag("Player");
+            //player.GetComponent<MoveToAction>().GoToWaterBowl();
             isEating = true;
             MeshRenderer skin = turkey.GetComponent("MeshRenderer") as MeshRenderer;
-            AnimalGameManager._player.FeedAnimal((water.GetComponent("WaterDrink") as WaterDrink));
+            player.FeedAnimal((water.GetComponent("WaterDrink") as WaterDrink));
             StartCoroutine(DelayForFeeding(water));
-
         }
 
         public void EatTurkey()
@@ -98,7 +102,7 @@ namespace PersonalScripts
                     isEating = true;
                     MeshRenderer skin = turkey.GetComponent("MeshRenderer") as MeshRenderer;
                     skin.enabled = true;
-                    AnimalGameManager._player.FeedAnimal((turkey.GetComponent("TurkeyFood") as TurkeyFood));
+                    player.FeedAnimal((turkey.GetComponent("TurkeyFood") as TurkeyFood));
                     StartCoroutine(DelayForFeeding(turkey));
                     turkeyCount--;
                 }
@@ -116,7 +120,7 @@ namespace PersonalScripts
                     isEating = true;
                     MeshRenderer skin = chicken.GetComponent("MeshRenderer") as MeshRenderer;
                     skin.enabled = true;
-                    AnimalGameManager._player.FeedAnimal((chicken.GetComponent("ChickenFood") as ChickenFood));
+                    player.FeedAnimal((chicken.GetComponent("ChickenFood") as ChickenFood));
                     StartCoroutine(DelayForFeeding(chicken));
                     chickenCount--;
                 }
@@ -134,7 +138,7 @@ namespace PersonalScripts
                     isEating = true;
                     MeshRenderer skin = ribs.GetComponent("MeshRenderer") as MeshRenderer;
                     skin.enabled = true;
-                    AnimalGameManager._player.FeedAnimal((ribs.GetComponent("RibFood") as RibFood));
+                    player.FeedAnimal((ribs.GetComponent("RibFood") as RibFood));
                     StartCoroutine(DelayForFeeding(ribs));
                     ribCount--;
                 }
@@ -152,7 +156,7 @@ namespace PersonalScripts
                     isEating = true;
                     MeshRenderer skin = beef.GetComponent("MeshRenderer") as MeshRenderer;
                     skin.enabled = true;
-                    AnimalGameManager._player.FeedAnimal((beef.GetComponent("BeefFood") as BeefFood));
+                    player.FeedAnimal((beef.GetComponent("BeefFood") as BeefFood));
                     StartCoroutine(DelayForFeeding(beef));
                     beefCount--;
                 }
@@ -170,7 +174,7 @@ namespace PersonalScripts
                     isEating = true;
                     SkinnedMeshRenderer skin = fish.GetComponentInChildren(typeof(SkinnedMeshRenderer)) as SkinnedMeshRenderer;
                     skin.enabled = true;
-                    AnimalGameManager._player.FeedAnimal((fish.GetComponent("FishFood") as FishFood));
+                    player.FeedAnimal((fish.GetComponent("FishFood") as FishFood));
                     StartCoroutine(DelayForFeeding(fish));
                     fishCount--;
                 }
@@ -185,11 +189,10 @@ namespace PersonalScripts
 
                 if (isAble(treatCount, 1))
                 {
-                    isEating = true;
-                    //var test =  
+                    isEating = true; 
                     MeshRenderer skin = treat.GetComponentInChildren(typeof(MeshRenderer)) as MeshRenderer;
                     skin.enabled = true;
-                    AnimalGameManager._player.FeedAnimal((treat.GetComponent("TreatFood") as TreatFood));
+                    player.FeedAnimal((treat.GetComponent("TreatFood") as TreatFood));
                     StartCoroutine(DelayForFeeding(treat));
                     treatCount--;
                 }

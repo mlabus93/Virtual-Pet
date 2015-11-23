@@ -42,6 +42,11 @@ namespace PersonalScripts
             _coins += Amount;
         }
 
+        public int GetCoins()
+        {
+            return _coins;
+        }
+
         public void LoadXMLData()
         {
             // parses the xml data for gamesaves and character data

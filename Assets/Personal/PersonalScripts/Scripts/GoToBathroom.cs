@@ -17,15 +17,6 @@ namespace PersonalScripts
             player.GetComponent<MoveToAction>().UseRestRoom();
 
         }
-
-        void OnTriggerExit(Collider other)
-        {
-
-            if (other.gameObject == player && player.GetComponent<MoveToAction>().moveRandom)
-            {
-                player.GetComponent<MoveToAction>().MoveRandomly();
-            }
-        }
     }
 }
 

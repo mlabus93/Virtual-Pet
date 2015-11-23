@@ -17,15 +17,6 @@ namespace PersonalScripts
             player.GetComponent<MoveToAction>().PlayWithDoll();
 
         }
-
-        // void OnTriggerExit(Collider other)
-        // {
-
-            // if (other.gameObject == player && player.GetComponent<MoveToAction>().moveRandom)
-            // {
-                // player.GetComponent<MoveToAction>().PlayWithDoll();
-            // }
-        // }
     }
 }
 
