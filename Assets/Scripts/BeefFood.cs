@@ -1,25 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BeefFood : MonoBehaviour, IFood
+namespace PersonalScripts
 {
-    public int fishey { get; set; }
-    public int meaty { get; set; }
-    public int watery { get; set; }
-    public int sweet { get; set; }
-    // food value
-    public int rehydration { get; set; }
-    public int calories { get; set; }
-    // cost of food (in coins)
-    public int cost { get; set; }
-
-    public BeefFood()
+    public class BeefFood : MonoBehaviour, IFood
     {
-        fishey = 12;
-        meaty = 99;
-        watery = 60;
-        calories = 10;
+        public int fishey { get; set; }
+        public int meaty { get; set; }
+        public int watery { get; set; }
+        public int sweet { get; set; }
+        // food value
+        public int rehydration { get; set; }
+        public int calories { get; set; }
+        // cost of food (in coins)
+        public int cost { get; set; }
 
-        cost = 30;
+        public BeefFood()
+        {
+            fishey = 12;
+            meaty = 99;
+            watery = 60;
+            calories = 10;
+
+            cost = 30;
+        }
     }
 }

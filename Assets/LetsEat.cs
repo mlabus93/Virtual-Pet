@@ -1,47 +1,52 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LetsEat : MonoBehaviour{
-    GameObject player;
-    public GameObject uiController;
-
-    bool playerInRange;
-
-    void OnMouseDown()
+namespace PersonalScripts
+{
+    public class LetsEat : MonoBehaviour
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<MoveToAction>().GoToFoodTable();
-    }
+        GameObject player;
+        public GameObject uiController;
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject == player)
+        bool playerInRange;
+
+        void OnMouseDown()
         {
-            uiController.GetComponent<UIController>().drinkBtn.gameObject.SetActive(true);
-            uiController.GetComponent<UIController>().turkeyBtn.gameObject.SetActive(true);
-            uiController.GetComponent<UIController>().chickenBtn.gameObject.SetActive(true);
-            uiController.GetComponent<UIController>().beefBtn.gameObject.SetActive(true);
-            uiController.GetComponent<UIController>().ribBtn.gameObject.SetActive(true);
-            uiController.GetComponent<UIController>().fishBtn.gameObject.SetActive(true);
-            uiController.GetComponent<UIController>().treatBtn.gameObject.SetActive(true);
-            player.GetComponent<MoveToAction>().inTarget = true;
-            player.GetComponent<MoveToAction>().StopPlayer();
+            player = GameObject.FindGameObjectWithTag("Player");
+            player.GetComponent<MoveToAction>().GoToFoodTable();
+        }
+
+        void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject == player)
+            {
+                uiController.GetComponent<UIController>().drinkBtn.gameObject.SetActive(true);
+                uiController.GetComponent<UIController>().turkeyBtn.gameObject.SetActive(true);
+                uiController.GetComponent<UIController>().chickenBtn.gameObject.SetActive(true);
+                uiController.GetComponent<UIController>().beefBtn.gameObject.SetActive(true);
+                uiController.GetComponent<UIController>().ribBtn.gameObject.SetActive(true);
+                uiController.GetComponent<UIController>().fishBtn.gameObject.SetActive(true);
+                uiController.GetComponent<UIController>().treatBtn.gameObject.SetActive(true);
+                player.GetComponent<MoveToAction>().inTarget = true;
+                player.GetComponent<MoveToAction>().StopPlayer();
+            }
+        }
+
+        void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject == player)
+            {
+                uiController.GetComponent<UIController>().drinkBtn.gameObject.SetActive(false);
+                uiController.GetComponent<UIController>().turkeyBtn.gameObject.SetActive(false);
+                uiController.GetComponent<UIController>().chickenBtn.gameObject.SetActive(false);
+                uiController.GetComponent<UIController>().beefBtn.gameObject.SetActive(false);
+                uiController.GetComponent<UIController>().ribBtn.gameObject.SetActive(false);
+                uiController.GetComponent<UIController>().fishBtn.gameObject.SetActive(false);
+                uiController.GetComponent<UIController>().treatBtn.gameObject.SetActive(false);
+                player.GetComponent<MoveToAction>().inTarget = false;
+            }
         }
     }
 
-    void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject == player)
-        {
-            uiController.GetComponent<UIController>().drinkBtn.gameObject.SetActive(false);
-            uiController.GetComponent<UIController>().turkeyBtn.gameObject.SetActive(false);
-            uiController.GetComponent<UIController>().chickenBtn.gameObject.SetActive(false);
-            uiController.GetComponent<UIController>().beefBtn.gameObject.SetActive(false);
-            uiController.GetComponent<UIController>().ribBtn.gameObject.SetActive(false);
-            uiController.GetComponent<UIController>().fishBtn.gameObject.SetActive(false);
-            uiController.GetComponent<UIController>().treatBtn.gameObject.SetActive(false);
-            player.GetComponent<MoveToAction>().inTarget = false;
-        }
-    }
 }
 
