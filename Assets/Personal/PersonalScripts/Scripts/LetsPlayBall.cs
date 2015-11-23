@@ -1,5 +1,6 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 namespace PersonalScripts
 {
@@ -14,18 +15,10 @@ namespace PersonalScripts
 
         void OnMouseDown()
         {
-            player.GetComponent<MoveToAction>().PlayWithBall();
-
-        }
-
-        void OnTriggerEnter(Collider other)
-        {
-
-            if (other.gameObject == player && player.GetComponent<MoveToAction>().moveRandom)
+            if (!EventSystem.current.IsPointerOverGameObject())
             {
                 player.GetComponent<MoveToAction>().PlayWithBall();
             }
         }
     }
 }
-
