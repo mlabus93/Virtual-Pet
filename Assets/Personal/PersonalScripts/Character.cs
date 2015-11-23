@@ -239,6 +239,18 @@ namespace PersonalScripts
             CalculateHealth();
         }
 
+        public void EmptyBladder()
+        {
+            _bladderCapacity = EMPTY;
+            CalculateHealth();
+        }
+
+        public void Rested()
+        {
+            _fatigue = EMPTY;
+            CalculateHealth();
+        }
+
 
         public void SayGoodbye()
         {

@@ -245,7 +245,7 @@ namespace PersonalScripts
         public void LateUpdate()
         {
             //FindExactAnimal();
-            Debug.Log(_player.GetNickName());
+            //Debug.Log(_player.GetNickName());
         }
 
         public void Save()

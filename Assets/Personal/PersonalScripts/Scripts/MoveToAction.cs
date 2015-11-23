@@ -7,14 +7,12 @@ namespace PersonalScripts
     public class MoveToAction : MonoBehaviour
     {
         public GameObject[] randomPositions;
-        public AnimalGameManager gameManager;
         public bool inTarget = false;
-        //public bool isEating = false;
-        public bool isDrinking = false;
         public bool moveRandom = true;
         public bool randomTargetFound = true;
-        public Text insuffientCoins;
 
+        AnimalGameManager gameManager;
+        Text insuffientCoins;
         Animator anim;
         GameObject player;
         Transform table;
@@ -34,6 +32,7 @@ namespace PersonalScripts
         // Use this for initialization
         void Start()
         {
+            gameManager = FindObjectOfType<AnimalGameManager>();
             player = GameObject.FindGameObjectWithTag("Player");
             playerScript = player.GetComponent("Character") as Character;
             anim = player.GetComponent<Animator>();
@@ -43,18 +42,21 @@ namespace PersonalScripts
             //toyBall = GameObject.FindGameObjectWithTag("Toy Ball").transform;
             toilet = GameObject.FindGameObjectWithTag("Toilet").transform;
             nav = GetComponent<NavMeshAgent>();
+            insuffientCoins = GameObject.FindGameObjectWithTag("NoCoins").GetComponent<Text>();
         }
 
         void FixedUpdate()
         {
-
-            if (playerStopped)
+            if (Application.loadedLevelName.Equals("Main"))
             {
-                anim.SetFloat("Speed", 0);
-            }
-            else
-            {
-                anim.SetFloat("Speed", (nav.velocity.magnitude));/// (Time.deltaTime * 100)));
+                if (playerStopped)
+                {
+                    anim.SetFloat("Speed", 0);
+                }
+                else
+                {
+                    anim.SetFloat("Speed", (nav.velocity.magnitude));/// (Time.deltaTime * 100)));
+                }
             }
         }
 
@@ -84,102 +86,106 @@ namespace PersonalScripts
         // Update is called once per frame
         void Update()
         {
-
-            if (!moveRandom)
+            if (Application.loadedLevelName.Equals("Main"))
             {
-                if (currentTarget.Equals("table") && !inTarget)
+                if (!moveRandom)
                 {
-                    nav.SetDestination(table.position);
-                }
-                else if (currentTarget.Equals("doll"))
-                {
-                    if (currentDoll >= toyDoll.Length)
+                    if (currentTarget.Equals("table") && !inTarget)
                     {
-                        currentDoll = 0;
-                        currentTarget = "";
-                        moveRandom = true;
-                        inTarget = false;
-                        foreach (GameObject doll in toyDoll)
-                        {
-                            doll.GetComponent<DollHealth>().Reset();
-                        }
+                        nav.SetDestination(table.position);
                     }
-                    else
+                    else if (currentTarget.Equals("doll"))
                     {
-                        if (inTarget)
+                        if (currentDoll >= toyDoll.Length)
                         {
-                            DollHealth currentDollHealth = toyDoll[currentDoll].GetComponent("DollHealth") as DollHealth;
-                            if (currentDollHealth.currentHealth > 0)
+                            currentDoll = 0;
+                            currentTarget = "";
+                            moveRandom = true;
+                            inTarget = false;
+                            foreach (GameObject doll in toyDoll)
                             {
-                                playerScript.PlayWithAnimal((toyDoll[currentDoll].GetComponent("ToySatisfaction") as ToySatisfaction));
-                                Attack(Random.Range(1, 2));
-                                currentDollHealth.TakeDamage(10, player.transform.position);
-                            }
-                            else
-                            {
-                                currentDoll++;
-                                inTarget = false;
+                                doll.GetComponent<DollHealth>().Reset();
                             }
                         }
                         else
                         {
-                            nav.SetDestination(toyDoll[currentDoll].transform.position);
+                            if (inTarget)
+                            {
+                                DollHealth currentDollHealth = toyDoll[currentDoll].GetComponent("DollHealth") as DollHealth;
+                                if (currentDollHealth.currentHealth > 0)
+                                {
+                                    playerScript.PlayWithAnimal((toyDoll[currentDoll].GetComponent("ToySatisfaction") as ToySatisfaction));
+                                    Attack(Random.Range(1, 2));
+                                    currentDollHealth.TakeDamage(10, player.transform.position);
+                                }
+                                else
+                                {
+                                    currentDoll++;
+                                    inTarget = false;
+                                }
+                            }
+                            else
+                            {
+                                nav.SetDestination(toyDoll[currentDoll].transform.position);
+                            }
                         }
                     }
-                }
-                //else if (currentTarget.Equals("ball") && !inTarget)
-                //{
-                //    nav.SetDestination(toyBall.position);
-                //}
-                else if (currentTarget.Equals("bed"))
-                {
-                    if (inTarget)
+                    //else if (currentTarget.Equals("ball") && !inTarget)
+                    //{
+                    //    nav.SetDestination(toyBall.position);
+                    //}
+                    else if (currentTarget.Equals("bed"))
                     {
-                        StopPlayer();
-                        float sleepLength = Random.Range(60f,180f);
-                        playerScript.Sleep(sleepLength);
-                        StartCoroutine(ReturnFromClickState(sleepLength));
-                        inTarget = false;
-                    }
-                    else
-                    {
-                         nav.SetDestination(bed.position);
-                    }
-                    
-                }
-                else if (currentTarget.Equals("toilet"))
-                {
-                    if (inTarget)
-                    {
-                        StopPlayer();
-                        float bathroomLength = Random.Range(10f, 45f);
-                        switch(Random.Range(1, 5))
+                        if (inTarget)
                         {
-                            case 1:
-                                playerScript.Putup(bathroomLength);
-                                break;
-                            case 2:
-                                playerScript.SayGoodbye(bathroomLength);
-                                break;
-                            case 3:
-                                playerScript.Talk(bathroomLength);
-                                break;
-                            case 4:
-                                playerScript.TakeUp(bathroomLength);
-                                break;
+                            StopPlayer();
+                            float sleepLength = Random.Range(60f, 180f);
+                            playerScript.Sleep(sleepLength);
+                            playerScript.Rested();
+                            StartCoroutine(ReturnFromClickState(sleepLength));
+                            inTarget = false;
                         }
-                        StartCoroutine(ReturnFromClickState(bathroomLength));
-                        inTarget = false;
+                        else
+                        {
+                            nav.SetDestination(bed.position);
+                        }
+
                     }
-                    else
+                    else if (currentTarget.Equals("toilet"))
                     {
-                        nav.SetDestination(toilet.position);
-                    }   
+                        if (inTarget)
+                        {
+                            StopPlayer();
+                            float bathroomLength = Random.Range(10f, 45f);
+                            switch (Random.Range(1, 4))
+                            {
+                                case 1:
+                                    playerScript.Putup(bathroomLength);
+                                    break;
+                                case 2:
+                                    playerScript.SayGoodbye(bathroomLength);
+                                    break;
+                                case 3:
+                                    playerScript.Talk(bathroomLength);
+                                    break;
+                                case 4:
+                                    playerScript.TakeUp(bathroomLength);
+                                    break;
+                            }
+                            playerScript.EmptyBladder();
+                            StartCoroutine(ReturnFromClickState(bathroomLength));
+                            inTarget = false;
+                        }
+                        else
+                        {
+                            nav.SetDestination(toilet.position);
+                        }
+                    }
                 }
-            }
-            else
-            {
-                MoveRandomly();
+                else
+                {
+                    MoveRandomly();
+                }
             }
         }
 
