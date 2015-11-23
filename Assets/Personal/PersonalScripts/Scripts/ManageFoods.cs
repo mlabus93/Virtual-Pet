@@ -14,7 +14,7 @@ namespace PersonalScripts
         public GameObject beef;
         public GameObject treat;
         public GameObject water;
-        public Text insuffientCoins;
+        public GameObject insuffientCoins;
 
         private int turkeyCount;
         private int ribCount;
@@ -37,7 +37,9 @@ namespace PersonalScripts
             else
             {
                 //PRINT ERROR - play mini games to earn coin to use on foods and toys
-                insuffientCoins.color = Color.red;
+                insuffientCoins.SetActive(true);
+                //insuffientCoins.enabled = true;
+                //insuffientCoins.color = Color.red;
                 StartCoroutine(RemoveErrorMessage());
             }
         }
@@ -83,8 +85,6 @@ namespace PersonalScripts
 
         public void Drink()
         {
-            //player = GameObject.FindGameObjectWithTag("Player");
-            //player.GetComponent<MoveToAction>().GoToWaterBowl();
             isEating = true;
             MeshRenderer skin = turkey.GetComponent("MeshRenderer") as MeshRenderer;
             player.FeedAnimal((water.GetComponent("WaterDrink") as WaterDrink));
@@ -226,8 +226,9 @@ namespace PersonalScripts
         IEnumerator RemoveErrorMessage()
         {
             yield return new WaitForSeconds(4f);
-            insuffientCoins.color = new Color(0, 0, 0, 0);
+            insuffientCoins.SetActive(false);
+            //insuffientCoins.color = new Color(0, 0, 0, 0);
+            //insuffientCoins.enabled = false;
         }
     }
 }
-
