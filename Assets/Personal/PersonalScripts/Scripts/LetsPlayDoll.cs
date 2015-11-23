@@ -1,5 +1,6 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 namespace PersonalScripts
 {
@@ -14,9 +15,10 @@ namespace PersonalScripts
 
         void OnMouseDown()
         {
-            player.GetComponent<MoveToAction>().PlayWithDoll();
-
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                player.GetComponent<MoveToAction>().PlayWithDoll();
+            }
         }
     }
 }
-
