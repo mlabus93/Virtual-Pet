@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using System;
@@ -33,6 +33,7 @@ namespace PersonalScripts
         public Slider bladderSlider;
         public GameObject player;
         public PlayerHealth playerHealth;
+        public GameObject insufficientCoinsTxt;
         GameObject healthBar;
         Slider healthBarSlider;
         Slider[] sliders;
