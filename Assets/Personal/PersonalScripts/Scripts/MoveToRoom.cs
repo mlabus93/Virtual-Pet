@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class MoveToRoom : MonoBehaviour {
     public GameObject cameraObject;
