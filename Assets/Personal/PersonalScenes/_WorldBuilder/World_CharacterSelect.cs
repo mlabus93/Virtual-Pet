@@ -24,7 +24,7 @@ namespace PersonalScripts
                 _manager = FindObjectOfType<AnimalGameManager>();
                 Debug.Log("It was null");
             }
-            Debug.Log("its not null anymore");
+            //Debug.Log("its not null anymore");
         }       
 
         public void CharacterSelected()

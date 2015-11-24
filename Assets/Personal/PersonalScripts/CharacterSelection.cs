@@ -87,7 +87,8 @@ namespace PersonalScripts
             {
                 hatIndex -= numOfHats;
             }
-            iAnimal.ChangeHats();
+            Debug.Log(hatIndex);
+            iAnimal.ChangeHats(hatIndex, false);
         }
 
         public void PrevHat()
@@ -97,7 +98,8 @@ namespace PersonalScripts
             {
                 hatIndex += numOfHats;
             }
-            iAnimal.ChangeHats();
+            Debug.Log(hatIndex);
+            iAnimal.ChangeHats(hatIndex, false);
         }
 
         private void ResetOutfit()
