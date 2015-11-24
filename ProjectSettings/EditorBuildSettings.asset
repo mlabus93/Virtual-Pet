@@ -10,7 +10,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Personal/PersonalScenes/MainGame/CharacterSelect.unity
   - enabled: 1
-    path: Assets/Personal/PersonalScenes/MainGame/MainOther.unity
+    path: Assets/Personal/PersonalScenes/MainGame/Main.unity
   - enabled: 1
     path: Assets/Personal/PersonalScenes/MainGame/MainMenu.unity
   - enabled: 1

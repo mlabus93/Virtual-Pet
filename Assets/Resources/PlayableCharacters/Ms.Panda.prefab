@@ -404,6 +404,8 @@ GameObject:
   - 114: {fileID: 11446692}
   - 114: {fileID: 11434150}
   - 114: {fileID: 11480570}
+  - 114: {fileID: 11438152}
+  - 195: {fileID: 19568494}
   m_Layer: 0
   m_Name: Ms.Panda
   m_TagString: Player
@@ -1311,6 +1313,21 @@ MonoBehaviour:
   enableBlinking: 0
   _currentHatIndex: 0
   _hats: []
+--- !u!114 &11438152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff06096aea0b125478641b6b33a9aa02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomPositions: []
+  inTarget: 0
+  moveRandom: 1
+  randomTargetFound: 1
 --- !u!114 &11444290
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1452,6 +1469,26 @@ SkinnedMeshRenderer:
     m_Center: {x: -.130534053, y: 0, z: .0254741311}
     m_Extent: {x: .250391692, y: .229757249, z: .159398526}
   m_DirtyAABB: 0
+--- !u!195 &19568494
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169428}
+  m_Enabled: 1
+  m_Radius: .119999997
+  m_Speed: 20
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: .49000001
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -1474,6 +1511,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Radius
+      value: .119999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Speed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Height
+      value: .49000001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
