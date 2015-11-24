@@ -2,23 +2,23 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
 
+
 namespace PersonalScripts
 {
-    public class LetsPlayBall : MonoBehaviour
+    public class GoToBed : MonoBehaviour
     {
         GameObject player;
 
-        void Awake()
-        {
-            player = GameObject.FindGameObjectWithTag("Player");
-        }
-
         void OnMouseDown()
         {
-            if (!EventSystem.current.IsPointerOverGameObject())
+            player = GameObject.FindGameObjectWithTag("Player");
+
+            if (!EventSystem.current.IsPointerOverGameObject() && player != null)
             {
-                player.GetComponent<MoveToAction>().PlayWithBall();
+                player.GetComponent<MoveToAction>().GoToBed();
             }
+
         }
     }
+
 }

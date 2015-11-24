@@ -290,6 +290,8 @@ GameObject:
   - 114: {fileID: 11475586}
   - 114: {fileID: 11452848}
   - 114: {fileID: 11406116}
+  - 114: {fileID: 11437032}
+  - 195: {fileID: 19547638}
   m_Layer: 0
   m_Name: Mr.Cat
   m_TagString: Player
@@ -1292,6 +1294,21 @@ MonoBehaviour:
   _swordPower: 17
   _axePower: 20
   _fistPower: 10
+--- !u!114 &11437032
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff06096aea0b125478641b6b33a9aa02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomPositions: []
+  inTarget: 0
+  moveRandom: 1
+  randomTargetFound: 1
 --- !u!114 &11452848
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1436,13 +1453,45 @@ SkinnedMeshRenderer:
     m_Center: {x: -.14987886, y: 1.78813934e-07, z: -.0389576927}
     m_Extent: {x: .269975066, y: .232083991, z: .223820657}
   m_DirtyAABB: 0
+--- !u!195 &19547638
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147544}
+  m_Enabled: 1
+  m_Radius: .119999997
+  m_Speed: 20
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: .49000001
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Radius
+      value: .119999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Speed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Height
+      value: .49000001
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 147544}
