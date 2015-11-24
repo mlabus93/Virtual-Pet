@@ -36,7 +36,7 @@ namespace PersonalScripts
         if (AnimalGameManager._player.GetNickName() == "Ms.Fox")
         {
             // instantiates animal prefab into scene
-            GameObject playerClone = Instantiate(Resources.Load("PlayableCharacters/Ms.Fox", typeof(GameObject)), Vector3.zero, Quaternion.identity) as GameObject;
+            GameObject playerClone = Instantiate(Resources.Load("PlayableCharacters/Ms.Fox", typeof(GameObject)), transform.position, Quaternion.identity) as GameObject;
             playerClone.name = "Instantiated Player from Resources";
             // loads its values
             _manager.Load();
@@ -62,7 +62,7 @@ namespace PersonalScripts
         if (AnimalGameManager._player.GetNickName() == "Mr.Penguin")
         {
             // instantiates animal prefab into scene
-            GameObject playerClone = Instantiate(Resources.Load("PlayableCharacters/Mr.Penguin", typeof(GameObject)), Vector3.zero, Quaternion.identity) as GameObject;
+            GameObject playerClone = Instantiate(Resources.Load("PlayableCharacters/Mr.Penguin", typeof(GameObject)), transform.position, Quaternion.identity) as GameObject;
             playerClone.name = "Instantiated Player from Resources";
             // loads its values
             _manager.Load();
@@ -75,7 +75,7 @@ namespace PersonalScripts
         if (AnimalGameManager._player.GetNickName() == "Mr.Kitty")
         {
             // instantiates animal prefab into scene
-            GameObject playerClone = Instantiate(Resources.Load("PlayableCharacters/Mr.Cat", typeof(GameObject)), Vector3.zero, Quaternion.identity) as GameObject;
+            GameObject playerClone = Instantiate(Resources.Load("PlayableCharacters/Mr.Cat", typeof(GameObject)), transform.position, Quaternion.identity) as GameObject;
             playerClone.name = "Instantiated Player from Resources";
             // loads its values
             _manager.Load();
@@ -88,7 +88,7 @@ namespace PersonalScripts
         if (AnimalGameManager._player.GetNickName() == "Mr.Rabbit")
         {
             // instantiates animal prefab into scene
-            GameObject playerClone = Instantiate(Resources.Load("PlayableCharacters/Ms.Rabbit", typeof(GameObject)), Vector3.zero, Quaternion.identity) as GameObject;
+            GameObject playerClone = Instantiate(Resources.Load("PlayableCharacters/Ms.Rabbit", typeof(GameObject)), transform.position, Quaternion.identity) as GameObject;
             playerClone.name = "Instantiated Player from Resources";
             // loads its values
             _manager.Load();
@@ -101,7 +101,7 @@ namespace PersonalScripts
         if (AnimalGameManager._player.GetNickName() == "Mr.Panda")
         {
             // instantiates animal prefab into scene
-            GameObject playerClone = Instantiate(Resources.Load("PlayableCharacters/Ms.Panda", typeof(GameObject)), Vector3.zero, Quaternion.identity) as GameObject;
+            GameObject playerClone = Instantiate(Resources.Load("PlayableCharacters/Ms.Panda", typeof(GameObject)), transform.position, Quaternion.identity) as GameObject;
             playerClone.name = "Instantiated Player from Resources";
 
             // moves it to this objects location
