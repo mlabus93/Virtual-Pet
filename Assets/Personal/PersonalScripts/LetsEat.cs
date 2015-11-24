@@ -9,16 +9,11 @@ namespace PersonalScripts
         GameObject player;
         public GameObject uiController;
 
-        bool playerInRange;
-
-        void Awake()
-        {
-            player = GameObject.FindGameObjectWithTag("Player");
-        }
-
         void OnMouseDown()
         {
-            if(!EventSystem.current.IsPointerOverGameObject())
+            player = GameObject.FindGameObjectWithTag("Player");
+
+            if (!EventSystem.current.IsPointerOverGameObject() && player != null)
             {
                 player.GetComponent<MoveToAction>().GoToFoodTable();
             }

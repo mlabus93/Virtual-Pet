@@ -3827,7 +3827,7 @@ MonoBehaviour:
   bladderSlider: {fileID: 1120164073}
   player: {fileID: 0}
   playerHealth: {fileID: 0}
-  insufficientCoinsTxt: {fileID: 0}
+  insufficientCoinsTxt: {fileID: 2106684659}
 --- !u!4 &750467421
 Transform:
   m_ObjectHideFlags: 0

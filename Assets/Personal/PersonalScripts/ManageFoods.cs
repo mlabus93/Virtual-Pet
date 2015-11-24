@@ -44,12 +44,6 @@ namespace PersonalScripts
             }
         }
 
-        void Start()
-        {
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent("Character") as Character;
-
-        }
-
         private void UpdateAvailablity(string item)
         {
             switch (item)
@@ -85,6 +79,7 @@ namespace PersonalScripts
 
         public void Drink()
         {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent("Character") as Character;
             isEating = true;
             MeshRenderer skin = turkey.GetComponent("MeshRenderer") as MeshRenderer;
             player.FeedAnimal((water.GetComponent("WaterDrink") as WaterDrink));
@@ -93,6 +88,7 @@ namespace PersonalScripts
 
         public void EatTurkey()
         {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent("Character") as Character;
             if (!isEating)
             {
                 PurchaseFood(turkey);
@@ -111,6 +107,7 @@ namespace PersonalScripts
 
         public void EatChicken()
         {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent("Character") as Character;
             if (!isEating)
             {
                 PurchaseFood(chicken);
@@ -129,6 +126,7 @@ namespace PersonalScripts
 
         public void EatRibs()
         {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent("Character") as Character;
             if (!isEating)
             {
                 PurchaseFood(ribs);
@@ -147,6 +145,7 @@ namespace PersonalScripts
 
         public void EatBeef()
         {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent("Character") as Character;
             if (!isEating)
             {
                 PurchaseFood(beef);
@@ -165,6 +164,7 @@ namespace PersonalScripts
 
         public void EatFish()
         {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent("Character") as Character;
             if (!isEating)
             {
                 PurchaseFood(fish);
@@ -183,6 +183,7 @@ namespace PersonalScripts
 
         public void EatTreat()
         {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent("Character") as Character;
             if (!isEating)
             {
                 PurchaseFood(treat);
