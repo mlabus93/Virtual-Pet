@@ -36,13 +36,7 @@ namespace PersonalScripts
             player = GameObject.FindGameObjectWithTag("Player");
             playerScript = player.GetComponent("Character") as Character;
             anim = player.GetComponent<Animator>();
-            table = GameObject.FindGameObjectWithTag("Food Table").transform;
-            bed = GameObject.FindGameObjectWithTag("Bed").transform;
-            toyDoll = GameObject.FindGameObjectsWithTag("Toy Doll");
-            //toyBall = GameObject.FindGameObjectWithTag("Toy Ball").transform;
-            toilet = GameObject.FindGameObjectWithTag("Toilet").transform;
             nav = GetComponent<NavMeshAgent>();
-            insuffientCoins = (GameObject.FindWithTag("UIManager").GetComponent("UIController") as UIController).insufficientCoinsTxt;
         }
 
         void FixedUpdate()
@@ -77,6 +71,7 @@ namespace PersonalScripts
             else
             {
                 //PRINT ERROR - play mini games to earn coin to use on foods and toys
+                insuffientCoins = (GameObject.FindWithTag("UIManager").GetComponent("UIController") as UIController).insufficientCoinsTxt;
                 insuffientCoins.SetActive(true);
                 StartCoroutine(RemoveErrorMessage());
             }
@@ -229,14 +224,16 @@ namespace PersonalScripts
 
         public void GoToFoodTable()
         {
+            table = GameObject.FindGameObjectWithTag("Food Table").transform;
             moveRandom = false;
             inTarget = false;
             currentTarget = "table";
             StartCoroutine(ReturnToRadom());
         }
-
+     
         public void GoToBed()
         {
+            bed = GameObject.FindGameObjectWithTag("Bed").transform;
             moveRandom = false;
             inTarget = false;
             currentTarget = "bed";
@@ -244,6 +241,7 @@ namespace PersonalScripts
 
         public void PlayWithDoll()
         {
+            toyDoll = GameObject.FindGameObjectsWithTag("Toy Doll");
             int costToPlay = 0;
             foreach (GameObject doll in toyDoll)
             {
@@ -267,12 +265,14 @@ namespace PersonalScripts
 
         public void PlayWithBall()
         {
+            //toyBall = GameObject.FindGameObjectWithTag("Toy Ball").transform;
             inTarget = false;
             currentTarget = "ball";
         }
 
         public void UseRestRoom()
         {
+            toilet = GameObject.FindGameObjectWithTag("Toilet").transform;
             moveRandom = false;
             inTarget = false;
             currentTarget = "toilet";

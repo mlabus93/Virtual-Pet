@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 namespace PersonalScripts
 {
@@ -7,10 +8,12 @@ namespace PersonalScripts
         Transform player;
         DollHealth dollHealth;
         NavMeshAgent nav;
+        Transform initialPosition;
         bool isPlaying;
 
-        void Awake()
+        void BecomeAlive()
         {
+            initialPosition = gameObject.transform;
             player = GameObject.FindGameObjectWithTag("Player").transform;
             dollHealth = GetComponent<DollHealth>();
             nav = GetComponent<NavMeshAgent>();
@@ -18,6 +21,7 @@ namespace PersonalScripts
 
         public void PlayWithDoll()
         {
+            BecomeAlive();
             dollHealth.currentHealth = 10;
             isPlaying = true;
             nav.Resume();
@@ -25,16 +29,19 @@ namespace PersonalScripts
 
         void Update()
         {
-            if (dollHealth.currentHealth > 0 && isPlaying)
+            if (player != null)
             {
-                nav.SetDestination(player.position);
+                if (dollHealth.currentHealth > 0 && isPlaying)
+                {
+                    nav.SetDestination(player.position);
+                }
+                else
+                {
+                    nav.SetDestination(initialPosition.position);
+                    isPlaying = false;
+                }
             }
-            else
-            {
-                nav.Stop();
-                isPlaying = false;
-            }
-        }
+        }        
     }
 }
 
