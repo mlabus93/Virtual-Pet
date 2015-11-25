@@ -49,23 +49,23 @@ namespace PersonalScripts
             //healthBarSlider = healthBar.GetComponent<Slider>();
         }
 
-        private void UpdateHealthBar()
-        {
-            if (healthBarSlider != null)
-            {
-                GameObject healthValue = GameObject.Find("HealthValue");
-                Text value = healthValue.GetComponent<Text>();
-                healthBarSlider.value = playerHealth.currentHealth;
-                if (playerHealth.currentHealth >= 0)
-                {
-                    value.text = playerHealth.currentHealth.ToString();
-                }
-                else
-                {
-                    value.text = "0";
-                }
-            }
-        }
+        //private void UpdateHealthBar()
+        //{
+        //    if (healthBarSlider != null)
+        //    {
+        //        GameObject healthValue = GameObject.Find("HealthValue");
+        //        Text value = healthValue.GetComponent<Text>();
+        //        healthBarSlider.value = playerHealth.currentHealth;
+        //        if (playerHealth.currentHealth >= 0)
+        //        {
+        //            value.text = playerHealth.currentHealth.ToString();
+        //        }
+        //        else
+        //        {
+        //            value.text = "0";
+        //        }
+        //    }
+        //}
 
         public void ShowPausePanel()
         {
@@ -180,7 +180,7 @@ namespace PersonalScripts
         // Update is called once per frame
         void Update()
         {
-            UpdateHealthBar();
+            //UpdateHealthBar();
             if (Input.GetButtonDown("Fire1") && statsPanel.gameObject.activeSelf)
             {
                 HidePanels();
