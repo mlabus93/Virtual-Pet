@@ -43,9 +43,12 @@ namespace PersonalScripts
         {
             // Set the displayed text to be the word "Score" followed by the score value.
             //if (_timer._timeUp && GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().currentHealth > 0)
+            if (text != null)
+            {
                 text.text = "Score: " + score + "\tTime: " + (int)_timer._stopTime;
-            if ((int)_timer._stopTime <= 0)
-                OnGameOver();
+                if ((int)_timer._stopTime <= 0)
+                    OnGameOver();
+            }
         }
 
         public void OnGameOver()
