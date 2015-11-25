@@ -73,6 +73,7 @@ namespace PersonalScripts
         void SetAnimalPosition(Vector3 loci);
         void ChangeHats();
         void ChangeHats(int index, bool loop = true);
+        void ChangeEyes();
         string GetNickName();
         void CalculateHealth();
         void AgePet();

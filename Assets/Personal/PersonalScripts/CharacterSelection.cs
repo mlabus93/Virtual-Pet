@@ -9,12 +9,14 @@ namespace PersonalScripts
 
         int numOfOutfits = 4;
         int numOfHats = 3;
+        int numOfWeapons = 3;
         GameObject[] characters;
         public GameObject currentCharacter;
         public IAnimalCharacter iAnimal;
         int characterIndex;
         int outfitIndex;
         int hatIndex;
+        int weaponIndex;
 
         // Use this for initialization
         void Start()
@@ -22,6 +24,7 @@ namespace PersonalScripts
             characterIndex = 0;
             outfitIndex = 0;
             hatIndex = 0;
+            weaponIndex = 0;
             characters = GameObject.FindGameObjectsWithTag("Player");
             currentCharacter = characters[characterIndex];
             SetCharactersInactive();
@@ -47,6 +50,7 @@ namespace PersonalScripts
             iAnimal.SetandReturnOutfitSystem();
             outfitIndex = 0;
             hatIndex = 0;
+            weaponIndex = 0;
         }
 
         public void PrevCharacter()
@@ -58,6 +62,7 @@ namespace PersonalScripts
             iAnimal.SetandReturnOutfitSystem();
             outfitIndex = 0;
             hatIndex = 0;
+            weaponIndex = 0;
         }
 
         public void NextOutfit()
@@ -80,6 +85,11 @@ namespace PersonalScripts
             iAnimal.ChangeIntoSpecificFit(outfitIndex);
         }
 
+        public void EyesToggle()
+        {
+            iAnimal.ChangeEyes();
+        }
+
         public void NextHat()
         {
             hatIndex++;
@@ -100,6 +110,26 @@ namespace PersonalScripts
             }
             Debug.Log(hatIndex);
             iAnimal.ChangeHats(hatIndex, false);
+        }
+
+        public void NextWeapon()
+        {
+            weaponIndex++;
+            if (weaponIndex >= numOfWeapons)
+            {
+                weaponIndex -= numOfWeapons;
+            }
+            iAnimal.ChangeWeapons(weaponIndex, false);
+        }
+
+        public void PrevWeapon()
+        {
+            weaponIndex--;
+            if (weaponIndex < 0)
+            {
+                weaponIndex += numOfWeapons;
+            }
+            iAnimal.ChangeWeapons(weaponIndex, false);
         }
 
         private void ResetOutfit()
