@@ -6,11 +6,11 @@ namespace PersonalScripts
 {
     public class MoveToAction : MonoBehaviour
     {
-        public GameObject[] randomPositions;
         public bool inTarget = false;
         public bool moveRandom = true;
         public bool randomTargetFound = true;
 
+        GameObject[] randomPositions;
         AnimalGameManager gameManager;
         GameObject insuffientCoins;
         Animator anim;
@@ -26,7 +26,6 @@ namespace PersonalScripts
         int currentDoll = 0;
         bool isPlaying;
         bool playerStopped;
-        bool readToSleep = false;
         Character playerScript;
 
         // Use this for initialization
@@ -92,6 +91,7 @@ namespace PersonalScripts
                     {
                         if (currentDoll >= toyDoll.Length)
                         {
+                            isPlaying = false;
                             currentDoll = 0;
                             currentTarget = "";
                             moveRandom = true;
@@ -185,6 +185,7 @@ namespace PersonalScripts
 
         public void MoveRandomly()
         {
+            randomPositions = GameObject.FindGameObjectsWithTag("RandomPosition");
             if (randomTargetFound)
             {
                 var oldTarget = currentRandomTarget;
@@ -194,6 +195,13 @@ namespace PersonalScripts
                 randomTargetFound = false;
             }
             nav.SetDestination(currentRandomTarget.position);
+        }
+        void OnTriggerStay(Collider other)
+        {
+            if(isPlaying && other.tag.Equals("Toy Doll") && currentTarget.Equals("doll") && currentDoll <= toyDoll.Length && other.transform == toyDoll[currentDoll].transform)
+            {
+                inTarget = true;
+            }
         }
 
         void OnTriggerEnter(Collider other)

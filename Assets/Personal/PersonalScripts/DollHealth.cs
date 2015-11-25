@@ -19,7 +19,8 @@ namespace PersonalScripts
         public void Reset()
         {
             currentHealth = startingHealth;
-            anim.SetTrigger("Idle");
+            //anim.SetTrigger("Idle");
+            isDown = false;
         }
 
         public void TakeDamage(int amount, Vector3 hitPoint)
@@ -41,6 +42,11 @@ namespace PersonalScripts
         {
             isDown = true;
             anim.SetTrigger("Dead");
+        }
+
+        public void StartSinking()
+        {
+            anim.SetTrigger("NotPlaying");
         }
 
     }

@@ -8,12 +8,12 @@ namespace PersonalScripts
         Transform player;
         DollHealth dollHealth;
         NavMeshAgent nav;
-        Transform initialPosition;
+        Vector3 initialPosition;
         bool isPlaying;
 
         void BecomeAlive()
         {
-            initialPosition = gameObject.transform;
+            initialPosition = gameObject.transform.position;
             player = GameObject.FindGameObjectWithTag("Player").transform;
             dollHealth = GetComponent<DollHealth>();
             nav = GetComponent<NavMeshAgent>();
@@ -37,7 +37,7 @@ namespace PersonalScripts
                 }
                 else
                 {
-                    nav.SetDestination(initialPosition.position);
+                    nav.SetDestination(initialPosition);
                     isPlaying = false;
                 }
             }

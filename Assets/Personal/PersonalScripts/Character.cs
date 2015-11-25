@@ -101,6 +101,10 @@ namespace PersonalScripts
         {
             _outfitSystem.ChangeHats(index, loop);
         }
+        public void ChangeEyes()
+        {
+            _outfitSystem.ChangeEyes();
+        }
         public void AdjustAgingRate(float ageRate)
         {
             _petAgeTimer.SetTimer(_petAgeTimer._stopTime + ageRate);

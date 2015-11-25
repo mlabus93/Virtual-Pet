@@ -6,7 +6,7 @@ namespace PersonalScripts
 {
     public class ManageFoods : MonoBehaviour
     {
-        public AnimalGameManager gameManager;
+        
         public GameObject turkey;
         public GameObject ribs;
         public GameObject chicken;
@@ -16,6 +16,7 @@ namespace PersonalScripts
         public GameObject water;
         public GameObject insuffientCoins;
 
+        AnimalGameManager gameManager;
         private int turkeyCount;
         private int ribCount;
         private int chickenCount;
@@ -27,6 +28,7 @@ namespace PersonalScripts
 
         public void PurchaseFood(GameObject selection)
         {
+            gameManager = FindObjectOfType<AnimalGameManager>();
             int balance = gameManager.GetCoins();
 
             if (isAble(balance, selection.GetComponent<IFood>().cost))

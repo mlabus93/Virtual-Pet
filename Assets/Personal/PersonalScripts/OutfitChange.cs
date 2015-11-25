@@ -115,11 +115,11 @@ namespace PersonalScripts
             int tempHatIndex = _currentHatIndex;
             int newIndex = (tempHatIndex + 1) % (int)Hats.numHats; // there are 3 head types
             DisableAllHats();
-            if (newIndex == (int)Hats.NoHat)
-            {
-                _currentHatIndex = newIndex;
-                return;
-            }
+            //if (newIndex == (int)Hats.NoHat)
+            //{
+            //    _currentHatIndex = newIndex;
+            //    return;
+            //}
 
             if (loop)
             {
