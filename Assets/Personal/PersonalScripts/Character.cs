@@ -245,13 +245,13 @@ namespace PersonalScripts
 
         public void EmptyBladder()
         {
-            _bladderCapacity = EMPTY;
+            _bladderCapacity = FULL;
             CalculateHealth();
         }
 
         public void Rested()
         {
-            _fatigue = EMPTY;
+            _fatigue = FULL;
             CalculateHealth();
         }
 
