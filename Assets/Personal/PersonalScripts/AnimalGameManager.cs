@@ -266,13 +266,20 @@ namespace PersonalScripts
             Debug.Log("Now Saving to " + Application.persistentDataPath + "/playerInfo.dat");
             // creates new data object with values from player's current state
             // *must be written this way in order for it to be serialized
-            PlayerData data = new PlayerData(_player.hunger, _player.thirst,
-                _player.happiness, _player.health, _player.fatigue, _player.bladderCapacity);
-            // writes to binary file and closes
-            bf.Serialize(file, data);
-            file.Close();
+            if (_player != null)
+            {
+                PlayerData data = new PlayerData(_player.hunger, _player.thirst,
+                    _player.happiness, _player.health, _player.fatigue, _player.bladderCapacity);
+                // writes to binary file and closes
+                bf.Serialize(file, data);
+                file.Close();
 
-            SaveXMLData();
+                SaveXMLData();
+            }
+            else
+            {
+                file.Close();
+            }
         }
 
         public void Load()

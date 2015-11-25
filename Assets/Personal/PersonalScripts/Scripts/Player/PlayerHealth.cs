@@ -56,7 +56,19 @@ public class PlayerHealth : MonoBehaviour
 
         currentHealth -= amount;
 
-        //healthSlider.value = currentHealth;
+        Text healthText = GameObject.Find("healthText").GetComponent<Text>();
+
+        if (currentHealth < 0)
+        {
+            
+            healthText.text = "0";
+            healthSlider.value = 0;
+        }
+        else
+        {
+            healthText.text = currentHealth.ToString();
+            healthSlider.value = currentHealth;
+        }
 
         //playerAudio.Play ();
 

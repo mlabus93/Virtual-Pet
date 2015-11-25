@@ -23,7 +23,7 @@ public class World_CharacterSelect_UI : DynamicButtonAssignment {
             switch (btnName)
             {
                 case "BackBtn":
-                    _buttons[i].onClick.AddListener(delegate
+                    _buttons[i].onClick.AddListener(() =>
                     {
                         uiManager.GetComponent<SceneSwapper>().LoadScene(0);
                     });

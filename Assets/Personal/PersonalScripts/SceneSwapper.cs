@@ -13,7 +13,10 @@ namespace PersonalScripts
             // save game before loading scene
             //GetComponent<AnimalGameManager>().Save();
             AnimalGameManager agm = FindObjectOfType<AnimalGameManager>();
-            agm.Save();
+            if (agm != null)
+            {
+                agm.Save();
+            }
             // SceneNum relates to the index in 
             // File -> BuildSettings -> Scenes In Build
             Application.LoadLevel(sceneNum);
