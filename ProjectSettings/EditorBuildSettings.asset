@@ -28,3 +28,5 @@ EditorBuildSettings:
     path: Assets/Starter.unity
   - enabled: 1
     path: Assets/Personal/PersonalScenes/MainGame/MainMenu.unity
+  - enabled: 1
+    path: Assets/Personal/PersonalScenes/Minigames/Game 6 - Haunted Level/HauntedMiniGame.unity
