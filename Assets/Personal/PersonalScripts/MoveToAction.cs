@@ -26,7 +26,6 @@ namespace PersonalScripts
         int currentDoll = 0;
         bool isPlaying;
         bool playerStopped;
-        bool readToSleep = false;
         Character playerScript;
 
         // Use this for initialization
@@ -92,6 +91,7 @@ namespace PersonalScripts
                     {
                         if (currentDoll >= toyDoll.Length)
                         {
+                            isPlaying = false;
                             currentDoll = 0;
                             currentTarget = "";
                             moveRandom = true;
@@ -195,6 +195,13 @@ namespace PersonalScripts
                 randomTargetFound = false;
             }
             nav.SetDestination(currentRandomTarget.position);
+        }
+        void OnTriggerStay(Collider other)
+        {
+            if(isPlaying && other.tag.Equals("Toy Doll") && currentTarget.Equals("doll") && currentDoll <= toyDoll.Length && other.transform == toyDoll[currentDoll].transform)
+            {
+                inTarget = true;
+            }
         }
 
         void OnTriggerEnter(Collider other)
