@@ -6,11 +6,11 @@ namespace PersonalScripts
 {
     public class MoveToAction : MonoBehaviour
     {
-        public GameObject[] randomPositions;
         public bool inTarget = false;
         public bool moveRandom = true;
         public bool randomTargetFound = true;
 
+        GameObject[] randomPositions;
         AnimalGameManager gameManager;
         GameObject insuffientCoins;
         Animator anim;
@@ -185,6 +185,7 @@ namespace PersonalScripts
 
         public void MoveRandomly()
         {
+            randomPositions = GameObject.FindGameObjectsWithTag("RandomPosition");
             if (randomTargetFound)
             {
                 var oldTarget = currentRandomTarget;

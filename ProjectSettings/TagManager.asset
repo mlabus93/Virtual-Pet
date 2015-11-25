@@ -21,6 +21,7 @@ TagManager:
   - BedArea
   - NoCoins
   - UIManager
+  - RandomPosition
   layers:
   - Default
   - TransparentFX
