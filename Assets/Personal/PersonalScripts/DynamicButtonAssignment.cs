@@ -59,7 +59,7 @@ namespace PersonalScripts
             Debug.Log("Player found: " + _player.GetNickName());
         }
 
-        private virtual void SetupButtons()
+        public virtual void SetupButtons()
         {
             // Checks names of buttons and adds listeners accordingly
             for (int i = 0; i < _buttons.Length; i++)
