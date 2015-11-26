@@ -65,7 +65,8 @@ namespace PersonalScripts
             // uses loaded pet name to instantiate animal and store its gameObject
             PlayerAnimalObject = _playerSpawner.SpawnPlayer(ac.animals[0].Name, transform.position);
             // player no longer null and set to instantiated character
-            _player = PlayerAnimalObject.GetComponent<Character>();
+            //_player = PlayerAnimalObject.GetComponent<Character>();
+            FindExactAnimal();
             // loads player data
             Load();
         }
