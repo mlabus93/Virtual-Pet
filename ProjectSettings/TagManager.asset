@@ -22,6 +22,8 @@ TagManager:
   - NoCoins
   - UIManager
   - RandomPosition
+  - LevelManager
+  - PlayerSpawnPoint
   layers:
   - Default
   - TransparentFX

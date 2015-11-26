@@ -1900,10 +1900,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00801a0d7a11b0d4db1de7c8c543cabd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _volumeLevel: 0
-  _gameSpeed: 0
   _userName: Temp
-  PlayableAnimal: {fileID: 0}
+  _newGame: 1
+  _playerSpawner: {fileID: 0}
+  PlayerAnimalObject: {fileID: 0}
 --- !u!4 &1051283692
 Transform:
   m_ObjectHideFlags: 0

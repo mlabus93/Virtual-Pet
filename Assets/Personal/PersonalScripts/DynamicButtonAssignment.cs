@@ -18,7 +18,7 @@ namespace PersonalScripts
             SetupButtons();
         }
 
-        private void SetPlayer()
+        protected void SetPlayer()
         {
             // clears player reference
             _player = null;

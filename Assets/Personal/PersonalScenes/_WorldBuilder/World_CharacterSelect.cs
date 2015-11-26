@@ -32,7 +32,7 @@ namespace PersonalScripts
             // stores animal choice, resets statuses and saves
             AnimalGameManager._player = _charSelect.iAnimal;
             AnimalGameManager._player.ResetStatuses();
-            _manager.PlayableAnimal = _charSelect.currentCharacter;
+            _manager.PlayerAnimalObject = _charSelect.currentCharacter;
             _manager.Save();
             // changes scene to the main menu
             //_swap.LoadScene(2);

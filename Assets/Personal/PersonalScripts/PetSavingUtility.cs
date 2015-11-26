@@ -5,8 +5,6 @@ using System.IO;
 
 [XmlRoot("AnimalCollection")]
 public class AnimalContainer
-
-
 {
     [XmlArray("Animals"), XmlArrayItem("Animal")]
     public List<Animal> animals = new List<Animal>();
@@ -44,57 +42,53 @@ public class AnimalContainer
     }
 }
 
- 
- public class Animal
- { 
-     // Note: all variables must be public
-     // Identify animals by species, but nicknames are just cool
- 	[XmlAttribute("name")]
+
+public class Animal
+{
+    // Note: all variables must be public
+    // Identify animals by species, but nicknames are just cool
+    [XmlAttribute("name")]
     public string Name = "Nickname";
 
     public PlayableCharacters species;
 
- 	
-
     // stats
-     public LocationData _playerLoci;
-     public StatusInformation _playerStats;
-     public OutfitAccessoryData _playerFit;
+    public LocationData _playerLoci;
+    public StatusInformation _playerStats;
+    public OutfitAccessoryData _playerFit;
 
-     
-     public struct LocationData
-     {
-         public float xpos;
-         public float ypos;
-         public float zpos;
-     }
 
-     public struct StatusInformation
-     {
-         public int Hunger;
-         public int Thirst;
-         public int Happiness;
-         public int Fatigue;
-         public int BladderCapacity;
-         public int Boredom;
-         public int Health;
-     }
+    public struct LocationData
+    {
+        public float xpos;
+        public float ypos;
+        public float zpos;
+    }
 
-     public struct OutfitAccessoryData
-     {
-         public int OutFitIndex;
-         public int EyeIndex;
-     }
+    public struct StatusInformation
+    {
+        public int Hunger;
+        public int Thirst;
+        public int Happiness;
+        public int Fatigue;
+        public int BladderCapacity;
+        public int Boredom;
+        public int Health;
+    }
 
-     // needs default constructor for w.e. reason
-     public Animal()
-    {}
-     public Animal(string name)
-     {
-         species = PlayableCharacters.Cat;
-         Name = name;
-         _playerLoci.xpos = 4;
-         _playerLoci.ypos = 12;
-         _playerLoci.zpos = 87;
-     }
- }
+    public struct OutfitAccessoryData
+    {
+        public int OutFitIndex;
+        public int EyeIndex;
+        public int HatIndex;
+        public int WeaponIndex;
+    }
+
+    // needs default constructor for w.e. reason
+    public Animal()
+    { }
+    public Animal(string name)
+    {
+        Name = name;
+    }
+}

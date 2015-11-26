@@ -30,16 +30,16 @@ namespace PersonalScripts
                 _weapons[i].SetActive(false);
             }
         }
-        void Awake()
+
+        void SetupWeapons()
         {
-
-
             // makes array size of available weapons
             _weapons = new GameObject[(int)WeaponType.numWeapons];
 
             string findFist = "animal_spine_joint/animal_spine2_joint/animal_shoulder_R_joint/animal_arm_R_joint/animal_forearm_R_joint/animal_ch_R_hand_position/Fist";
             string findAxe = "animal_spine_joint/animal_spine2_joint/animal_shoulder_R_joint/animal_arm_R_joint/animal_forearm_R_joint/animal_ch_R_hand_position/Axe";
             string findSword = "animal_spine_joint/animal_spine2_joint/animal_shoulder_R_joint/animal_arm_R_joint/animal_forearm_R_joint/animal_ch_R_hand_position/Sword";
+            
             // Gets the weapons from children
             // NOTE: must use this method to allow multiple characters
             // in the scene, tag WILL NOT WORK
@@ -58,6 +58,27 @@ namespace PersonalScripts
             //forces weapon to be hands
             ChangeWeapons((int)WeaponType.Hands, false);
             Debug.Log("Current Weapon index" + _currentWeaponIndex);
+        }
+        void Awake()
+        {
+            SetupWeapons();
+
+            if (_weapons[0] == null || _weapons[1] == null || _weapons[2] == null)
+            {
+                Debug.Log("beginning weapon invoke");
+                InvokeRepeating("SetupWeapons", 1, .3f);
+            }
+
+        }
+
+        void Update()
+        {
+            if (IsInvoking("SetupWeapons") && _weapons[0] != null && _weapons[1] != null && _weapons[2] != null)
+            {
+                Debug.Log("cancelling weapon invoke");
+                CancelInvoke("SetupWeapons");
+            }
+            
         }
 
         void OnTriggerEnter(Collider other)

@@ -16,14 +16,76 @@ namespace PersonalScripts
         public static AnimalGameManager _manager;
         public static IAnimalCharacter _player;
         public static int _coins = 500;
-        public int _volumeLevel;
-        public float _gameSpeed;
+        public static int _volumeLevel;
+        public static float _gameSpeed;
         public string _userName = "Temp";
-        public GameObject PlayableAnimal;
+        public bool _newGame = true; // if false then there is no player/ game data
+
+        // player spawner and object player will be spawned into
+        public PlayerSpawner _playerSpawner;
+        public GameObject PlayerAnimalObject;
         // saving utility
         AnimalContainer animalCollection = new AnimalContainer();
         GameContainer gameCollection = new GameContainer();
 
+        void Awake()
+        {
+            Debug.Log("The Animal Game Manager Awakens");
+            // creates a singleton
+            if (_manager == null)
+            {
+                DontDestroyOnLoad(gameObject);
+                _manager = this;
+            }
+            else if (_manager != this)
+            {
+                Destroy(gameObject);
+            }
+            // adds spawner
+            _playerSpawner = gameObject.AddComponent<PlayerSpawner>();
+            // clears player reference
+            _player = null;
+            // loads player's info
+            _newGame = !Load();
+
+            if (_player == null)
+            {
+                Debug.Log("THE PLAYER IS NULL");
+            }
+            else
+            {
+                Debug.Log("PLAYER NOT NULL");
+            }
+        }
+
+        public void InstantiatePlayer()
+        {
+            // loads animal data
+            AnimalContainer ac = AnimalContainer.Load(Path.Combine(Application.persistentDataPath, "Animalnfo.xml"));
+            // uses loaded pet name to instantiate animal and store its gameObject
+            PlayerAnimalObject = _playerSpawner.SpawnPlayer(ac.animals[0].Name, transform.position);
+            // player no longer null and set to instantiated character
+            _player = PlayerAnimalObject.GetComponent<Character>();
+            // loads player data
+            Load();
+        }
+
+        void FixedUpdate()
+        {
+            if (_player == null)
+            {
+                _player = FindObjectOfType<Character>();
+            }
+            else
+            {
+                Debug.Log("PLAYER NOT NULL it is: " + _player.GetNickName());
+                // keeps player updated to the current visible character in scene
+                if (FindObjectOfType<Character>().GetNickName() != null)
+                    if (_player.GetNickName() != FindObjectOfType<Character>().GetNickName())
+                        _player = FindObjectOfType<Character>();
+            }
+            // NOTE: if player is still null at this point it should be spawned and loaded
+        }
 
         public void TogglePauseGame()
         {
@@ -47,11 +109,11 @@ namespace PersonalScripts
             return _coins;
         }
 
-        public void LoadXMLData()
+        public bool LoadXMLData()
         {
             // parses the xml data for gamesaves and character data
-            LoadGameSave();
-            LoadPetInfo();
+            // if both return true then the _player is successfully loaded
+            return LoadGameSave() && LoadPetInfo();
         }
 
         public void SaveXMLData()
@@ -70,8 +132,11 @@ namespace PersonalScripts
 
         public void AdjustGameSpeed(float nwGameSpeed)
         {
-            _player.AdjustAgingRate(nwGameSpeed);
-            _gameSpeed = _player.GetAgeRate();
+            if (_player != null)
+            {
+                _player.AdjustAgingRate(nwGameSpeed);
+                _gameSpeed = _player.GetAgeRate();
+            }
         }
         private void SaveGameSave(int i = 0)
         {
@@ -83,9 +148,9 @@ namespace PersonalScripts
             else
             {
                 // saves to given index, defaulted to 0
-                gameCollection.gameSaves[i].CoinAmount = _coins;
-                gameCollection.gameSaves[i].VolumeLevel = _volumeLevel;
-                gameCollection.gameSaves[i].GameSpeed = _gameSpeed;
+                gameCollection.gameSaves[i].gameInfo.CoinAmount = _coins;
+                gameCollection.gameSaves[i].gameInfo.VolumeLevel = _volumeLevel;
+                gameCollection.gameSaves[i].gameInfo.GameSpeed = _gameSpeed;
             }
             gameCollection.Save(Path.Combine(Application.persistentDataPath, "Gamenfo.xml"));
         }
@@ -121,25 +186,34 @@ namespace PersonalScripts
             }
             animalCollection.Save(Path.Combine(Application.persistentDataPath, "Animalnfo.xml"));
         }
-        private void LoadGameSave(int i = 0)
+
+        private bool LoadGameSave(int i = 0)
         {
             // loads gamedata from given index, defaulted to 0
             GameContainer gme = GameContainer.Load(Path.Combine(Application.persistentDataPath, "Gamenfo.xml"));
             if (gme != null)
             {
-                _coins = gme.gameSaves[i].CoinAmount;
-                _volumeLevel = gme.gameSaves[i].VolumeLevel;
-                _gameSpeed = gme.gameSaves[i].GameSpeed;
+                _coins = gme.gameSaves[i].gameInfo.CoinAmount;
+                _volumeLevel = gme.gameSaves[i].gameInfo.VolumeLevel;
+                _gameSpeed = gme.gameSaves[i].gameInfo.GameSpeed;
                 AdjustGameSpeed(_gameSpeed);
+                return true;
             }
-
+            return false;
         }
 
-        private void LoadPetInfo(int i = 0)
+        private bool LoadPetInfo(int i = 0)
         {
             AnimalContainer ac = AnimalContainer.Load(Path.Combine(Application.persistentDataPath, "Animalnfo.xml"));
             if (ac != null)
             {
+                if (_player == null)
+                {
+                    // data is there but there is no object to load it into
+                    Debug.Log("_player is null");
+                    return false;
+                }
+
                 // sets player status info
                 _player.hunger = ac.animals[i]._playerStats.Hunger;
                 _player.thirst = ac.animals[i]._playerStats.Thirst;
@@ -157,9 +231,12 @@ namespace PersonalScripts
                 if (_player.SetandReturnOutfitSystem().GetCurrentEyeSelected() != ac.animals[i]._playerFit.EyeIndex)
                     _player.SetandReturnOutfitSystem().ChangeEyes();
 
-                // TODO: set weapon information
-            }
+                // set weapon information
+                _player.ChangeWeapons(ac.animals[i]._playerFit.WeaponIndex, false);
 
+                return true;
+            }
+            return false;
         }
         public void SaveAnimal(string path)
         {
@@ -184,23 +261,6 @@ namespace PersonalScripts
         {
             var serializer = new XmlSerializer(typeof(AnimalGameManager));
             return serializer.Deserialize(new StringReader(text)) as AnimalGameManager;
-        }
-
-        void Awake()
-        {
-            // creates a singleton
-            if (_manager == null)
-            {
-                DontDestroyOnLoad(gameObject);
-                _manager = this;
-            }
-            else if (_manager != this)
-            {
-                Destroy(gameObject);
-            }
-            // clears player reference
-            _player = null;
-
         }
 
         public void FindExactAnimal()
@@ -250,48 +310,44 @@ namespace PersonalScripts
 
         public void Save()
         {
-
-            FileStream file;
-            // creates file reader in binary format
-            BinaryFormatter bf = new BinaryFormatter();
-            try
-            {
-                file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
-            }
-            catch (FileNotFoundException)
-            {
-                // NEW GAME
-                file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
-            }
-            Debug.Log("Now Saving to " + Application.persistentDataPath + "/playerInfo.dat");
-            // creates new data object with values from player's current state
-            // *must be written this way in order for it to be serialized
+            // deprecated
+            //FileStream file;
+            //// creates file reader in binary format
+            //BinaryFormatter bf = new BinaryFormatter();
+            //try
+            //{
+            //    file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+            //}
+            //catch (FileNotFoundException)
+            //{
+            //    // NEW GAME
+            //    file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
+            //}
+            //Debug.Log("Now Saving to " + Application.persistentDataPath + "/playerInfo.dat");
+            //// creates new data object with values from player's current state
+            //// *must be written this way in order for it to be serialized
+            //PlayerData data = new PlayerData(_player.hunger, _player.thirst,
+            //    _player.happiness, _player.health, _player.fatigue, _player.bladderCapacity);
+            //// writes to binary file and closes
+            //bf.Serialize(file, data);
+            //file.Close();
             if (_player != null)
-            {
-                PlayerData data = new PlayerData(_player.hunger, _player.thirst,
-                    _player.happiness, _player.health, _player.fatigue, _player.bladderCapacity);
-                // writes to binary file and closes
-                bf.Serialize(file, data);
-                file.Close();
-
                 SaveXMLData();
-            }
-            else
-            {
-                file.Close();
-            }
         }
 
-        public void Load()
+        public bool Load()
         {
-            if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
-            {
-                // if file exists read it into the Player object
-                BinaryFormatter bf = new BinaryFormatter();
-                FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
-            }
-            LoadXMLData();
+            // deprecated
+            //if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+            //{
+            //    // if file exists read it into the Player object
+            //    BinaryFormatter bf = new BinaryFormatter();
+            //    FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+            //}
+
+            return LoadXMLData();
         }
+
     }
 
     [Serializable]

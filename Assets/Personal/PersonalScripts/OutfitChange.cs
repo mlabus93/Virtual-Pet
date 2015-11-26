@@ -64,7 +64,7 @@ namespace PersonalScripts
         }
 
         // Use this for initialization
-        void Start()
+        void Awake()
         {
             _skinMesh = gameObject.GetComponent<SkinnedMeshRenderer>();
             _mats = _skinMesh.materials;

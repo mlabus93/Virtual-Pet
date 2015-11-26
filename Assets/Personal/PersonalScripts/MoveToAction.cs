@@ -31,6 +31,18 @@ namespace PersonalScripts
         // Use this for initialization
         void Start()
         {
+            SetupMoveAction();
+
+            if (nav == null )
+            {
+                Debug.Log("beginning weapon invoke");
+                InvokeRepeating("SetupMoveAction", 1, .3f);
+            }
+        }
+
+
+        void SetupMoveAction()
+        {
             gameManager = FindObjectOfType<AnimalGameManager>();
             player = GameObject.FindGameObjectWithTag("Player");
             playerScript = player.GetComponent("Character") as Character;
@@ -40,6 +52,11 @@ namespace PersonalScripts
 
         void FixedUpdate()
         {
+            if (IsInvoking("SetupMoveAction") && nav != null)
+            {
+                CancelInvoke("SetupMoveAction");
+            }
+
             if (Application.loadedLevelName.Equals("Main"))
             {
                 if (playerStopped)
@@ -194,7 +211,8 @@ namespace PersonalScripts
                 currentRandomTarget = oldTarget == null || oldTarget != currentRandomTarget ? currentRandomTarget : randomPositions[(newSpot + 1) % randomPositions.Length].transform;
                 randomTargetFound = false;
             }
-            nav.SetDestination(currentRandomTarget.position);
+            if (nav != null)
+                nav.SetDestination(currentRandomTarget.position);
         }
         void OnTriggerStay(Collider other)
         {

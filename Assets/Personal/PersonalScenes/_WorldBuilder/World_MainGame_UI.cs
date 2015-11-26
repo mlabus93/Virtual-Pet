@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using PersonalScripts;
-
+using UnityEngine.UI;
 public class World_MainGame_UI : DynamicButtonAssignment
 {
 
@@ -15,6 +15,12 @@ public class World_MainGame_UI : DynamicButtonAssignment
 
     public override void SetupButtons()
     {
+        SetPlayer();
+        if (_buttons == null)
+        {
+            _buttons = GameObject.FindObjectsOfType<Button>();
+        }
+
         GameObject uiManager = GameObject.FindGameObjectWithTag("UIManager");
         // Checks names of buttons and adds listeners accordingly
         for (int i = 0; i < _buttons.Length; i++)

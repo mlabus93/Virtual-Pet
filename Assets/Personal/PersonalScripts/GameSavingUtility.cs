@@ -8,7 +8,7 @@ public class GameContainer
 {
     [XmlArray("Games"), XmlArrayItem("GameSave")]
     public List<GameSave> gameSaves = new List<GameSave>();
-    
+
 
     GameSave kid = new GameSave("kid", 33, 4);
     GameSave mom = new GameSave("mom", 33, 4);
@@ -52,10 +52,15 @@ public class GameSave
     [XmlAttribute("UserName")]
     public string Name = "BillyBob";
 
+    public GameInfo gameInfo;
+
     // Game information
-    public int VolumeLevel;
-    public int CoinAmount;
-    public float GameSpeed;
+    public struct GameInfo
+    {
+        public int VolumeLevel;
+        public int CoinAmount;
+        public float GameSpeed;
+    }
 
     // needs default constructor for w.e. reason
     public GameSave()
@@ -63,7 +68,7 @@ public class GameSave
     public GameSave(string name, int vollvl, int coinAmt)
     {
         Name = name;
-        VolumeLevel = vollvl;
-        CoinAmount = coinAmt;
+        gameInfo.VolumeLevel = vollvl;
+        gameInfo.CoinAmount = coinAmt;
     }
 }

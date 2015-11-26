@@ -60,6 +60,11 @@ namespace PersonalScripts
         [SerializeField]
         public int TimeLapseRate { get { return _TimeLapseRate; } set { _TimeLapseRate = value; } }
         public WeaponHandler _weaponHandler;
+
+        void Awake()
+        {
+            _weaponHandler = GetComponent<WeaponHandler>();
+        }
         public void Attack(int attackType)
         {
             _weaponHandler.Attack(attackType);
@@ -107,12 +112,18 @@ namespace PersonalScripts
         }
         public void AdjustAgingRate(float ageRate)
         {
-            _petAgeTimer.SetTimer(_petAgeTimer._stopTime + ageRate);
+            if (_petAgeTimer != null)
+                _petAgeTimer.SetTimer(_petAgeTimer._stopTime + ageRate);
         }
 
         public float GetAgeRate()
         {
-            return _petAgeTimer._stopTime;
+            if (_petAgeTimer != null)
+            {
+                return _petAgeTimer._stopTime;
+            }
+                
+            return -1;
         }
 
         public void ResetStatuses()

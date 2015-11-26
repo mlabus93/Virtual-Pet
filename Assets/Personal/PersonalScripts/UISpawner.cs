@@ -5,7 +5,7 @@ public class UISpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        SpawnUI();
+        //SpawnUI();
 	}
 	
 	// Update is called once per frame
@@ -13,7 +13,7 @@ public class UISpawner : MonoBehaviour {
 	
 	}
 
-    void SpawnUI()
+    public void SpawnUI()
     {
         if (Application.loadedLevelName == "CharacterSelect")
         {

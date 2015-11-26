@@ -7,7 +7,9 @@ namespace PersonalScripts
 {
     public class UIController : MonoBehaviour
     {
-
+        public Button attack1Btn;
+        public Button attack2Btn;
+        public Button jumpBtn;
         public Button statsBtn;
         public Button outfitBtn;
         public Button miniGameBtn;
@@ -39,14 +41,146 @@ namespace PersonalScripts
         Slider[] sliders;
         IAnimalCharacter iAnimal;
 
+
+        public void GetButtons()
+        {
+            // container for all buttons
+            Button[] _buttons = gameObject.GetComponentsInChildren<Button>();
+            for (int i = 0; i < _buttons.Length; i++)
+            {
+                string btnName = _buttons[i].name;
+
+                if (btnName == "Attack1Btn")
+                {
+                    attack1Btn = _buttons[i];
+                }
+                if (btnName == "Attack2Btn")
+                {
+                    attack2Btn = _buttons[i];
+                }
+                if (btnName == "JumpBtn")
+                {
+                    jumpBtn = _buttons[i];
+                }
+                if (btnName == "Outfit")
+                {
+                    outfitBtn = _buttons[i];
+                }
+                if (btnName == "PauseBtn")
+                {
+                   pauseBtn = _buttons[i];
+                }
+                if (btnName == "DrinkBtn")
+                {
+                    drinkBtn = _buttons[i];
+                }
+                /*
+                if (btnName == "EatTurkeyBtn")
+                {
+                     = _buttons[i];
+                }
+                if (btnName == "EatChickenBtn")
+                {
+                    temp = _buttons[i];
+                }
+                if (btnName == "EatRibsBtn")
+                {
+                    temp = _buttons[i];
+                }
+                if (btnName == "EatTreatBtn")
+                {
+                    temp = _buttons[i];
+                }
+                if (btnName == "EatBeefBtn")
+                {
+                    temp = _buttons[i];
+                }
+                if (btnName == "")
+                {
+                    temp = _buttons[i];
+                }
+                if (btnName == "")
+                {
+                    temp = _buttons[i];
+                }
+                if (btnName == "")
+                {
+                    temp = _buttons[i];
+                }
+                if (btnName == "")
+                {
+                    temp = _buttons[i];
+                }
+                if (btnName == "")
+                {
+                    temp = _buttons[i];
+                }
+                if (btnName == "")
+                {
+                    temp = _buttons[i];
+                }
+                if (btnName == "")
+                {
+                    temp = _buttons[i];
+                }
+                if (btnName == "")
+                {
+                    temp = _buttons[i];
+                }
+                */
+
+            }
+            // finds all buttons in scene and assigns them based on name
+           //statsBtn = ;
+           //outfitBtn = ;
+           //miniGameBtn = ;
+           //optionsBtn = ;
+           //pauseBtn = ;
+           //resumeBtn = ;
+           //drinkBtn = ;
+           //turkeyBtn = ;
+           //treatBtn = ;
+           //beefBtn = ;
+           //ribBtn = ;
+           //chickenBtn = ;
+           //fishBtn = ;
+           //pauseParentPanel = ;
+           //statsPanel = ;
+           //optionsPanel = ;
+           //canvas = ;
+           //healthSlider = ;
+           //happinessSlider = ;
+           //fatigueSlider = ;
+           //hungerSlider = ;
+           //thirstSlider = ;
+           //bladderSlider = ;
+           //player = ;
+           //public PlayerHealth playerHealth = ;
+           //insufficientCoinsTxt = ;
+           //GameObject healthBar = ;
+           //Slider healthBarSlider = ;
+           //Slider[] sliders = ;
+           //IAnimalCharacter iAnimal = ;
+
+
+        }
         // Use this for initialization
         void Start()
         {
             player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                SetupController();
+            }
+            
+            //healthBarSlider = healthBar.GetComponent<Slider>();
+        }
+
+        void SetupController()
+        {
             playerHealth = player.GetComponent<PlayerHealth>();
             iAnimal = player.GetComponent<IAnimalCharacter>();
             healthBarSlider = FindObjectOfType<Slider>();
-            //healthBarSlider = healthBar.GetComponent<Slider>();
         }
 
         //private void UpdateHealthBar()
@@ -180,6 +314,10 @@ namespace PersonalScripts
         // Update is called once per frame
         void Update()
         {
+            if (player == null)
+            {
+                player = GameObject.FindGameObjectWithTag("Player");
+            }
             //UpdateHealthBar();
             if (Input.GetButtonDown("Fire1") && statsPanel.gameObject.activeSelf)
             {
