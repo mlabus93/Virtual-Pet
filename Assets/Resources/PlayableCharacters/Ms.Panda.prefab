@@ -1324,7 +1324,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff06096aea0b125478641b6b33a9aa02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomPositions: []
   inTarget: 0
   moveRandom: 1
   randomTargetFound: 1
@@ -1475,7 +1474,7 @@ NavMeshAgent:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169428}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: .119999997
   m_Speed: 20
   m_Acceleration: 8
@@ -1523,6 +1522,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Height
       value: .49000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -27,18 +27,13 @@ namespace PersonalScripts
         bool isPlaying;
         bool playerStopped;
         Character playerScript;
+        bool isDefaulSet;
 
         // Use this for initialization
-        void Start()
-        {
-            SetupMoveAction();
-
-            if (nav == null )
-            {
-                Debug.Log("beginning weapon invoke");
-                InvokeRepeating("SetupMoveAction", 1, .3f);
-            }
-        }
+        //void Start()
+        //{
+        //    SetupMoveAction();
+        //}
 
 
         void SetupMoveAction()
@@ -48,17 +43,19 @@ namespace PersonalScripts
             playerScript = player.GetComponent("Character") as Character;
             anim = player.GetComponent<Animator>();
             nav = GetComponent<NavMeshAgent>();
+            nav.enabled = true;
         }
 
         void FixedUpdate()
         {
-            if (IsInvoking("SetupMoveAction") && nav != null)
-            {
-                CancelInvoke("SetupMoveAction");
-            }
-
             if (Application.loadedLevelName.Equals("Main"))
             {
+                if(!isDefaulSet)
+                {
+                    isDefaulSet = true;
+                    SetupMoveAction();
+                }
+
                 if (playerStopped)
                 {
                     anim.SetFloat("Speed", 0);
@@ -96,7 +93,7 @@ namespace PersonalScripts
         // Update is called once per frame
         void Update()
         {
-            if (Application.loadedLevelName.Equals("Main"))
+            if (Application.loadedLevelName.Equals("Main") && isDefaulSet)
             {
                 if (!moveRandom)
                 {
@@ -211,8 +208,7 @@ namespace PersonalScripts
                 currentRandomTarget = oldTarget == null || oldTarget != currentRandomTarget ? currentRandomTarget : randomPositions[(newSpot + 1) % randomPositions.Length].transform;
                 randomTargetFound = false;
             }
-            if (nav != null)
-                nav.SetDestination(currentRandomTarget.position);
+            nav.SetDestination(currentRandomTarget.position);
         }
         void OnTriggerStay(Collider other)
         {
