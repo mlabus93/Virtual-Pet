@@ -24,6 +24,7 @@ namespace PersonalScripts
             // instantiates player at spawnpoint
             _manager.InstantiatePlayer();
             _manager.PlayerAnimalObject.transform.position = GameObject.FindGameObjectWithTag("PlayerSpawnPoint").transform.position;
+
             StartCoroutine("BeginAi", 1f);
             // spawns Ui elements
             _uiSpawner = gameObject.AddComponent<UISpawner>();
@@ -35,6 +36,7 @@ namespace PersonalScripts
 
         void BeginAi()
         {
+            Debug.Log("BEGIN AI INVOKED");
             _manager.PlayerAnimalObject.AddComponent<NavMeshAgent>();
             _manager.PlayerAnimalObject.AddComponent<MoveToAction>();
         }

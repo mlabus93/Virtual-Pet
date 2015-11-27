@@ -67,6 +67,7 @@ namespace PersonalScripts
             // player no longer null and set to instantiated character
             //_player = PlayerAnimalObject.GetComponent<Character>();
             FindExactAnimal();
+            //PlayerAnimalObject.GetComponent<Character>().RotateThroughFits();
             // loads player data
             Load();
         }
@@ -225,7 +226,7 @@ namespace PersonalScripts
                 _player.health = ac.animals[i]._playerStats.Health;
 
                 // sets player location info
-                _player.SetAnimalPosition(new Vector3(ac.animals[i]._playerLoci.xpos, ac.animals[i]._playerLoci.ypos, ac.animals[i]._playerLoci.zpos));
+               // _player.SetAnimalPosition(new Vector3(ac.animals[i]._playerLoci.xpos, ac.animals[i]._playerLoci.ypos, ac.animals[i]._playerLoci.zpos));
 
                 // sets player outfit info
                 _player.SetandReturnOutfitSystem().ChangeOutfit(ac.animals[i]._playerFit.OutFitIndex, false);
@@ -338,6 +339,8 @@ namespace PersonalScripts
 
         public bool Load()
         {
+            //_manager.PlayerAnimalObject.GetComponent<Character>().ChangeWeapons(2, false);
+            //_manager.PlayerAnimalObject.GetComponent<Character>().RotateThroughFits();
             // deprecated
             //if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
             //{
