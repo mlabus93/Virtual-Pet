@@ -8,6 +8,8 @@ namespace PersonalScripts
     {
         // container for all buttons in ui
         public Button[] _buttons;
+        public GameObject[] _panels;
+        public GameObject statsPanel, optionsPanel, pauseParentPanel;
         public IAnimalCharacter _player;
 
         // Use this for initialization

@@ -4,6 +4,22 @@ using PersonalScripts;
 using UnityEngine.UI;
 public class World_MainGame_UI : DynamicButtonAssignment
 {
+    Button attack1Btn;
+    Button attack2Btn;
+    Button jumpBtn;
+    Button statsBtn;
+    Button outfitBtn;
+    Button miniGameBtn;
+    Button optionsBtn;
+    Button pauseBtn;
+    Button resumeBtn;
+    Button drinkBtn;
+    Button turkeyBtn;
+    Button treatBtn;
+    Button beefBtn;
+    Button ribBtn;
+    Button chickenBtn;
+    Button fishBtn;
 
     public override void SetupButtons()
     {
@@ -12,8 +28,12 @@ public class World_MainGame_UI : DynamicButtonAssignment
         {
             _buttons = GameObject.FindObjectsOfType<Button>();
         }
-
+        SetupPanels();
         GameObject uiManager = GameObject.FindGameObjectWithTag("UIManager");
+        Canvas canvasMain = GameObject.FindObjectOfType<Canvas>();
+        UIController uiController = canvasMain.GetComponent<UIController>();
+        uiController.SetButtons(_buttons);
+        uiController.SetPanels(_panels);
         // Checks names of buttons and adds listeners accordingly
         for (int i = 0; i < _buttons.Length; i++)
         {
@@ -21,79 +41,105 @@ public class World_MainGame_UI : DynamicButtonAssignment
 
             switch (btnName)
             {
-                case "BackBtn":
+                case "Stats":
+                    statsBtn = _buttons[i];
                     _buttons[i].onClick.AddListener(() =>
                     {
-                        uiManager.GetComponent<SceneSwapper>().LoadScene(0);
+                        uiController.ShowStats();
                     });
                     break;
-                case "StartBtn":
+                case "PauseBtn":
+                    pauseBtn = _buttons[i];
                     _buttons[i].onClick.AddListener(() =>
                     {
-                        uiManager.GetComponent<World_CharacterSelect>().CharacterSelected();
-                        uiManager.GetComponent<SceneSwapper>().LoadScene(2);
+                        uiController.ShowPausePanel();
+                    });
+                    break;
+                case "Outfit":
+                    _buttons[i].onClick.AddListener(() =>
+                    {
+                        uiController.ChangeOutfit();
+                    });
+                    break;
+                case "Options":
+                    _buttons[i].onClick.AddListener(() =>
+                    {
+                        uiController.ShowOptions();
+                    });
+                    break;
+                case "CloseOptionsBtn":
+                    _buttons[i].onClick.AddListener(() =>
+                    {
+                        uiController.CloseOptionsPanel();
+                    });
+                    break;
+                case "Minigame":
+                    _buttons[i].onClick.AddListener(() =>
+                    {
+                        uiManager.GetComponent<SceneSwapper>().LoadScene(4);
+                    });
+                    break;
+                case "ResumeBtn":
+                    _buttons[i].onClick.AddListener(() =>
+                    {
+                        uiController.HidePausePanel();
+                    });
+                    break;
+                case "Camera":
+                    _buttons[i].onClick.AddListener(() =>
+                    {
+                        GameObject.Find("Cameras").GetComponent<ToggleCameras>().ChangeCameraRoom();
+                    });
+                    break;
+                case "ExitBtn":
+                    _buttons[i].onClick.AddListener(() =>
+                    {
+                        uiManager.GetComponent<LevelManager>().ReturnToStartMenu();
+                    });
+                    break;
+                case "TopCamBtn":
+                    _buttons[i].onClick.AddListener(() =>
+                    {
+                        GameObject.Find("Cameras").GetComponent<ToggleCameras>().ToggleOverheadCameraView();
+                    });
+                    break;
+                case "SecurityCamBtn":
+                    _buttons[i].onClick.AddListener(() =>
+                    {
+                        GameObject.Find("Cameras").GetComponent<ToggleCameras>().ToggleSecurityCameraView();
+                    });
+                    break;
+                case "SaveBtn":
+                    _buttons[i].onClick.AddListener(() =>
+                    {
 
                     });
                     break;
-                case "AnimalLeftBtn":
-                    _buttons[i].onClick.AddListener(delegate
-                    {
-                        uiManager.GetComponent<CharacterSelection>().PrevCharacter();
-                    });
+            }
+        }
+        SetupPanels();
+    }
+
+    public void SetupPanels()
+    {
+        if (_panels == null)
+        {
+            _panels = GameObject.FindGameObjectsWithTag("Panel");
+        }
+        foreach (var panel in _panels)
+        {
+            string panelName = panel.name;
+            panel.gameObject.SetActive(false);
+            switch (panelName)
+            {
+                case "StatsPanel":
+                    statsPanel = panel;
                     break;
-                case "AnimalRightBtn":
-                    _buttons[i].onClick.AddListener(delegate
-                    {
-                        uiManager.GetComponent<CharacterSelection>().NextCharacter();
-                    });
+                case "PauseParentPanel":
+                    pauseParentPanel = panel;
                     break;
-                case "ClothingLeftBtn":
-                    _buttons[i].onClick.AddListener(delegate
-                    {
-                        uiManager.GetComponent<CharacterSelection>().PrevOutfit();
-                    });
-                    break;
-                case "ClothingRightBtn":
-                    _buttons[i].onClick.AddListener(delegate
-                    {
-                        uiManager.GetComponent<CharacterSelection>().NextOutfit();
-                    });
-                    break;
-                case "EyesLeftBtn":
-                    _buttons[i].onClick.AddListener(delegate
-                    {
-                        uiManager.GetComponent<CharacterSelection>().EyesToggle();
-                    });
-                    break;
-                case "EyesRightBtn":
-                    _buttons[i].onClick.AddListener(delegate
-                    {
-                        uiManager.GetComponent<CharacterSelection>().EyesToggle();
-                    });
-                    break;
-                case "HatLeftBtn":
-                    _buttons[i].onClick.AddListener(delegate
-                    {
-                        uiManager.GetComponent<CharacterSelection>().PrevHat();
-                    });
-                    break;
-                case "HatRightBtn":
-                    _buttons[i].onClick.AddListener(delegate
-                    {
-                        uiManager.GetComponent<CharacterSelection>().NextHat();
-                    });
-                    break;
-                case "WeaponLeftBtn":
-                    _buttons[i].onClick.AddListener(delegate
-                    {
-                        uiManager.GetComponent<CharacterSelection>().PrevWeapon();
-                    });
-                    break;
-                case "WeaponRightBtn":
-                    _buttons[i].onClick.AddListener(delegate
-                    {
-                        uiManager.GetComponent<CharacterSelection>().NextWeapon();
-                    });
+                case "OptionsPanel":
+                    optionsPanel = panel;
                     break;
             }
         }

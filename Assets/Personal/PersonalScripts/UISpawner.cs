@@ -22,6 +22,9 @@ public class UISpawner : MonoBehaviour {
         if (Application.loadedLevelName == "Main")
         {
             Canvas ui = Instantiate(Resources.Load("UI/CanvasMain", typeof(Canvas)), Vector3.zero, Quaternion.identity) as Canvas;
+            GameObject statsPanel = Instantiate(Resources.Load("UI/StatsPanel", typeof(GameObject)), Vector3.zero, Quaternion.identity) as GameObject;
+            GameObject optionsPanel = Instantiate(Resources.Load("UI/OptionsPanel", typeof(GameObject)), Vector3.zero, Quaternion.identity) as GameObject;
+            GameObject pauseParentPanel = Instantiate(Resources.Load("UI/PauseParentPanel", typeof(GameObject)), Vector3.zero, Quaternion.identity) as GameObject;
         }
         if (Application.loadedLevelName == "HauntedMiniGame")
         {

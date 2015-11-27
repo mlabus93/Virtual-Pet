@@ -13,9 +13,13 @@ namespace PersonalScripts
         public Button statsBtn;
         public Button outfitBtn;
         public Button miniGameBtn;
+        public Button cameraBtn;
         public Button optionsBtn;
         public Button pauseBtn;
         public Button resumeBtn;
+        public Button exitBtn;
+        public Button saveBtn;
+        public Button securityCamBtn;
         public Button drinkBtn;
         public Button turkeyBtn;
         public Button treatBtn;
@@ -41,6 +45,12 @@ namespace PersonalScripts
         Slider[] sliders;
         IAnimalCharacter iAnimal;
 
+        private void GetPanels()
+        {
+            statsPanel = GameObject.FindGameObjectWithTag("StatsPanel");
+            pauseParentPanel = GameObject.Find("PauseParentPanel");
+            optionsPanel = GameObject.Find("OptionsPanel");
+        }
 
         public void GetButtons()
         {
@@ -61,6 +71,10 @@ namespace PersonalScripts
                 if (btnName == "JumpBtn")
                 {
                     jumpBtn = _buttons[i];
+                }
+                if (btnName == "Stats")
+                {
+                    statsBtn = _buttons[i];
                 }
                 if (btnName == "Outfit")
                 {
@@ -164,6 +178,70 @@ namespace PersonalScripts
 
 
         }
+
+        public void SetButtons(Button[] buttons)
+        {
+            foreach (var button in buttons)
+            {
+                string buttonName = button.name;
+                switch (buttonName)
+                {
+                    case "PauseBtn":
+                        pauseBtn = button;
+                        break;
+                    case "Stats":
+                        statsBtn = button;
+                        break;
+                    case "Outfit":
+                        outfitBtn = button;
+                        break;
+                    case "Minigame":
+                        miniGameBtn = button;
+                        break;
+                    case "Options":
+                        optionsBtn = button;
+                        break;
+                    case "Camera":
+                        cameraBtn = button;
+                        break;
+                    case "ResumeBtn":
+                        resumeBtn = button;
+                        break;
+                    case "ExitBtn":
+                        exitBtn = button;
+                        break;
+                    case "SaveBtn":
+                        saveBtn = button;
+                        break;
+                    case "SecurityCamBtn":
+                        securityCamBtn = button;
+                        break;
+                }
+            }
+        }
+
+        public void SetPanels(GameObject[] panels)
+        {
+            if (panels != null)
+            {
+                foreach (var panel in panels)
+                {
+                    string panelName = panel.name;
+                    switch (panelName)
+                    {
+                        case "PauseParentPanel":
+                            pauseParentPanel = panel;
+                            break;
+                        case "StatsPanel":
+                            statsPanel = panel;
+                            break;
+                        case "OptionsPanel":
+                            optionsPanel = panel;
+                            break;
+                    }
+                }
+            }
+        }
         // Use this for initialization
         void Start()
         {
@@ -172,7 +250,8 @@ namespace PersonalScripts
             {
                 SetupController();
             }
-            
+            //GetButtons();
+            //GetPanels();
             //healthBarSlider = healthBar.GetComponent<Slider>();
         }
 
@@ -222,6 +301,8 @@ namespace PersonalScripts
 
         public void ShowStats()
         {
+            //statsBtn = stats;
+            //this.statsPanel = statsPanel;
             if (statsBtn.gameObject.activeSelf)
             {
                 HideStatsBtn();
@@ -252,7 +333,10 @@ namespace PersonalScripts
 
         private void ShowStatsPanel()
         {
-            statsPanel.gameObject.SetActive(true);
+            if (statsPanel != null)
+            {
+                statsPanel.gameObject.SetActive(true);
+            }
         }
 
         private void HideStatsPanel()
@@ -277,7 +361,10 @@ namespace PersonalScripts
 
         private void HideOptionsPanel()
         {
-            optionsPanel.gameObject.SetActive(false);
+            if (optionsPanel != null)
+            {
+                optionsPanel.gameObject.SetActive(false);
+            }
         }
 
         private void ShowOptionsBtn()

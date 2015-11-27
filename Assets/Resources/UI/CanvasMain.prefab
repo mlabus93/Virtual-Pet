@@ -127,11 +127,11 @@ GameObject:
   - 114: {fileID: 11488208}
   m_Layer: 5
   m_Name: StatsPanel
-  m_TagString: Untagged
+  m_TagString: Panel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &104932
 GameObject:
   m_ObjectHideFlags: 1
@@ -341,11 +341,11 @@ GameObject:
   - 114: {fileID: 11498442}
   m_Layer: 5
   m_Name: OptionsPanel
-  m_TagString: Untagged
+  m_TagString: Panel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &116584
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,6 +464,7 @@ GameObject:
   - 114: {fileID: 11409428}
   - 114: {fileID: 11468702}
   - 114: {fileID: 11464214}
+  - 114: {fileID: 11475748}
   m_Layer: 5
   m_Name: CanvasMain
   m_TagString: Untagged
@@ -702,11 +703,11 @@ GameObject:
   - 114: {fileID: 11424968}
   m_Layer: 5
   m_Name: PauseParentPanel
-  m_TagString: Untagged
+  m_TagString: Panel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &134742
 GameObject:
   m_ObjectHideFlags: 1
@@ -5529,6 +5530,46 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &11475748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 963ca6403dc0df74f969039868aff05d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack1Btn: {fileID: 0}
+  attack2Btn: {fileID: 0}
+  jumpBtn: {fileID: 0}
+  statsBtn: {fileID: 0}
+  outfitBtn: {fileID: 0}
+  miniGameBtn: {fileID: 0}
+  optionsBtn: {fileID: 0}
+  pauseBtn: {fileID: 0}
+  resumeBtn: {fileID: 0}
+  drinkBtn: {fileID: 0}
+  turkeyBtn: {fileID: 0}
+  treatBtn: {fileID: 0}
+  beefBtn: {fileID: 0}
+  ribBtn: {fileID: 0}
+  chickenBtn: {fileID: 0}
+  fishBtn: {fileID: 0}
+  pauseParentPanel: {fileID: 0}
+  statsPanel: {fileID: 0}
+  optionsPanel: {fileID: 0}
+  canvas: {fileID: 0}
+  healthSlider: {fileID: 0}
+  happinessSlider: {fileID: 0}
+  fatigueSlider: {fileID: 0}
+  hungerSlider: {fileID: 0}
+  thirstSlider: {fileID: 0}
+  bladderSlider: {fileID: 0}
+  player: {fileID: 0}
+  playerHealth: {fileID: 0}
+  insufficientCoinsTxt: {fileID: 0}
 --- !u!114 &11475752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9404,7 +9445,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Panel
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 117880}
