@@ -77,6 +77,14 @@ namespace PersonalScripts
         {
             _weaponHandler.ChangeWeapons();
         }
+        public int GetCurrentWeaponIndex()
+        {
+            return _weaponHandler._currentWeaponIndex;
+        }
+        public int GetCurrentHatIndex()
+        {
+            return _outfitSystem._currentHatIndex;
+        }
         public void ChangeWeapons(int index, bool loop = true)
         {
             _weaponHandler.ChangeWeapons(index, loop);
@@ -201,6 +209,7 @@ namespace PersonalScripts
         public virtual OutfitChange SetandReturnOutfitSystem()
         {
             _outfitSystem = FindObjectOfType<OutfitChange>();
+            
             return _outfitSystem;
         }
 

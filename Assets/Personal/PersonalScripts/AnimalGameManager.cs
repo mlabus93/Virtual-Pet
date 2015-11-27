@@ -80,7 +80,7 @@ namespace PersonalScripts
             }
             else
             {
-                Debug.Log("PLAYER NOT NULL it is: " + _player.GetNickName());
+                //Debug.Log("PLAYER NOT NULL it is: " + _player.GetNickName());
                 // keeps player updated to the current visible character in scene
                 if (FindObjectOfType<Character>().GetNickName() != null)
                     if (_player.GetNickName() != FindObjectOfType<Character>().GetNickName())
@@ -189,6 +189,44 @@ namespace PersonalScripts
             animalCollection.Save(Path.Combine(Application.persistentDataPath, "Animalnfo.xml"));
         }
 
+
+        public void SavePetInfoFromCharacterSelect(int i = 0)
+        {
+            if (animalCollection.animals.Count < 1)
+            {
+                // creates new animal
+                animalCollection.animals.Add(new Animal(_player.GetNickName()));
+            }
+            else
+            {
+                Debug.Log("");
+                // saves to given index, defaulted to 0
+                // saves animals species and nickname
+                animalCollection.animals[i].species = _player.GetAnimalType(); // works
+                animalCollection.animals[i].Name = _player.GetNickName(); // works
+                // saves animals outfit
+                animalCollection.animals[i]._playerFit.EyeIndex = _player.SetandReturnOutfitSystem().GetCurrentEyeSelected();
+                //animalCollection.animals[i]._playerFit.OutFitIndex = _player.SetandReturnOutfitSystem().GetCurrentOutfitIndex();
+                animalCollection.animals[i]._playerFit.OutFitIndex = PlayerAnimalObject.GetComponent<Character>().SetandReturnOutfitSystem().GetCurrentOutfitIndex();
+                animalCollection.animals[i]._playerFit.HatIndex = _player.SetandReturnOutfitSystem().GetCurrentHatIndex(); // works, load does not work
+                // saves animal statuses
+                animalCollection.animals[i]._playerStats.Happiness = _player.happiness;
+                animalCollection.animals[i]._playerStats.Health = _player.health;
+                animalCollection.animals[i]._playerStats.Hunger = _player.hunger;
+                animalCollection.animals[i]._playerStats.Thirst = _player.thirst;
+                animalCollection.animals[i]._playerStats.Fatigue = _player.fatigue;
+                animalCollection.animals[i]._playerStats.Boredom = _player.boredom;
+                animalCollection.animals[i]._playerStats.BladderCapacity = _player.bladderCapacity;
+                // saves animal location
+                animalCollection.animals[i]._playerLoci.xpos = _player.GetAnimalPosition().x;
+                animalCollection.animals[i]._playerLoci.ypos = _player.GetAnimalPosition().y;
+                animalCollection.animals[i]._playerLoci.zpos = _player.GetAnimalPosition().z;
+                // saves animal weapon
+                animalCollection.animals[i]._playerFit.WeaponIndex = _player.GetCurrentWeaponIndex(); // works
+            }
+            animalCollection.Save(Path.Combine(Application.persistentDataPath, "Animalnfo.xml"));
+        }
+
         private bool LoadGameSave(int i = 0)
         {
             // loads gamedata from given index, defaulted to 0
@@ -230,6 +268,7 @@ namespace PersonalScripts
 
                 // sets player outfit info
                 _player.SetandReturnOutfitSystem().ChangeOutfit(ac.animals[i]._playerFit.OutFitIndex, false);
+                _player.ChangeHats(ac.animals[i]._playerFit.HatIndex, false);
                 if (_player.SetandReturnOutfitSystem().GetCurrentEyeSelected() != ac.animals[i]._playerFit.EyeIndex)
                     _player.SetandReturnOutfitSystem().ChangeEyes();
 
@@ -350,6 +389,11 @@ namespace PersonalScripts
             //}
 
             return LoadXMLData();
+        }
+
+        public void LoadTest()
+        {
+            LoadXMLData();
         }
 
     }

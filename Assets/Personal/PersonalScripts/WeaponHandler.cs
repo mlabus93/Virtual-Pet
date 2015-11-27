@@ -21,6 +21,11 @@ namespace PersonalScripts
             numWeapons
         }
 
+        public int GetCurrentWeaponIndex()
+        {
+            return _currentWeaponIndex;
+        }
+
         public void DisableAllWeapons()
         {
             // same as no weapons

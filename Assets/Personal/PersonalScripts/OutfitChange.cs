@@ -26,11 +26,16 @@ namespace PersonalScripts
 
         public int GetCurrentOutfitIndex()
         {
+            FindCurrentIndex(BODY);
             return currentOutfitIndex;
         }
         public int GetCurrentEyeSelected()
         {
             return currentEyeSelected % 2;
+        }
+        public int GetCurrentHatIndex()
+        {
+            return _currentHatIndex;
         }
         // IMPORTANT: these enumeration pertain to the index in
         // Materials array in Skinned Mesh Renderer, Must remain consistent
@@ -76,8 +81,7 @@ namespace PersonalScripts
             enableBlinking = true;
             _timeToBeOpened = 2f;
             _timeToBeClosed = .3f;
-            // NOTE: this logic causes all hats in the scene to change
-            //_hats = GameObject.FindGameObjectsWithTag("HAT");
+
             string FindHats = "animal_spine_joint/animal_spine2_joint/animal_head_joint/";
             string HatA = "animal_pr_hat_a";
             string HatB = "animal_pr_hat_b";
@@ -115,11 +119,6 @@ namespace PersonalScripts
             int tempHatIndex = _currentHatIndex;
             int newIndex = (tempHatIndex + 1) % (int)Hats.numHats; // there are 3 head types
             DisableAllHats();
-            //if (newIndex == (int)Hats.NoHat)
-            //{
-            //    _currentHatIndex = newIndex;
-            //    return;
-            //}
 
             if (loop)
             {

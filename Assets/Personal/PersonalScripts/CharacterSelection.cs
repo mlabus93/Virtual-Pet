@@ -51,6 +51,8 @@ namespace PersonalScripts
             outfitIndex = 0;
             hatIndex = 0;
             weaponIndex = 0;
+            AnimalGameManager manager = FindObjectOfType<AnimalGameManager>();
+            manager.PlayerAnimalObject = currentCharacter;
         }
 
         public void PrevCharacter()
@@ -63,6 +65,8 @@ namespace PersonalScripts
             outfitIndex = 0;
             hatIndex = 0;
             weaponIndex = 0;
+            AnimalGameManager manager = FindObjectOfType<AnimalGameManager>();
+            manager.PlayerAnimalObject = currentCharacter;
         }
 
         public void NextOutfit()
@@ -168,11 +172,6 @@ namespace PersonalScripts
             currentCharacter.gameObject.SetActive(true);
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }
 

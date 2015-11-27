@@ -25,6 +25,13 @@ namespace PersonalScripts
             _manager.InstantiatePlayer();
             _manager.PlayerAnimalObject.transform.position = GameObject.FindGameObjectWithTag("PlayerSpawnPoint").transform.position;
 
+            Debug.Log("before load");
+            PrintLoadedData();
+            _manager.Load();
+            Debug.Log("after load");
+            PrintLoadedData();
+            
+
             StartCoroutine("BeginAi", 1f);
             // spawns Ui elements
             _uiSpawner = gameObject.AddComponent<UISpawner>();
@@ -39,6 +46,12 @@ namespace PersonalScripts
             Debug.Log("BEGIN AI INVOKED");
             _manager.PlayerAnimalObject.AddComponent<NavMeshAgent>();
             _manager.PlayerAnimalObject.AddComponent<MoveToAction>();
+        }
+
+        void PrintLoadedData()
+        {
+            //AnimalGameManager._player.ChangeWeapons();
+            //Debug.Log("_playerWeapon in world gen: " + AnimalGameManager._player.);
         }
 
     }
