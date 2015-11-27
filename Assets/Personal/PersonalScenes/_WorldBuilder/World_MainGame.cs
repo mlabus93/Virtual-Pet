@@ -44,8 +44,9 @@ namespace PersonalScripts
         void BeginAi()
         {
             Debug.Log("BEGIN AI INVOKED");
-            _manager.PlayerAnimalObject.AddComponent<NavMeshAgent>();
-            _manager.PlayerAnimalObject.AddComponent<MoveToAction>();
+            //enable components instead of adding new ones. This breaks touchmovement otherwise
+            _manager.PlayerAnimalObject.GetComponent<NavMeshAgent>().enabled = true;
+            _manager.PlayerAnimalObject.GetComponent<MoveToAction>().enabled = true;
         }
 
         void PrintLoadedData()

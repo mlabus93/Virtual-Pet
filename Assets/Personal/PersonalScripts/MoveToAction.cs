@@ -18,7 +18,7 @@ namespace PersonalScripts
         Transform table;
         Transform bed;
         GameObject[] toyDoll;
-        Transform toyBall;
+        //Transform toyBall;
         Transform toilet;
         Transform currentRandomTarget;
         NavMeshAgent nav;
@@ -28,13 +28,7 @@ namespace PersonalScripts
         bool playerStopped;
         Character playerScript;
         bool isDefaulSet;
-
-        // Use this for initialization
-        //void Start()
-        //{
-        //    SetupMoveAction();
-        //}
-
+        bool timesUp;
 
         void SetupMoveAction()
         {
@@ -103,6 +97,14 @@ namespace PersonalScripts
                     }
                     else if (currentTarget.Equals("doll"))
                     {
+                        if(timesUp)
+                        {
+                            
+                            for( ; currentDoll < toyDoll.Length; currentDoll++)
+                            {
+                                (toyDoll[currentDoll].GetComponent("DollHealth") as DollHealth).TakeDamage(100, player.transform.position);
+                            }
+                        }
                         if (currentDoll >= toyDoll.Length)
                         {
                             isPlaying = false;
@@ -147,7 +149,7 @@ namespace PersonalScripts
                         if (inTarget)
                         {
                             StopPlayer();
-                            float sleepLength = Random.Range(60f, 180f);
+                            float sleepLength = Random.Range(30f, 60f);
                             playerScript.Sleep(sleepLength);
                             playerScript.Rested();
                             StartCoroutine(ReturnFromClickState(sleepLength));
@@ -164,7 +166,7 @@ namespace PersonalScripts
                         if (inTarget)
                         {
                             StopPlayer();
-                            float bathroomLength = Random.Range(10f, 45f);
+                            float bathroomLength = Random.Range(5f, 15f);
                             switch (Random.Range(1, 4))
                             {
                                 case 1:
@@ -250,7 +252,7 @@ namespace PersonalScripts
             moveRandom = false;
             inTarget = false;
             currentTarget = "table";
-            StartCoroutine(ReturnToRadom());
+            StartCoroutine(ReturnToRadom(30f));
         }
      
         public void GoToBed()
@@ -263,25 +265,29 @@ namespace PersonalScripts
 
         public void PlayWithDoll()
         {
-            toyDoll = GameObject.FindGameObjectsWithTag("Toy Doll");
-            int costToPlay = 0;
-            foreach (GameObject doll in toyDoll)
+            if (!isPlaying)
             {
-                costToPlay += (doll.GetComponent("ToySatisfaction") as ToySatisfaction).cost;
-            }
-
-            PurchaseToy(costToPlay);
-            if (isPlaying)
-            {
-                moveRandom = false;
-
+                timesUp = false;
+                toyDoll = GameObject.FindGameObjectsWithTag("Toy Doll");
+                int costToPlay = 0;
                 foreach (GameObject doll in toyDoll)
                 {
-                    doll.GetComponent<ToyDollMovement>().PlayWithDoll();
+                    costToPlay += (doll.GetComponent("ToySatisfaction") as ToySatisfaction).cost;
                 }
-                inTarget = false;
-                currentTarget = "doll";
-                isPlaying = false;
+                PurchaseToy(costToPlay);
+                if (isPlaying)
+                {
+                    moveRandom = false;
+
+                    foreach (GameObject doll in toyDoll)
+                    {
+                        doll.GetComponent<ToyDollMovement>().PlayWithDoll();
+                    }
+                    inTarget = false;
+                    currentTarget = "doll";
+                    //isPlaying = false;
+                    StartCoroutine (StopPlaying());
+                 }
             }
         }
 
@@ -318,9 +324,9 @@ namespace PersonalScripts
             insuffientCoins.SetActive(false);
         }
 
-        IEnumerator ReturnToRadom ()
+        IEnumerator ReturnToRadom (float amount)
         {
-            yield return new WaitForSeconds(30f);
+            yield return new WaitForSeconds(amount);
             currentTarget = "";
             randomTargetFound = true;
             moveRandom = true;
@@ -330,8 +336,17 @@ namespace PersonalScripts
 
         IEnumerator ReturnFromClickState(float amount)
         {
-            yield return new WaitForSeconds(amount - 20f);
-            StartCoroutine(ReturnToRadom());
+            yield return new WaitForSeconds(amount);
+            StartCoroutine(ReturnToRadom(5));
+        }
+
+        IEnumerator StopPlaying()
+        {
+            yield return new WaitForSeconds(120f);
+            if (isPlaying)
+            {
+                timesUp = true;
+            }
         }
     }
 }

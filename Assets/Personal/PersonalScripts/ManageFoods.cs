@@ -83,7 +83,6 @@ namespace PersonalScripts
         {
             player = GameObject.FindGameObjectWithTag("Player").GetComponent("Character") as Character;
             isEating = true;
-            MeshRenderer skin = turkey.GetComponent("MeshRenderer") as MeshRenderer;
             player.FeedAnimal((water.GetComponent("WaterDrink") as WaterDrink));
             StartCoroutine(DelayForFeeding(water));
         }
