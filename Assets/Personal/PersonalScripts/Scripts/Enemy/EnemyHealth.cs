@@ -65,7 +65,10 @@ using PersonalScripts;
 
             anim.SetTrigger("Dead");
 
+            //deathClip = GetComponent<AudioSource>().audio.;
+            deathClip.LoadAudioData();
             enemyAudio.clip = deathClip;
+            Destroy(gameObject.GetComponent<EnemyMovement>());
             enemyAudio.Play();
         }
 
