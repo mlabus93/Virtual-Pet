@@ -1339,7 +1339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotateSpeed: 3
-  _speed: .5
+  _speed: .100000001
   _rigid: {fileID: 0}
   _anim: {fileID: 0}
   _groundCheckDistance: .5
@@ -1534,6 +1534,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_StoppingDistance
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _speed
+      value: .100000001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

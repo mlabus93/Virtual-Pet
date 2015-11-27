@@ -42,8 +42,11 @@ public class TimedEmitterDestruction : MonoBehaviour {
             // stops particle systems 
             foreach (EllipsoidParticleEmitter emitter in _epEmitters)
             {
-                emitter.emit = false;
-                Destroy(emitter, 3f);
+                if (emitter != null)
+                {
+                    emitter.emit = false;
+                    Destroy(emitter, 3f);
+                }
             }
         }
     }

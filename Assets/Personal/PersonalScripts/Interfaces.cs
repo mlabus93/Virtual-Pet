@@ -19,6 +19,11 @@ namespace PersonalScripts
         void Interact();
     }
 
+    public interface IMinigameLevelManager
+    {
+        void AddPoints(int Amount);
+        void OnGameOver();
+    }
     public interface IFood
     {
         // NOTE: handles food and water

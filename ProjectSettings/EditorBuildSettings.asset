@@ -14,19 +14,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Personal/PersonalScenes/MainGame/MainMenu.unity
   - enabled: 1
+    path: Assets/Personal/PersonalScenes/Minigames/Game 6 - Haunted Level/HauntedMiniGame.unity
+  - enabled: 0
     path: Assets/Personal/PersonalScenes/Minigames/Game 1 - Catch eggs/Catch eggs.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Personal/PersonalScenes/Minigames/Game 2 - Jump game/Jumpgame.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Personal/PersonalScenes/Minigames/Game 3 - Marble game/Marble game.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Personal/PersonalScenes/Minigames/Game 4 - 3D breakout/Breakout.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Personal/PersonalScenes/Minigames/Game 5 - Shooting gallery/Shooting
       gallery.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Starter.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Personal/PersonalScenes/MainGame/MainMenu.unity
-  - enabled: 1
-    path: Assets/Personal/PersonalScenes/Minigames/Game 6 - Haunted Level/HauntedMiniGame.unity

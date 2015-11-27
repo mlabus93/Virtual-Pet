@@ -5,14 +5,6 @@ using UnityEngine.UI;
 public class World_MainGame_UI : DynamicButtonAssignment
 {
 
-	// Use this for initialization
-
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
     public override void SetupButtons()
     {
         SetPlayer();

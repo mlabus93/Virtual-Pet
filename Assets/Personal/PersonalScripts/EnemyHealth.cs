@@ -100,7 +100,7 @@ namespace PersonalScripts
             isSinking = true;
 
             // Increase the score by the enemy's score value.
-            LevelManager.score += scoreValue;
+            LevelManager._score += scoreValue;
 
             // After 2 seconds destory the enemy.
             Destroy(gameObject, 2f);

@@ -102,11 +102,7 @@ namespace PersonalScripts
         {
             Debug.Log("IT WORKS FOR IN BUTTON FUNCTIONS");
         }
-        // Update is called once per frame
-        void Update()
-        {
 
-        }
     }
 
 }

@@ -23,5 +23,9 @@ public class UISpawner : MonoBehaviour {
         {
             Canvas ui = Instantiate(Resources.Load("UI/CanvasMain", typeof(Canvas)), Vector3.zero, Quaternion.identity) as Canvas;
         }
+        if (Application.loadedLevelName == "HauntedMiniGame")
+        {
+            Canvas ui = Instantiate(Resources.Load("UI/CanvasMiniGame", typeof(Canvas)), Vector3.zero, Quaternion.identity) as Canvas;
+        }
     }
 }

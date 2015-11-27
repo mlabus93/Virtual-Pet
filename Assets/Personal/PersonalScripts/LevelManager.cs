@@ -4,22 +4,35 @@ using System.Collections;
 
 namespace PersonalScripts
 {
-    public class LevelManager : MonoBehaviour
+    public class LevelManager : MonoBehaviour, IMinigameLevelManager
     {
 
-        public static int score;        // The player's score.
+        public static int _score;        // The player's score.
         Text text;                      // Reference to the Text component.
         public Timer _timer;                   // The time until the level is complete.
         private AnimalGameManager _gameManager;      // Reference to GameManager
         public float _levelLength = 30f;
-        bool _alreadyGavePoints = false;
-        void Awake()
+        protected bool _alreadyGavePoints = false;
+
+        public float levelLength { get { return (_levelLength); } set { _levelLength = (value); } }
+        public int score { get { return (_score); } set { _score = (value); } }
+
+        public virtual void OnGameOver()
+        {
+
+        }
+        public void AddPoints(int Amount)
+        {
+            _score += Amount;
+        }
+
+        public virtual void Awake()
         {
             // Set up the reference
             text = GetComponent<Text>();
 
             // Reset the score.
-            score = 0;
+            _score = 0;
             // create new timer
             _timer = gameObject.AddComponent<Timer>();
             _timer.SetTimer(_levelLength);
@@ -27,41 +40,7 @@ namespace PersonalScripts
 
             // Get GameManager
             _gameManager = transform.GetComponent<AnimalGameManager>();
-        }
-
-        public void AddPoints(int Amount)
-        {
-            score += Amount;
-        }
-
-        void FixedUpdate()
-        {
-            _timer._stopTime -= Time.deltaTime;
-        }
-
-        void Update()
-        {
-            // Set the displayed text to be the word "Score" followed by the score value.
-            //if (_timer._timeUp && GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().currentHealth > 0)
-            if (text != null)
-            {
-                text.text = "Score: " + score + "\tTime: " + (int)_timer._stopTime;
-                if ((int)_timer._stopTime <= 0)
-                    OnGameOver();
-            }
-        }
-
-        public void OnGameOver()
-        {
-            text.text = "Game Over!!";
-            _alreadyGavePoints = true;
-            // handles glitch where player consistently gets points before returning
-            // to main game
-            if (!_alreadyGavePoints)
-                _gameManager.AddCoins(score);
-            // save points
-            _gameManager.Save();
-        }
+        }       
 
         public void RestartLevel()
         {

@@ -107,12 +107,24 @@ namespace PersonalScripts
             ObjectHealth objectHealth;
             if (other.tag == "Damageable")
             {
+                Debug.Log("the objects name is: " + other.name);
+
                 enemyHealth = other.GetComponent<EnemyHealth>();
                 objectHealth = other.GetComponent<ObjectHealth>();
+
+                if (enemyHealth == null)
+                {
+                    Debug.Log("enemy health is null");
+                    other.gameObject.AddComponent<EnemyHealth>();
+                }
+                if (objectHealth == null)
+                    Debug.Log("object health is null");
+                
                 if (enemyHealth == null)
                     objectHealth.TakeDamage(damageAmount, _weapons[_currentWeaponIndex].transform.position);
                 else
                     enemyHealth.TakeDamage(damageAmount, _weapons[_currentWeaponIndex].transform.position);
+                
             }
         }
 

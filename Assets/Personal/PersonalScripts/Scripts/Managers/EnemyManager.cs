@@ -13,10 +13,32 @@ public class EnemyManager : MonoBehaviour
 
     void Start ()
     {
-        InvokeRepeating ("Spawn", spawnTime, spawnTime);
-        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        GameObject playerBody = GameObject.FindGameObjectWithTag("Player");
+
+        Debug.Log("made it past");
+        if (playerBody != null)
+        {
+            playerHealth = playerBody.GetComponent<PlayerHealth>();
+            InvokeRepeating("Spawn", spawnTime, spawnTime);
+        }  
+        else
+            InvokeRepeating("FindPlayer", 1f, 2f);
     }
 
+    void FindPlayer()
+    {
+        GameObject playerBody = GameObject.FindGameObjectWithTag("Player");
+
+        if (playerBody != null)
+        {
+            Debug.Log("FOUND PLAYER");
+            playerHealth = playerBody.GetComponent<PlayerHealth>();
+            CancelInvoke("FindPlayer");
+            InvokeRepeating("Spawn", spawnTime, spawnTime);
+        }
+        
+
+    }
 
     void Spawn ()
     {

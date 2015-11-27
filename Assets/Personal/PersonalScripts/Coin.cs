@@ -7,7 +7,7 @@ namespace PersonalScripts
     public class Coin : MonoBehaviour, IInteractable, IGivePoints
     {
         Collider _collider;
-        LevelManager _levelManager;
+        IMinigameLevelManager _levelManager;
         public int _coinValue;
         TimedEmitterDestruction _timedDestruction;
         public bool _pointsCollected { get; set; }

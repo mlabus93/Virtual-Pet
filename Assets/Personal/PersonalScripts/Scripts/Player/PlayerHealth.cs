@@ -67,6 +67,16 @@ public class PlayerHealth : MonoBehaviour
         else
         {
             healthText.text = currentHealth.ToString();
+            if (healthSlider == null)
+            {
+                Slider[] sliders = GameObject.FindObjectsOfType<Slider>();
+                // finds and sets the correct slider
+                for (int i = 0; i < sliders.Length; i++)
+                {
+                    if (sliders[i].name == "HealthBar")
+                        healthSlider = sliders[i].GetComponent<Slider>();
+                }
+            }
             healthSlider.value = currentHealth;
         }
 

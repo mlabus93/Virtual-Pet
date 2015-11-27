@@ -178,7 +178,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1d4840678e677424b8921716c72397ea, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 02ddbc06bfd22724c9b7721a662b44be, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -314,7 +314,7 @@ MonoBehaviour:
   currentHealth: 0
   sinkSpeed: 2.5
   scoreValue: 10
-  deathClip: {fileID: 8300000, guid: 62366b8d2c37a49dca550841c741317f, type: 3}
+  deathClip: {fileID: 8300000, guid: 02e6a11f90d625a4095bbcb69569581f, type: 3}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2603,7 +2603,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: deathClip
       value: 
-      objectReference: {fileID: 8300000, guid: 62366b8d2c37a49dca550841c741317f, type: 3}
+      objectReference: {fileID: 8300000, guid: 02e6a11f90d625a4095bbcb69569581f, type: 3}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x
       value: 1
@@ -2616,6 +2616,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 02ddbc06bfd22724c9b7721a662b44be, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
