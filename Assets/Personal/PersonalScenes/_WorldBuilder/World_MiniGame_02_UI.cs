@@ -101,6 +101,10 @@ namespace PersonalScripts
                         break;
                     case "ExitBtn":
                         quitBtn = button;
+                        button.onClick.AddListener(delegate
+                        {
+                            Time.timeScale = 1;
+                        });
                         break;
                     case "CloseOptionsBtn":
                         closeOptionsBtn = button;
