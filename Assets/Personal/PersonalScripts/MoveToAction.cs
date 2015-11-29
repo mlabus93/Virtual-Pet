@@ -51,7 +51,10 @@ namespace PersonalScripts
 
                 if (playerStopped)
                 {
-                    anim.SetFloat("Speed", 0);
+                    if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Eat"))
+                    {
+                        anim.SetFloat("Speed", 0);
+                    }
                 }
                 else
                 {
