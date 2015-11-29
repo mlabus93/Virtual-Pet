@@ -121,6 +121,18 @@ public class World_MainGame_UI : DynamicButtonAssignment
 
                     });
                     break;
+                case "HelpBtn":
+                    _buttons[i].onClick.AddListener(() =>
+                    {
+                        uiController.ShowHelpPanel();
+                    });
+                    break;
+                case "CloseHelpBtn":
+                    _buttons[i].onClick.AddListener(() =>
+                    {
+                        uiController.CloseHelpPanel();
+                    });
+                    break;
                 case "DrinkBtn":
                     _buttons[i].onClick.AddListener(() =>
                     {
@@ -188,6 +200,9 @@ public class World_MainGame_UI : DynamicButtonAssignment
                     break;
                 case "OptionsPanel":
                     optionsPanel = panel;
+                    break;
+                case "HelpPanel":
+                    helpPanel = panel;
                     break;
             }
         }

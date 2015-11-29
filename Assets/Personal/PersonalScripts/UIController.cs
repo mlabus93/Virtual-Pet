@@ -27,9 +27,11 @@ namespace PersonalScripts
         public Button ribBtn;
         public Button chickenBtn;
         public Button fishBtn;
+        public Button helpBtn;
         public GameObject pauseParentPanel;
         public GameObject statsPanel;
         public GameObject optionsPanel;
+        public GameObject helpPanel;
         public GameObject canvas;
         public Slider healthSlider;
         public Slider happinessSlider;
@@ -50,6 +52,7 @@ namespace PersonalScripts
             statsPanel = GameObject.FindGameObjectWithTag("StatsPanel");
             pauseParentPanel = GameObject.Find("PauseParentPanel");
             optionsPanel = GameObject.Find("OptionsPanel");
+            helpPanel = GameObject.Find("HelpPanel");
         }
 
         public void GetButtons()
@@ -112,11 +115,11 @@ namespace PersonalScripts
                 {
                     fishBtn = _buttons[i];
                 }
-                /*
-                if (btnName == "")
+                if (btnName == "Help")
                 {
-                    temp = _buttons[i];
+                    helpBtn = _buttons[i];
                 }
+                /*
                 if (btnName == "")
                 {
                     temp = _buttons[i];
@@ -216,6 +219,9 @@ namespace PersonalScripts
                     case "SecurityCamBtn":
                         securityCamBtn = button;
                         break;
+                    case "HelpBtn":
+                        helpBtn = button;
+                        break;
                     case "EatTurkeyBtn":
                         turkeyBtn = button;
                         break;
@@ -258,6 +264,9 @@ namespace PersonalScripts
                             break;
                         case "OptionsPanel":
                             optionsPanel = panel;
+                            break;
+                        case "HelpPanel":
+                            helpPanel = panel;
                             break;
                     }
                 }
@@ -325,6 +334,18 @@ namespace PersonalScripts
                 pauseParentPanel.gameObject.SetActive(true);
                 resumeBtn.gameObject.SetActive(true);
             }
+        }
+
+        public void ShowHelpPanel()
+        {
+            if (helpBtn.gameObject.activeSelf)
+            {
+                helpPanel.gameObject.SetActive(true);
+            }
+        }
+        public void CloseHelpPanel()
+        {
+            helpPanel.SetActive(false);
         }
 
         public void HidePausePanel()
