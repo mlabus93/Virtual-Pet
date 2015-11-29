@@ -44,6 +44,7 @@ namespace PersonalScripts
 
         public void RestartLevel()
         {
+            Time.timeScale = 1;
             Application.LoadLevel(Application.loadedLevel);
         }
 
