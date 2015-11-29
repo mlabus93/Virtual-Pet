@@ -1,4 +1,15 @@
-﻿using System;
+﻿// Project: Cyber Animal
+// File: AnimalGameManager.cs
+// Modification History:
+// Author           Date
+// Jean-Baptiste    11/22/15
+// Mirvil           11/23/15
+// Labus            11/24/15
+// Jean-Baptsiste   11/26/15
+// Jean-Baptiste    11/28/15
+// Mirvil           11/29/15
+
+using System;
 using System.Text;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;

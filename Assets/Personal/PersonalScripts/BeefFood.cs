@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿// Project: Cyber Animal
+// File: BeefFood.cs
+// Modification History:
+// Author           Date
+// Mirvil           11/23/15
+// Mirvil           11/29/15
+
+using UnityEngine;
 using System.Collections;
 
 namespace PersonalScripts
