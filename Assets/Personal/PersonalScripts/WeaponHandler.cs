@@ -130,6 +130,12 @@ namespace PersonalScripts
 
         public void Attack(int attackType)
         {
+            // player should not be able to attack if dead
+            PlayerHealth playHealth = GetComponent<PersonalScripts.PlayerHealth>();
+            if (playHealth != null)
+                if (playHealth.currentHealth <= 0)
+                    return;
+
             if (attackType == 1)
             {
                 DisableEnableColliders(true);

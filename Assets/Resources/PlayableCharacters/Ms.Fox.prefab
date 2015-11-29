@@ -1204,8 +1204,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: cdd6d5023857e9b499aac55228c3aa92, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1362,12 +1362,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
-  currentHealth: 0
+  _currentHealth: 0
   healthSlider: {fileID: 0}
   damageImage: {fileID: 0}
+  deathClip: {fileID: 8300000, guid: 1dcd7e4e779bc954a910cdb7156b748a, type: 3}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: .100000001}
-  deathClip: {fileID: 0}
+  playerAudio: {fileID: 0}
+  isDead: 0
 --- !u!114 &11435214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1602,6 +1604,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_StoppingDistance
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: deathClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1dcd7e4e779bc954a910cdb7156b748a, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: cdd6d5023857e9b499aac55228c3aa92, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

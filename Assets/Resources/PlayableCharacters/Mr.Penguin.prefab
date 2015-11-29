@@ -1205,7 +1205,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b7012b1120193594a9da38bf9ac9e43f, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1378,12 +1378,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
-  currentHealth: 0
+  _currentHealth: 0
   healthSlider: {fileID: 0}
   damageImage: {fileID: 0}
+  deathClip: {fileID: 8300000, guid: 6b4542c83823f5949991bf7c0541f56d, type: 3}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: .100000001}
-  deathClip: {fileID: 8300000, guid: 6b4542c83823f5949991bf7c0541f56d, type: 3}
+  playerAudio: {fileID: 0}
+  isDead: 0
 --- !u!114 &11466818
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1611,6 +1613,10 @@ Prefab:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: b7012b1120193594a9da38bf9ac9e43f, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 110816}
