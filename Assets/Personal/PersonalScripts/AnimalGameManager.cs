@@ -15,7 +15,7 @@ namespace PersonalScripts
         // and only one player
         public static AnimalGameManager _manager;
         public static IAnimalCharacter _player;
-        public static int _coins = 500;
+        public static int _coins = 100;
         public static int _volumeLevel;
         public static float _gameSpeed;
         public string _userName = "Temp";
