@@ -17,12 +17,10 @@ namespace PersonalScripts
 
         public TreatFood()
         {
-            fishey = 12;
-            meaty = 99;
-            watery = 60;
+            sweet = 100;
+            rehydration = -10;
             calories = 10;
-
-            cost = 30;
+            cost = 50;
         }
     }
 }
