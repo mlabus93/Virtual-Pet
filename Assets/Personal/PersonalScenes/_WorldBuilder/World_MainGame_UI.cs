@@ -24,6 +24,7 @@ public class World_MainGame_UI : DynamicButtonAssignment
     Button jumpGameBtn;
     Button closeMiniGamePanelBtn;
     GameObject miniGamePanel;
+    Text coinText;
 
     public override void SetupButtons()
     {
@@ -41,6 +42,7 @@ public class World_MainGame_UI : DynamicButtonAssignment
         UIController uiController = canvasMain.GetComponent<UIController>();
         uiController.SetButtons(_buttons);
         uiController.SetPanels(_panels);
+        SetCoinTextLabel();
         // Checks names of buttons and adds listeners accordingly
         for (int i = 0; i < _buttons.Length; i++)
         {
@@ -232,5 +234,15 @@ public class World_MainGame_UI : DynamicButtonAssignment
                     break;
             }
         }
+    }
+
+    void SetCoinTextLabel()
+    {  
+        coinText = GameObject.Find("CoinsText").GetComponent<Text>();
+    }
+
+    void Update()
+    {
+        coinText.text = "$" + PersonalScripts.AnimalGameManager._coins;
     }
 }

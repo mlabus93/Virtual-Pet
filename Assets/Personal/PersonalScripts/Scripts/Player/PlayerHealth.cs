@@ -56,7 +56,10 @@ namespace PersonalScripts
             if (damaged)
             {
                 // ... set the colour of the damageImage to the flash colour.
-                damageImage.color = flashColour;
+                if (damageImage)
+                {
+                    damageImage.color = flashColour;
+                }
             }
             // Otherwise...
             else

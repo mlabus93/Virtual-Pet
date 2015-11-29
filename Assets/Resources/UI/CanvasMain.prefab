@@ -1314,7 +1314,7 @@ GameObject:
   - 222: {fileID: 22293670}
   - 114: {fileID: 11448784}
   m_Layer: 5
-  m_Name: Text
+  m_Name: CoinsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
