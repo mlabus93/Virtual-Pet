@@ -1,4 +1,10 @@
-﻿public enum PlayableCharacters
+﻿// Project: Pet Pals
+// File: EnumContainer.cs
+// Modification History:
+// Author           Date
+// Jean-Baptiste    11/22/15
+
+public enum PlayableCharacters
 {
     Cat = 0,
     Dog,

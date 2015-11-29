@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿// Project: Pet Pals
+// File: EnemyHealth.cs
+// Modification History:
+// Author           Date
+// Jean-Baptiste    11/22/15
+// Jean-Baptiste    11/27/15
+// Jean-Baptiste    11/28/15
+
+using UnityEngine;
 
 namespace PersonalScripts
 {

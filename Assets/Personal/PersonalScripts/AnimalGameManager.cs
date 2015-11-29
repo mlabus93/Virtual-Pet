@@ -1,4 +1,4 @@
-﻿// Project: Cyber Animal
+﻿// Project: Pet Pals
 // File: AnimalGameManager.cs
 // Modification History:
 // Author           Date

@@ -1,4 +1,15 @@
-﻿using System;
+﻿// Project: Cyber Animal
+// File: Character.cs
+// Modification History:
+// Author           Date
+// Jean-Baptiste    11/22/15
+// Mirvil           11/23/15
+// Labus            11/24/15
+// Mirvil           11/25/15
+// Jean-Baptiste    11/26/15
+// Mirvil           11/27/15
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;

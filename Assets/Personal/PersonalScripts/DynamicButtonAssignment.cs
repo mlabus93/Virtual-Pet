@@ -1,4 +1,15 @@
-﻿using UnityEngine;
+﻿// Project: Pet Pals
+// File: DynamicButtonAssignment.cs
+// Modification History:
+// Author           Date
+// Jean-Baptiste    11/23/15
+// Jean-Baptiste    11/24/15
+// Jean-Baptiste    11/26/15
+// Jean-Baptiste    11/27/15
+// Labus            11/27/15
+// Mirvil           11/29/15
+
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 

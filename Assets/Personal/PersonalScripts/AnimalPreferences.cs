@@ -1,4 +1,4 @@
-﻿// Project: Cyber Animal
+﻿// Project: Pet Pals
 // File: AnimalPreferences.cs
 // Modification History:
 // Author           Date

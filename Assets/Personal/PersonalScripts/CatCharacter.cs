@@ -1,4 +1,4 @@
-﻿// Project: Cyber Animal
+﻿// Project: Pet Pals
 // File: CatCharacter.cs
 // Modification History:
 // Author           Date
