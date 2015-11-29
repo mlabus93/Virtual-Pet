@@ -1,4 +1,14 @@
-﻿using UnityEngine;
+﻿// Project: Pet Pals
+// File: UISpawner.cs
+// Modification History:
+// Author           Date
+// Labus            11/24/15
+// Jean-Baptiste    11/26/15
+// Jean-Baptiste    11/27/15
+// Labus            11/27/15
+// Labus            11/29/15
+
+using UnityEngine;
 using System.Collections;
 
 public class UISpawner : MonoBehaviour {

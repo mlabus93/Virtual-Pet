@@ -1,4 +1,10 @@
-﻿using System;
+﻿// Project: Pet Pals
+// File: FoodMenu.cs
+// Modification History:
+// Author           Date
+// Jean-Baptiste    11/22/15
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿// Project: Pet Pals
+// File: MoveToRoom.cs
+// Modification History:
+// Author           Date
+// Mirvil           11/23/15
+
 using System.Collections;
 using UnityEngine.EventSystems;
 

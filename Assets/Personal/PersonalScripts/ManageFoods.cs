@@ -1,3 +1,12 @@
+// Project: Pet Pals
+// File: ManageFoods.cs
+// Modification History:
+// Author           Date
+// Mirvil           11/23/15
+// Mirvil           11/24/15
+// Mirvil           11/27/15
+// Mirvil           11/29/15
+
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;

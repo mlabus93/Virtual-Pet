@@ -1,3 +1,9 @@
+// Project: Pet Pals
+// File: LetsPlayDoll.cs
+// Modification History:
+// Author           Date
+// Mirvil           11/23/15
+
 using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;

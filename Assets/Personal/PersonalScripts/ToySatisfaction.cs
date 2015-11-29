@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿// Project: Pet Pals
+// File: ToySatisfaction.cs
+// Modification History:
+// Author           Date
+// Mirvil           11/23/15
+
+using UnityEngine;
 using System.Collections;
 
 namespace PersonalScripts

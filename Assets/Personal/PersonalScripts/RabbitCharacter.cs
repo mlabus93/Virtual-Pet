@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿// Project: Pet Pals
+// File: RabbitCharacter.cs
+// Modification History:
+// Author           Date
+// Jean-Baptiste    11/22/15
+
+using UnityEngine;
 using System.Collections;
 
 

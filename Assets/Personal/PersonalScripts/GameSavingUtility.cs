@@ -1,4 +1,11 @@
-﻿using System.Collections.Generic;
+﻿// Project: Pet Pals
+// File: GameSavingUtility.cs
+// Modification History:
+// Author           Date
+// Jean-Baptiste    11/22/15
+// Jean-Baptiste    11/26/15
+
+using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;

@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿// Project: Pet Pals
+// File: Player1StickMovement.cs
+// Modification History:
+// Author           Date
+// Jean-Baptiste    11/22/15
+// Jean-Baptiste    11/29/15
+
+using UnityEngine;
 using System.Collections;
 using UnityStandardAssets.CrossPlatformInput;
 

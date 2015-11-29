@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿// Project: Pet Pals
+// File: TimedEmitterDestruction.cs
+// Modification History:
+// Author           Date
+// Jean-Baptiste    11/23/15
+// Jean-Baptiste    11/27/15
+
+using UnityEngine;
 using System.Collections;
 
 public class TimedEmitterDestruction : MonoBehaviour {

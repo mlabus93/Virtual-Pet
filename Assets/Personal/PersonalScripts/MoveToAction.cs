@@ -1,3 +1,15 @@
+// Project: Pet Pals
+// File: MoveToAction.cs
+// Modification History:
+// Author           Date
+// Mirvil           11/23/15
+// Mirvil           11/24/15
+// Mirvil           11/26/15
+// Jean-Baptiste    11/26/15
+// Mirvil           11/27/15
+// Jean-Baptiste    11/28/15
+// Mirvil           11/29/15
+
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;

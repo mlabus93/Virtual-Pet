@@ -1,4 +1,14 @@
-﻿using UnityEngine;
+﻿// Project: Pet Pals
+// File: LevelManager.cs
+// Modification History:
+// Author           Date
+// Jean-Baptiste    11/23/15
+// Labus            11/25/15
+// Jean-Baptiste    11/27/15
+// Jean-Baptiste    11/28/15
+// Labus            11/29/15
+
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 

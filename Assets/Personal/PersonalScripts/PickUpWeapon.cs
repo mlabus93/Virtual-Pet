@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿// Project: Pet Pals
+// File: PickUpWeapon.cs
+// Modification History:
+// Author           Date
+// Jean-Baptiste    11/23/15
+// Jean-Baptiste    11/28/15
+
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 

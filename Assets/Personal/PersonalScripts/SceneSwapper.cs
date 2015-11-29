@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿// Project: Pet Pals
+// File: PlayerSpawner.cs
+// Modification History:
+// Author           Date
+// Jean-Baptiste    11/23/15
+// Labus            11/24/15
+// Jean-Baptiste    11/28/15
+
+using UnityEngine;
 using System.Collections;
 
 namespace PersonalScripts
