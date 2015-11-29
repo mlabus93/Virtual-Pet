@@ -14,6 +14,7 @@ namespace PersonalScripts
         private Transform playerTrans;
         private float platformsSpawnedUpTo = 0.0f;
         private ArrayList platforms;
+        private ArrayList fallinItems;
         private float nextPlatformCheck = 0.0f;
         AnimalGameManager _gameManager;
 
@@ -40,6 +41,7 @@ namespace PersonalScripts
             _gameManager.PlayerAnimalObject.GetComponent<Rigidbody>().isKinematic = true;
             //Destroy(GetComponent<Rigidbody>());
             platforms = new ArrayList();
+            fallinItems = new ArrayList();
 
             SpawnPlatforms(25.0f);
             StartGame();
@@ -53,7 +55,8 @@ namespace PersonalScripts
 
         public override void AddPoints(int Amount)
         {
-            World_MiniGame_02_UI.score += Amount;
+            //World_MiniGame_02_UI.score += Amount;
+            score += Amount;
         }
 
         void GameOver()
@@ -62,6 +65,12 @@ namespace PersonalScripts
             Time.timeScale = 0.0f; //Pause the game
             gameState = GameState.gameover;
             World_MiniGame_02_UI.SP.CheckHighscore();
+            // prevents player from accruing points
+            if (!_alreadyGavePoints)
+            {
+                _alreadyGavePoints = true;
+                World_MiniGame_02_UI.score += score;
+            }
             _gameManager.AddCoins(World_MiniGame_02_UI.score);
             FindObjectOfType<AudioSource>().Stop();
             foreach (AudioSource src in FindObjectsOfType<AudioSource>())
@@ -126,8 +135,18 @@ namespace PersonalScripts
                 }
             }
 
-            //Spawn new platforms, 25 units in advance
-            SpawnPlatforms(nextPlatformCheck + 25);
+            for (int i = fallinItems.Count - 1; i >= 0; i-- )
+            {
+                Transform cn = (Transform)fallinItems[i];
+                if (cn.position.y < (transform.position.y - 10))
+                {
+                    Destroy(cn.gameObject);
+                    fallinItems.RemoveAt(i);
+                }
+            }
+
+                //Spawn new platforms, 25 units in advance
+                SpawnPlatforms(nextPlatformCheck + 25);
             int chanceForCoin = Random.Range(0, 100);
             if (chanceForCoin < 50)
                 SpawnCoins(nextPlatformCheck + 25);
