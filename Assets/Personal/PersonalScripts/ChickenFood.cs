@@ -17,12 +17,11 @@ namespace PersonalScripts
 
         public ChickenFood()
         {
-            fishey = 12;
-            meaty = 99;
-            watery = 60;
-            calories = 10;
-
-            cost = 30;
+            meaty = 70;
+            watery = 20;
+            calories = 40;
+            rehydration = -10;
+            cost = 15;
         }
     }
 }

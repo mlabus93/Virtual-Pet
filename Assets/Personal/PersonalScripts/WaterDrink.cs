@@ -17,12 +17,8 @@ namespace PersonalScripts
 
         public WaterDrink()
         {
-            fishey = 12;
-            meaty = 99;
-            watery = 60;
-            calories = 10;
-
-            cost = 30;
+            rehydration = 100;
+            cost = 10;
         }
     }
 }

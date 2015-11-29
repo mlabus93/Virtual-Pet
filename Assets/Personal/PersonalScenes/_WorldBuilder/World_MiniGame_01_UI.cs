@@ -75,6 +75,13 @@ class World_MiniGame_01_UI : DynamicButtonAssignment
                     optionsBtn.gameObject.SetActive(true);
                 });
             }
+            if (btnName == "ExitBtn")
+            {
+                _buttons[i].onClick.AddListener(delegate
+                {
+                    Time.timeScale = 1;
+                });
+            }
         }
     }
 

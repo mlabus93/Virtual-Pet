@@ -53,7 +53,7 @@ namespace PersonalScripts
                 {
                     if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Eat"))
                     {
-                        anim.SetFloat("Speed", 0);
+                        //anim.SetFloat("Speed", 0);
                     }
                 }
                 else

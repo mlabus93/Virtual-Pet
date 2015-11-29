@@ -20,6 +20,10 @@ public class World_MainGame_UI : DynamicButtonAssignment
     Button ribBtn;
     Button chickenBtn;
     Button fishBtn;
+    Button hauntedGameBtn;
+    Button jumpGameBtn;
+    Button closeMiniGamePanelBtn;
+    GameObject miniGamePanel;
 
     public override void SetupButtons()
     {
@@ -78,9 +82,11 @@ public class World_MainGame_UI : DynamicButtonAssignment
                     });
                     break;
                 case "Minigame":
+                    miniGameBtn = _buttons[i];
                     _buttons[i].onClick.AddListener(() =>
                     {
-                        uiManager.GetComponent<SceneSwapper>().LoadScene(4);
+                        miniGameBtn.gameObject.SetActive(false);
+                        miniGamePanel.gameObject.SetActive(true);
                     });
                     break;
                 case "ResumeBtn":
@@ -175,6 +181,23 @@ public class World_MainGame_UI : DynamicButtonAssignment
                         GameObject.Find("FoodManager").GetComponent<ManageFoods>().EatFish();
                     });
                     break;
+                case "HauntedGameBtn":
+                    hauntedGameBtn = _buttons[i];
+                    _buttons[i].onClick.AddListener(() =>
+                    {
+                        uiManager.GetComponent<SceneSwapper>().LoadScene(4);
+                    });
+                    break;
+                case "JumpGameBtn":
+                    jumpGameBtn = _buttons[i];
+                    _buttons[i].onClick.AddListener(() =>
+                    {
+                        uiManager.GetComponent<SceneSwapper>().LoadScene(5);
+                    });
+                    break;
+                case "CloseMiniGameBtn":
+                    miniGamePanel.gameObject.SetActive(false);
+                    break;
             }
         }
         uiController.SetUpFoodUI(GameObject.FindGameObjectWithTag("NoCoins"));
@@ -203,6 +226,9 @@ public class World_MainGame_UI : DynamicButtonAssignment
                     break;
                 case "HelpPanel":
                     helpPanel = panel;
+                    break;
+                case "MiniGamePanel":
+                    miniGamePanel = panel;
                     break;
             }
         }

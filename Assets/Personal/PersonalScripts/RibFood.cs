@@ -17,11 +17,10 @@ namespace PersonalScripts
 
         public RibFood()
         {
-            fishey = 12;
-            meaty = 99;
-            watery = 60;
-            calories = 10;
-
+            meaty = 70;
+            watery = 20;
+            rehydration = -5;
+            calories = 50;
             cost = 30;
         }
     }

@@ -464,10 +464,13 @@ namespace PersonalScripts
                 player = GameObject.FindGameObjectWithTag("Player");
             }
             //UpdateHealthBar();
-            if (Input.GetButtonDown("Fire1") && statsPanel.gameObject.activeSelf)
+            if (statsPanel)
             {
-                HidePanels();
-                ShowBtns();
+                if (Input.GetButtonDown("Fire1") && statsPanel.gameObject.activeSelf)
+                {
+                    HidePanels();
+                    ShowBtns();
+                }
             }
         }
     }
