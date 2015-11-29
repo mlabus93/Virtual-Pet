@@ -1,4 +1,14 @@
-﻿using UnityEngine;
+﻿// Project: Pet Pals
+// File: WeaponHandler.cs
+// Modification History:
+// Author           Date
+// Jean-Baptiste    11/22/15
+// Jean-Baptiste    11/26/15
+// Jean-Baptiste    11/27/15
+// Jean-Baptiste    11/28/15
+// Jean-Baptiste    11/29/15
+
+using UnityEngine;
 using System.Collections;
 
 namespace PersonalScripts
