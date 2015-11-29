@@ -45,6 +45,139 @@ namespace PersonalScripts
         Slider[] sliders;
         IAnimalCharacter iAnimal;
 
+        private void GetPanels()
+        {
+            statsPanel = GameObject.FindGameObjectWithTag("StatsPanel");
+            pauseParentPanel = GameObject.Find("PauseParentPanel");
+            optionsPanel = GameObject.Find("OptionsPanel");
+        }
+
+        public void GetButtons()
+        {
+            // container for all buttons
+            Button[] _buttons = gameObject.GetComponentsInChildren<Button>();
+            for (int i = 0; i < _buttons.Length; i++)
+            {
+                string btnName = _buttons[i].name;
+
+                if (btnName == "Attack1Btn")
+                {
+                    attack1Btn = _buttons[i];
+                }
+                if (btnName == "Attack2Btn")
+                {
+                    attack2Btn = _buttons[i];
+                }
+                if (btnName == "JumpBtn")
+                {
+                    jumpBtn = _buttons[i];
+                }
+                if (btnName == "Stats")
+                {
+                    statsBtn = _buttons[i];
+                }
+                if (btnName == "Outfit")
+                {
+                    outfitBtn = _buttons[i];
+                }
+                if (btnName == "PauseBtn")
+                {
+                   pauseBtn = _buttons[i];
+                }
+                if (btnName == "DrinkBtn")
+                {
+                    drinkBtn = _buttons[i];
+                }
+                if (btnName == "EatTurkeyBtn")
+                {
+                    turkeyBtn = _buttons[i];
+                }
+                if (btnName == "EatChickenBtn")
+                {
+                    chickenBtn = _buttons[i];
+                }
+                if (btnName == "EatRibsBtn")
+                {
+                    ribBtn = _buttons[i];
+                }
+                if (btnName == "EatTreatBtn")
+                {
+                    treatBtn = _buttons[i];
+                }
+                if (btnName == "EatBeefBtn")
+                {
+                    beefBtn = _buttons[i];
+                }
+                if (btnName == "EatFishBtn")
+                {
+                    fishBtn = _buttons[i];
+                }
+                /*
+                if (btnName == "")
+                {
+                    temp = _buttons[i];
+                }
+                if (btnName == "")
+                {
+                    temp = _buttons[i];
+                }
+                if (btnName == "")
+                {
+                    temp = _buttons[i];
+                }
+                if (btnName == "")
+                {
+                    temp = _buttons[i];
+                }
+                if (btnName == "")
+                {
+                    temp = _buttons[i];
+                }
+                if (btnName == "")
+                {
+                    temp = _buttons[i];
+                }
+                if (btnName == "")
+                {
+                    temp = _buttons[i];
+                }
+                */
+
+            }
+            // finds all buttons in scene and assigns them based on name
+           //statsBtn = ;
+           //outfitBtn = ;
+           //miniGameBtn = ;
+           //optionsBtn = ;
+           //pauseBtn = ;
+           //resumeBtn = ;
+           //drinkBtn = ;
+           //turkeyBtn = ;
+           //treatBtn = ;
+           //beefBtn = ;
+           //ribBtn = ;
+           //chickenBtn = ;
+           //fishBtn = ;
+           //pauseParentPanel = ;
+           //statsPanel = ;
+           //optionsPanel = ;
+           //canvas = ;
+           //healthSlider = ;
+           //happinessSlider = ;
+           //fatigueSlider = ;
+           //hungerSlider = ;
+           //thirstSlider = ;
+           //bladderSlider = ;
+           //player = ;
+           //public PlayerHealth playerHealth = ;
+           //insufficientCoinsTxt = ;
+           //GameObject healthBar = ;
+           //Slider healthBarSlider = ;
+           //Slider[] sliders = ;
+           //IAnimalCharacter iAnimal = ;
+
+
+        }
 
         public void SetButtons(Button[] buttons)
         {
@@ -82,6 +215,27 @@ namespace PersonalScripts
                         break;
                     case "SecurityCamBtn":
                         securityCamBtn = button;
+                        break;
+                    case "EatTurkeyBtn":
+                        turkeyBtn = button;
+                        break;
+                    case "EatChickenBtn":
+                        chickenBtn = button;
+                        break;
+                    case "EatRibsBtn":
+                        ribBtn = button;
+                        break;
+                    case "EatTreatBtn":
+                        treatBtn = button;
+                        break;
+                    case "EatBeefBtn":
+                        beefBtn = button;
+                        break;
+                    case "EatFishBtn":
+                        fishBtn = button;
+                        break;
+                    case "DrinkBtn":
+                        drinkBtn  = button;
                         break;
                 }
             }
@@ -128,7 +282,23 @@ namespace PersonalScripts
             iAnimal = player.GetComponent<IAnimalCharacter>();
             healthBarSlider = FindObjectOfType<Slider>();
         }
-
+        
+        public void SetUpFoodUI(GameObject noCoins)
+        {
+            //Need to set these options to disabled until the condition is 
+            if(noCoins != null)
+            {
+                insufficientCoinsTxt = noCoins;
+            }
+            drinkBtn.gameObject.SetActive(false);
+            turkeyBtn.gameObject.SetActive(false);
+            chickenBtn.gameObject.SetActive(false);
+            ribBtn.gameObject.SetActive(false);
+            treatBtn.gameObject.SetActive(false);
+            beefBtn.gameObject.SetActive(false);
+            fishBtn.gameObject.SetActive(false);
+            insufficientCoinsTxt.SetActive(false);
+        }
         //private void UpdateHealthBar()
         //{
         //    if (healthBarSlider != null)

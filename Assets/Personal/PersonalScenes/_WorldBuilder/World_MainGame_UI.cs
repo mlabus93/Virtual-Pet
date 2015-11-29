@@ -121,8 +121,51 @@ public class World_MainGame_UI : DynamicButtonAssignment
 
                     });
                     break;
+                case "DrinkBtn":
+                    _buttons[i].onClick.AddListener(() =>
+                    {
+                        GameObject.Find("FoodManager").GetComponent<ManageFoods>().Drink();
+                    });
+                    break;
+                case "EatTurkeyBtn":
+                    _buttons[i].onClick.AddListener(() =>
+                    {
+                        GameObject.Find("FoodManager").GetComponent<ManageFoods>().EatTurkey();
+                    });
+                    break;
+                case "EatChickenBtn":
+                    _buttons[i].onClick.AddListener(() =>
+                    {
+                        GameObject.Find("FoodManager").GetComponent<ManageFoods>().EatChicken();
+                    });
+                    break;
+                case "EatRibsBtn":
+                    _buttons[i].onClick.AddListener(() =>
+                    {
+                        GameObject.Find("FoodManager").GetComponent<ManageFoods>().EatRibs();
+                    });
+                    break;
+                case "EatTreatBtn":
+                    _buttons[i].onClick.AddListener(() =>
+                    {
+                        GameObject.Find("FoodManager").GetComponent<ManageFoods>().EatTreat();
+                    });
+                    break;
+                case "EatBeefBtn":
+                    _buttons[i].onClick.AddListener(() =>
+                    {
+                        GameObject.Find("FoodManager").GetComponent<ManageFoods>().EatBeef();
+                    });
+                    break;
+                case "EatFishBtn":
+                    _buttons[i].onClick.AddListener(() =>
+                    {
+                        GameObject.Find("FoodManager").GetComponent<ManageFoods>().EatFish();
+                    });
+                    break;
             }
         }
+        uiController.SetUpFoodUI(GameObject.FindGameObjectWithTag("NoCoins"));
     }
 
     public void SetupPanels()

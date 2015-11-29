@@ -76,7 +76,7 @@ namespace PersonalScripts
             else
             {
                 //PRINT ERROR - play mini games to earn coin to use on foods and toys
-                insuffientCoins = (GameObject.FindWithTag("UIManager").GetComponent("UIController") as UIController).insufficientCoinsTxt;
+                insuffientCoins = (GameObject.Find("CanvasMain(Clone)").GetComponent("UIController") as UIController).insufficientCoinsTxt;
                 insuffientCoins.SetActive(true);
                 StartCoroutine(RemoveErrorMessage());
             }
@@ -274,8 +274,6 @@ namespace PersonalScripts
                 {
                     costToPlay += (doll.GetComponent("ToySatisfaction") as ToySatisfaction).cost;
                 }
-                //temp
-                costToPlay = 0;
                 PurchaseToy(costToPlay);
                 if (isPlaying)
                 {

@@ -14,8 +14,7 @@ namespace PersonalScripts
         public GameObject beef;
         public GameObject treat;
         public GameObject water;
-        public GameObject insuffientCoins;
-
+        
         AnimalGameManager gameManager;
         private int turkeyCount;
         private int ribCount;
@@ -25,6 +24,7 @@ namespace PersonalScripts
         private int treatCount;
         private bool isEating;
         Character player;
+        GameObject insuffientCoins;
 
         public void PurchaseFood(GameObject selection)
         {
@@ -39,9 +39,9 @@ namespace PersonalScripts
             else
             {
                 //PRINT ERROR - play mini games to earn coin to use on foods and toys
+                //insuffientCoins = GameObject.FindObjectOfType<Canvas>().GetComponent<UIController>().insufficientCoinsTxt;
+                insuffientCoins = (GameObject.Find("CanvasMain(Clone)").GetComponent("UIController") as UIController).insufficientCoinsTxt;
                 insuffientCoins.SetActive(true);
-                //insuffientCoins.enabled = true;
-                //insuffientCoins.color = Color.red;
                 StartCoroutine(RemoveErrorMessage());
             }
         }
@@ -229,8 +229,6 @@ namespace PersonalScripts
         {
             yield return new WaitForSeconds(4f);
             insuffientCoins.SetActive(false);
-            //insuffientCoins.color = new Color(0, 0, 0, 0);
-            //insuffientCoins.enabled = false;
         }
     }
 }
