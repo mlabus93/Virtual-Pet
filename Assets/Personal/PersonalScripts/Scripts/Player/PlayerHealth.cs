@@ -27,7 +27,7 @@ namespace PersonalScripts
             return val;
         }
         Animator anim;                                              // Reference to the Animator component.
-        AudioSource playerAudio;                                    // Reference to the AudioSource component.
+        public AudioSource playerAudio;                                    // Reference to the AudioSource component.
         Player1StickMovement playerMovement;                              // Reference to the player's movement.
         //PlayerShooting playerShooting;                              // Reference to the PlayerShooting script.
         public bool isDead;                                                // Whether the player is dead.

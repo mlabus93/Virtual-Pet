@@ -20,7 +20,7 @@ namespace PersonalScripts
         {
 
         }
-        public void AddPoints(int Amount)
+        public virtual void AddPoints(int Amount)
         {
             _score += Amount;
         }

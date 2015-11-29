@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+using UnityStandardAssets.CrossPlatformInput;
 public class Playermovement : MonoBehaviour
 {
     public float movementSpeed = 5.0f;
@@ -9,8 +10,8 @@ public class Playermovement : MonoBehaviour
 
     void Update() {
         GetComponent<Rigidbody>().velocity = new Vector3(0, GetComponent<Rigidbody>().velocity.y, 0); //Set X and Z velocity to 0
- 
-        transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime * movementSpeed, 0, 0);
+
+        transform.Translate(CrossPlatformInputManager.GetAxis("Horizontal") * Time.deltaTime * movementSpeed, 0, 0);
 
         /*if (Input.GetButtonDown("Jump") && isGrounded)
         {
