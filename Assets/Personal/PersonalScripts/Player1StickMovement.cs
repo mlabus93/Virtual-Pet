@@ -73,17 +73,22 @@ public class Player1StickMovement : MonoBehaviour {
             
     }
 
-
-
+    /*
     public void Attack1()
     {
-        _anim.SetTrigger("Attack1");
+        PersonalScripts.PlayerHealth playHealth = GetComponent<PersonalScripts.PlayerHealth>();
+        if (playHealth != null)
+            if (playHealth.currentHealth > 0)
+                _anim.SetTrigger("Attack1");
     }
 
     public void Attack2()
     {
-        _anim.SetTrigger("Attack2");
+        PersonalScripts.PlayerHealth playHealth = GetComponent<PersonalScripts.PlayerHealth>();
+        if (playHealth != null)
+            if (playHealth.currentHealth > 0)
+                _anim.SetTrigger("Attack2");
     }
-
+    */
     
 }
