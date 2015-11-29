@@ -118,6 +118,25 @@ namespace PersonalScripts
             }
         }
 
+        void LateUpdate()
+        {
+            if (platforms.Count < 1)
+                PlatformMaintenaince();
+
+            int platCount = 0;
+            foreach (Transform plat in platforms)
+            {
+                if (plat.position.y > playerTrans.position.y)
+                    platCount += 1;
+            }
+
+            if (platCount < 4)
+            {
+                Debug.Log("THERE ARE NO MORE PLATFORMS");
+                PlatformMaintenaince();
+            }
+        }
+
 
 
         void PlatformMaintenaince()
@@ -146,7 +165,7 @@ namespace PersonalScripts
             }
 
                 //Spawn new platforms, 25 units in advance
-                SpawnPlatforms(nextPlatformCheck + 25);
+                SpawnPlatforms(nextPlatformCheck + 25f);
             int chanceForCoin = Random.Range(0, 100);
             if (chanceForCoin < 50)
                 SpawnCoins(nextPlatformCheck + 25);

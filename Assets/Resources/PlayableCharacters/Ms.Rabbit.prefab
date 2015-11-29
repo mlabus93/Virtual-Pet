@@ -1204,7 +1204,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b5a3ec72a4794cb47b0fdc6ea551ab5c, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1603,6 +1603,10 @@ Prefab:
       propertyPath: deathClip
       value: 
       objectReference: {fileID: 8300000, guid: f45a04ec35f904247a3ee094ecc7908f, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 131596}

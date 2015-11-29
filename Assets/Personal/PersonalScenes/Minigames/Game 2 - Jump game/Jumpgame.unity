@@ -931,6 +931,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27ab52b4e3dc7f14b91fc3d11a6c1d45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttons: []
+  optionsPanel: {fileID: 0}
+  pauseBtn: {fileID: 0}
+  restartBtn: {fileID: 0}
+  quitBtn: {fileID: 0}
+  closeOptionsBtn: {fileID: 0}
+  tryAgainBtn: {fileID: 0}
 --- !u!114 &55
 MonoBehaviour:
   m_ObjectHideFlags: 0
