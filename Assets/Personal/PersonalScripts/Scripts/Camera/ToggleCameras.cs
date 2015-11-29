@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ToggleCameras : MonoBehaviour {
+public class ToggleCameras : MonoBehaviour
+{
     public Camera[] cameras = new Camera[9];
     private Camera lastCamera = new Camera();
 
@@ -18,7 +19,7 @@ public class ToggleCameras : MonoBehaviour {
     {
         int keyPress;
 
-        if(int.TryParse(Input.inputString, out keyPress))
+        if (int.TryParse(Input.inputString, out keyPress))
 
         {
             SwitchCameras((CameraPosition)keyPress);
@@ -98,7 +99,7 @@ public class ToggleCameras : MonoBehaviour {
         Camera currentCam = GetCurrentCamera();
         CameraPosition currentCamPos = (CameraPosition)System.Enum.Parse(typeof(CameraPosition), currentCam.name);
 
-        switch(currentCamPos)
+        switch (currentCamPos)
         {
             case CameraPosition.BedRoom1:
                 SwitchCameras(CameraPosition.BedRoom2);
@@ -118,7 +119,7 @@ public class ToggleCameras : MonoBehaviour {
             case CameraPosition.LivingRoom2:
                 SwitchCameras(CameraPosition.LivingRoom1);
                 break;
-             // For when I added a camera for first person (may not be used)
+            // For when I added a camera for first person (may not be used)
             //case CameraPosition.Overhead:
             //    ToggleCameras.SwitchCameras(CameraPosition.FirstPerson);
             //    break;
@@ -172,7 +173,7 @@ public class ToggleCameras : MonoBehaviour {
         switch (currentRoom)
         {
             case Room.BathRoom:
-                SwitchCameras(CameraPosition.BedRoom1);
+                SwitchCameras(CameraPosition.BedRoom2);
                 break;
             case Room.BedRoom:
 
@@ -197,7 +198,7 @@ public class ToggleCameras : MonoBehaviour {
                 }
                 break;
             case Room.ToyRoom:
-                SwitchCameras(CameraPosition.LivingRoom1);
+                SwitchCameras(CameraPosition.LivingRoom2);
                 break;
             default:
                 break;
@@ -209,3 +210,5 @@ public class ToggleCameras : MonoBehaviour {
     }
 
 }
+
+

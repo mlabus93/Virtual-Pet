@@ -11,7 +11,10 @@ namespace PersonalScripts
         AnimalGameManager _gameManager;
         Text text;                      // Reference to the Text component.
         public Timer _timer;                   // The time until the level is complete.
-
+        // keeps track of how many enemies there are in the scene
+        private EnemyMovement[] _numEnemies;
+        private EnemyManager _enemyManager;
+        public bool _gameOver = false;
 
         // TODO: consolodate Awake into Start
         public override void Awake()
@@ -26,6 +29,7 @@ namespace PersonalScripts
             _timer.SetTimer(_levelLength);
             _timer._isPaused = false;
 
+            _enemyManager = GameObject.FindObjectOfType<EnemyManager>();
         }     
         // Use this for initialization
         void Start()
@@ -43,7 +47,8 @@ namespace PersonalScripts
             // instantiates player at spawnpoint
             _gameManager.InstantiatePlayer();
             _gameManager.PlayerAnimalObject.transform.position = GameObject.FindGameObjectWithTag("PlayerSpawnPoint").transform.position;
-
+            // slows player down to playable speed
+            _gameManager.PlayerAnimalObject.GetComponent<Player1StickMovement>()._speed = .15f;
 
             // spawns Ui elements
             _uiSpawner = gameObject.AddComponent<UISpawner>();
@@ -51,6 +56,7 @@ namespace PersonalScripts
             // assigns Ui elements
             World_MiniGame_01_UI _buttonSetup = gameObject.AddComponent<World_MiniGame_01_UI>();
             _buttonSetup.SetupButtons();
+            _buttonSetup.SetupPanels();
         }
 
         void Update()
@@ -63,26 +69,58 @@ namespace PersonalScripts
             }
 
             // Set the displayed text to be the word "Score" followed by the score value.
-            //if (_timer._timeUp && GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().currentHealth > 0)
             if (text != null)
             {
-                text.text = "Score: " + _score + "\tTime: " + (int)_timer._stopTime;
-                if ((int)_timer._stopTime <= 0)
+                if (!_gameOver)
+                    text.text = "Score: " + _score + "\tTime: " + (int)_timer.timer;
+                // if times up
+                if ((int)_timer.timer <= 0)
                     OnGameOver();
+            }
+            else
+            {
+                text = GameObject.Find("ScoreText").GetComponent<Text>();
+            }
+
+         
+            // level complete
+            if (_enemyManager._swarmComplete && _timer.timer > 0 && _numEnemies.Length == 0)
+            {
+                OnLevelComplete(); 
             }
         }
 
-
+        void OnLevelComplete()
+        {
+            Debug.Log("LEVEL UP");
+            // Give player health
+            _gameManager.PlayerAnimalObject.GetComponent<PlayerHealth>().currentHealth += 40;
+            _gameManager.PlayerAnimalObject.GetComponent<PlayerHealth>().UpdateHealthSlider();
+            // resets timer
+            _timer.ResetTimer();
+            //_timer._stopTime += 5;
+            _timer.SetTimer(_timer._stopTime += 5f);
+            _timer.ResetTimer();
+            // Player gets +100 to score
+            _score += 100;
+            // enemy manager resets with increased difficulty
+            _enemyManager.NextLevel();
+        }
 
         void FixedUpdate()
         {
-            _timer._stopTime -= Time.deltaTime;
+            _numEnemies = GameObject.FindObjectsOfType<EnemyMovement>();
+
+            Debug.Log("There are: " + _numEnemies.Length + " in the scene");
+            //_timer._stopTime -= Time.deltaTime;
         }
 
         public override void OnGameOver()
         {
             text.text = "Game Over!!";
+            text.fontSize = 50;
             _alreadyGavePoints = true;
+            _gameOver = true;
 
             // checks if there is a manager in the scene
             if (_gameManager == null)

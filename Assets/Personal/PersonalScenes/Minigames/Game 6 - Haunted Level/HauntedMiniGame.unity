@@ -5657,8 +5657,8 @@ Transform:
   m_Children:
   - {fileID: 674792195}
   - {fileID: 1363928919}
-  - {fileID: 643203776}
   - {fileID: 1310074839}
+  - {fileID: 643203776}
   m_Father: {fileID: 361686039}
   m_RootOrder: 0
 --- !u!4 &281665376 stripped
@@ -7039,7 +7039,6 @@ GameObject:
   - 4: {fileID: 361686039}
   - 114: {fileID: 361686041}
   - 114: {fileID: 361686040}
-  - 114: {fileID: 361686042}
   m_Layer: 0
   m_Name: Spawners
   m_TagString: Untagged
@@ -7069,16 +7068,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 361686038}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76a99222b1e4a384e923ac7e86efc709, type: 3}
+  m_Script: {fileID: 11500000, guid: 07fa727a963c1694dadca142c2e2cc5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
-  enemy: {fileID: 165540, guid: 4115f66ad3478d24ba6db6971c3147c0, type: 2}
+  _objects:
+  - {fileID: 128634, guid: b2a0335a2ccbea74eac436a57dd87904, type: 2}
+  - {fileID: 139466, guid: daa05d4318ddac24a80e0b9bc0f88dc1, type: 2}
+  - {fileID: 115648, guid: dacf71ec520278a4ea233ebdadac6aeb, type: 2}
+  - {fileID: 115648, guid: dacf71ec520278a4ea233ebdadac6aeb, type: 2}
+  _spawnPoints:
+  - {fileID: 656306619}
+  - {fileID: 876531083}
+  - {fileID: 678822190}
+  - {fileID: 393012985}
+  - {fileID: 260829778}
   spawnTime: 3
-  spawnPoints:
-  - {fileID: 1310074839}
-  - {fileID: 643203776}
-  - {fileID: 1363928919}
 --- !u!114 &361686041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7091,32 +7095,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 0}
-  enemy: {fileID: 100000, guid: ffdde77c7de2ec246907b187471ed7d0, type: 2}
   spawnTime: 3
   spawnPoints:
   - {fileID: 674792195}
   - {fileID: 1363928919}
   - {fileID: 643203776}
---- !u!114 &361686042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 361686038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76a99222b1e4a384e923ac7e86efc709, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
-  enemy: {fileID: 128634, guid: b2a0335a2ccbea74eac436a57dd87904, type: 2}
-  spawnTime: 1
-  spawnPoints:
-  - {fileID: 656306619}
-  - {fileID: 876531083}
-  - {fileID: 393012985}
-  - {fileID: 678822190}
-  - {fileID: 260829778}
+  - {fileID: 1310074839}
+  _enemies:
+  - {fileID: 104722, guid: 2f8e5dcb17eda3542bf9cd4ef63425e3, type: 2}
+  - {fileID: 100000, guid: ffdde77c7de2ec246907b187471ed7d0, type: 2}
+  - {fileID: 165540, guid: 4115f66ad3478d24ba6db6971c3147c0, type: 2}
+  _swarmComplete: 0
 --- !u!1001 &366433168
 Prefab:
   m_ObjectHideFlags: 0
@@ -13306,7 +13295,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 499586, guid: dacf71ec520278a4ea233ebdadac6aeb, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 499586, guid: dacf71ec520278a4ea233ebdadac6aeb, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 499586, guid: dacf71ec520278a4ea233ebdadac6aeb, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 499586, guid: dacf71ec520278a4ea233ebdadac6aeb, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dacf71ec520278a4ea233ebdadac6aeb, type: 2}
@@ -13341,7 +13342,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 280140682}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1001 &643558292
 Prefab:
   m_ObjectHideFlags: 0
@@ -14395,6 +14396,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6402804, guid: daa05d4318ddac24a80e0b9bc0f88dc1, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 99e86ee0ad11f8d6d00011d98d76c639,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: daa05d4318ddac24a80e0b9bc0f88dc1, type: 2}
   m_IsPrefabParent: 0
@@ -16956,9 +16962,10 @@ GameObject:
   - 4: {fileID: 755661888}
   - 114: {fileID: 755661887}
   - 114: {fileID: 755661886}
+  - 82: {fileID: 755661889}
   m_Layer: 0
   m_Name: managers
-  m_TagString: Untagged
+  m_TagString: LevelManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16975,6 +16982,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttons: []
+  _panels: []
+  statsPanel: {fileID: 0}
+  optionsPanel: {fileID: 0}
+  pauseParentPanel: {fileID: 0}
 --- !u!114 &755661887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16986,9 +16997,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 801d5dd3192185347b49baaed055bbfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _levelLength: 50
   _timer: {fileID: 0}
-  _levelLength: 30
-  _timer: {fileID: 0}
+  _gameOver: 0
 --- !u!4 &755661888
 Transform:
   m_ObjectHideFlags: 0
@@ -17001,6 +17012,76 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
+--- !u!82 &755661889
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 755661885}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 0894e4e69a993494dab5d59d1e5ae695, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1001 &758152218
 Prefab:
   m_ObjectHideFlags: 0
@@ -29105,7 +29186,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 280140682}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1001 &1313352567
 Prefab:
   m_ObjectHideFlags: 0
@@ -34037,7 +34118,9 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11498344, guid: 1c75150f5ca8d0949b5ddc2e60cf5075, type: 2}
+    - {fileID: 11412732, guid: 1c75150f5ca8d0949b5ddc2e60cf5075, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 1c75150f5ca8d0949b5ddc2e60cf5075, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1537324761 stripped
@@ -40422,9 +40505,13 @@ MonoBehaviour:
   statsBtn: {fileID: 1269022249}
   outfitBtn: {fileID: 397360796}
   miniGameBtn: {fileID: 39323116}
+  cameraBtn: {fileID: 0}
   optionsBtn: {fileID: 1422062253}
   pauseBtn: {fileID: 0}
   resumeBtn: {fileID: 0}
+  exitBtn: {fileID: 0}
+  saveBtn: {fileID: 0}
+  securityCamBtn: {fileID: 0}
   drinkBtn: {fileID: 0}
   turkeyBtn: {fileID: 0}
   treatBtn: {fileID: 0}

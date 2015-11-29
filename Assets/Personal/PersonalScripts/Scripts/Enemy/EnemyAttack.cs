@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+using PersonalScripts;
 public class EnemyAttack : MonoBehaviour
 {
     public float timeBetweenAttacks = 0.5f;
@@ -24,7 +25,6 @@ public class EnemyAttack : MonoBehaviour
             Debug.LogError("NO PLAYER FOUND");
             return;
         }
-            
 
         playerHealth = player.GetComponent <PlayerHealth> ();
         enemyHealth = GetComponent<EnemyHealth>();
@@ -72,7 +72,7 @@ public class EnemyAttack : MonoBehaviour
 
         if(playerHealth.currentHealth > 0)
         {
-            playerHealth.TakeDamage (attackDamage);
+            playerHealth.TakeDamage (attackDamage, transform.position);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+using PersonalScripts;
 public class EnemyMovement : MonoBehaviour
 {
     Transform player;

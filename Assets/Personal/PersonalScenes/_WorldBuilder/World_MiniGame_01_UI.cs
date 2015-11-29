@@ -6,8 +6,17 @@ using UnityEngine.UI;
 
 class World_MiniGame_01_UI : DynamicButtonAssignment
 {
+    Button optionsBtn;
+    int outfitIndex = 0;
+
     public override void SetupButtons()
     {
+
+        if (_buttons == null)
+        {
+            _buttons = GameObject.FindObjectsOfType<Button>();
+        }
+
         // Checks names of buttons and adds listeners accordingly
         for (int i = 0; i < _buttons.Length; i++)
         {
@@ -39,8 +48,51 @@ class World_MiniGame_01_UI : DynamicButtonAssignment
             {
                 _buttons[i].onClick.AddListener(delegate
                 {
-                    _player.RotateThroughFits();
+                    outfitIndex++;
+                    if (outfitIndex > 3)
+                    {
+                        outfitIndex = 0;
+                    }
+                    _player.ChangeIntoSpecificFit(outfitIndex);
                 });
+            }
+            if (btnName == "Options")
+            {
+                optionsBtn = _buttons[i];
+                _buttons[i].onClick.AddListener(delegate
+                {
+                    Time.timeScale = 0;
+                    optionsBtn.gameObject.SetActive(false);
+                    optionsPanel.gameObject.SetActive(true);
+                });
+            }
+            if (btnName == "CloseOptionsBtn")
+            {
+                _buttons[i].onClick.AddListener(delegate
+                {
+                    Time.timeScale = 1;
+                    optionsPanel.gameObject.SetActive(false);
+                    optionsBtn.gameObject.SetActive(true);
+                });
+            }
+        }
+    }
+
+    public void SetupPanels()
+    {
+        if (_panels == null)
+        {
+            _panels = GameObject.FindGameObjectsWithTag("Panel");
+        }
+        foreach (var panel in _panels)
+        {
+            string panelName = panel.name;
+            panel.gameObject.SetActive(false);
+            switch (panelName)
+            {
+                case "OptionsPanel":
+                    optionsPanel = panel;
+                    break;
             }
         }
     }

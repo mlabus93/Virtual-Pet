@@ -29,6 +29,7 @@ namespace PersonalScripts
         Character playerScript;
         bool isDefaulSet;
         bool timesUp;
+        bool findNext = true;
 
         void SetupMoveAction()
         {
@@ -42,8 +43,6 @@ namespace PersonalScripts
 
         void FixedUpdate()
         {
-            if (Application.loadedLevelName.Equals("Main"))
-            {
                 if(!isDefaulSet)
                 {
                     isDefaulSet = true;
@@ -58,7 +57,6 @@ namespace PersonalScripts
                 {
                     anim.SetFloat("Speed", (nav.velocity.magnitude));/// (Time.deltaTime * 100)));
                 }
-            }
         }
 
         public bool isAbleToBuy(int balance, int cost)
@@ -87,8 +85,6 @@ namespace PersonalScripts
         // Update is called once per frame
         void Update()
         {
-            if (Application.loadedLevelName.Equals("Main") && isDefaulSet)
-            {
                 if (!moveRandom)
                 {
                     if (currentTarget.Equals("table") && !inTarget)
@@ -136,7 +132,12 @@ namespace PersonalScripts
                             }
                             else
                             {
-                                nav.SetDestination(toyDoll[currentDoll].transform.position);
+                                if(findNext)
+                                {
+                                    nav.SetDestination(toyDoll[currentDoll].transform.position);
+                                    findNext = false;
+                                    StartCoroutine(FindNextDoll());
+                                }
                             }
                         }
                     }
@@ -196,7 +197,6 @@ namespace PersonalScripts
                 {
                     MoveRandomly();
                 }
-            }
         }
 
         public void MoveRandomly()
@@ -274,6 +274,8 @@ namespace PersonalScripts
                 {
                     costToPlay += (doll.GetComponent("ToySatisfaction") as ToySatisfaction).cost;
                 }
+                //temp
+                costToPlay = 0;
                 PurchaseToy(costToPlay);
                 if (isPlaying)
                 {
@@ -347,6 +349,11 @@ namespace PersonalScripts
             {
                 timesUp = true;
             }
+        }
+        IEnumerator FindNextDoll()
+        {
+            yield return new WaitForSeconds(3f);
+            findNext = true;
         }
     }
 }

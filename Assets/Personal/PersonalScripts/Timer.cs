@@ -18,6 +18,7 @@ public class Timer : MonoBehaviour {
     public void SetTimer(float amnt)
     {
         this._stopTime = amnt;
+        this.timer = amnt;
     }
 
     public void AddTime(float amnt)
@@ -62,7 +63,6 @@ public class Timer : MonoBehaviour {
 	
     void FixedUpdate()
     {
-        //Debug.Log(this.GetTimeLeft());
         // Timer doesn't need to drop if its negative
         if (timer > 0)
         {

@@ -93,11 +93,11 @@ namespace PersonalScripts
         {
             if (Time.timeScale == 1)
             {
-                Time.timeScale = 0;
+                Time.timeScale = 0.0f;
             }
             else
             {
-                Time.timeScale = 1;
+                Time.timeScale = 1.0f;
             }
         }
 
@@ -343,9 +343,26 @@ namespace PersonalScripts
 
             Debug.Log(_player.GetNickName());
         }
+
+        private int _autoSaveRate = 500;
+        private int _autoCounter = 0;
         public void LateUpdate()
         {
-            Save();
+            // do not autosave in character select or start menu
+            if (Application.loadedLevelName == "CharacterSelect" || Application.loadedLevelName == "StartMenu")
+            {
+            }
+            else
+            {
+                _autoCounter += 1;
+                _autoCounter = _autoCounter % _autoSaveRate;
+                // used to reduce the amount of save calls
+                if (_autoCounter == 0)
+                {
+                    Save();
+
+                }
+            }
         }
 
         public void Save()

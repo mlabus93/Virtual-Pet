@@ -25,17 +25,14 @@ namespace PersonalScripts
             dollHealth.currentHealth = 10;
             isPlaying = true;
             nav.Resume();
+            //nav.SetDestination(player.position);
         }
 
         void Update()
         {
             if (player != null)
             {
-                if (dollHealth.currentHealth > 0 && isPlaying)
-                {
-                    nav.SetDestination(player.position);
-                }
-                else
+                if (dollHealth.currentHealth <= 0 && isPlaying)
                 {
                     nav.SetDestination(initialPosition);
                     isPlaying = false;

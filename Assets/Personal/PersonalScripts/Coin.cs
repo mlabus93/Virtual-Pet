@@ -44,8 +44,8 @@ namespace PersonalScripts
                 GivePoints(_coinValue);
                 _pointsCollected = true;
             }
-            
 
+            GetComponent<AudioSource>().Play();
             // starts particle systems 
             _timedDestruction.StartEmitters();
             _timedDestruction._beginParticleLifespan = true;

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+using PersonalScripts;
 public class GameOverManager : MonoBehaviour
 {
     public PlayerHealth playerHealth;

@@ -12,7 +12,17 @@ namespace PersonalScripts
         // Use this for initialization
         void Start()
         {
-            _manager = FindObjectOfType<AnimalGameManager>();
+            // makes sure there is a game manager present
+            // Note: should be present in all World_* scripts
+            if (FindObjectOfType<AnimalGameManager>() == null)
+            {
+                _manager = gameObject.AddComponent<AnimalGameManager>();
+            }
+            else
+            {
+                _manager = FindObjectOfType<AnimalGameManager>().GetComponent<AnimalGameManager>();
+            }
+            // 
             _charSelect = FindObjectOfType<CharacterSelection>().GetComponent<CharacterSelection>();
            // swap = gameObject.AddComponent<SceneSwapper>();
         }
@@ -33,8 +43,9 @@ namespace PersonalScripts
             AnimalGameManager._player = _charSelect.iAnimal;
             AnimalGameManager._player.ResetStatuses();
             _manager.PlayerAnimalObject = _charSelect.currentCharacter;
-            //_manager.Save();
+            _manager.Save();
             _manager.SavePetInfoFromCharacterSelect();
+            GetComponent<SceneSwapper>().LoadScene("Main");
             // changes scene to the main menu
             //_swap.LoadScene(2);
             //Debug.Log(_manager._userName);

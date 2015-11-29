@@ -327,7 +327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 2
-  attackDamage: 15
+  attackDamage: 10
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -2598,7 +2598,7 @@ Prefab:
       objectReference: {fileID: 9100000, guid: 7d051e8cfa13bd148af14d52056c8f4a, type: 2}
     - target: {fileID: 0}
       propertyPath: attackDamage
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: deathClip

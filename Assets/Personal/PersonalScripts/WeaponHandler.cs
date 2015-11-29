@@ -59,7 +59,7 @@ namespace PersonalScripts
             ChangeWeapons();
             ChangeWeapons();
             ChangeWeapons();
-            Debug.Log("Current Weapon index before" + _currentWeaponIndex);
+
             //forces weapon to be hands
             ChangeWeapons((int)WeaponType.Hands, false);
             Debug.Log("Current Weapon index" + _currentWeaponIndex);

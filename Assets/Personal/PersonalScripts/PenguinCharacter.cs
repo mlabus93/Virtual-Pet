@@ -46,10 +46,6 @@ namespace PersonalScripts
 
             if (_outfitSystem == null)
                 Debug.LogError("THE OUTFIT WAS NOT FOUND");
-            else
-            {
-                Debug.Log("the outfit was found");
-            }
 
             return _outfitSystem;
         }

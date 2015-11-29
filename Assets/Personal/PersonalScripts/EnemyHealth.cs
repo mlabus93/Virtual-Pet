@@ -18,7 +18,6 @@ namespace PersonalScripts
         bool isDead;                                // Whether the enemy is dead.
         bool isSinking;                             // Whether the enemy has started sinking through the floor.
 
-
         void Awake()
         {
             // Setting up the references.

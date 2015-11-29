@@ -28,7 +28,10 @@ public class World_MainGame_UI : DynamicButtonAssignment
         {
             _buttons = GameObject.FindObjectsOfType<Button>();
         }
-        SetupPanels();
+        if (_panels == null)
+        {
+            SetupPanels();
+        }
         GameObject uiManager = GameObject.FindGameObjectWithTag("UIManager");
         Canvas canvasMain = GameObject.FindObjectOfType<Canvas>();
         UIController uiController = canvasMain.GetComponent<UIController>();
@@ -52,6 +55,7 @@ public class World_MainGame_UI : DynamicButtonAssignment
                     pauseBtn = _buttons[i];
                     _buttons[i].onClick.AddListener(() =>
                     {
+                        Time.timeScale = 0;
                         uiController.ShowPausePanel();
                     });
                     break;
@@ -82,6 +86,7 @@ public class World_MainGame_UI : DynamicButtonAssignment
                 case "ResumeBtn":
                     _buttons[i].onClick.AddListener(() =>
                     {
+                        Time.timeScale = 1;
                         uiController.HidePausePanel();
                     });
                     break;
@@ -118,7 +123,6 @@ public class World_MainGame_UI : DynamicButtonAssignment
                     break;
             }
         }
-        SetupPanels();
     }
 
     public void SetupPanels()
