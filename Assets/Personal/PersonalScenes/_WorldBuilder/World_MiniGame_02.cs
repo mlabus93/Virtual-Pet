@@ -59,7 +59,7 @@ namespace PersonalScripts
             score += Amount;
         }
 
-        void GameOver()
+        public void GameOver()
         {
             _gameManager.PlayerAnimalObject.GetComponent<PlayerHealth>().playerAudio.Play();
             Time.timeScale = 0.0f; //Pause the game

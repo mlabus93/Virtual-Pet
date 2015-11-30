@@ -17,6 +17,8 @@ namespace PersonalScripts
         public Button closeOptionsBtn;
         public Button tryAgainBtn;
         GameObject gameOver;
+        Slider[] sliders;
+        Slider volumeSlider;
 
         private int bestScore = 0;
 
@@ -28,6 +30,7 @@ namespace PersonalScripts
             gameOver = GameObject.Find("ScoreText");
             gameOver.gameObject.SetActive(false);
             SetButtons();
+            SetupSliders();
             SetPanels();
         }
 
@@ -111,6 +114,8 @@ namespace PersonalScripts
                         exitBtn = button;
                         button.onClick.AddListener(delegate
                         {
+                            World_MiniGame_02 wmg2 = GameObject.Find("Main Camera").GetComponentInChildren<World_MiniGame_02>();
+                            wmg2.GameOver();
                             Time.timeScale = 1;
                             Application.LoadLevel("Main");
                         });
@@ -138,6 +143,8 @@ namespace PersonalScripts
                         quitBtn.gameObject.SetActive(false);
                         button.onClick.AddListener(delegate
                         {
+                            World_MiniGame_02 wmg2 = GameObject.Find("Main Camera").GetComponentInChildren<World_MiniGame_02>();
+                            wmg2.GameOver();
                             Time.timeScale = 1;
                             //GameObject.FindObjectOfType<Canvas>().GetComponent<LevelManager>().ReturnToMain();
                             Application.LoadLevel("Main");
@@ -153,6 +160,26 @@ namespace PersonalScripts
             {
                 optionsPanel = GameObject.FindGameObjectWithTag("Panel");
                 optionsPanel.gameObject.SetActive(false);
+            }
+        }
+
+        public void SetupSliders()
+        {
+            sliders = GameObject.FindObjectsOfType<Slider>();
+            foreach (var slider in sliders)
+            {
+                string sliderName = slider.name;
+                switch (sliderName)
+                {
+                    case "VolumeSlider":
+                        volumeSlider = slider;
+                        slider.onValueChanged.AddListener(delegate
+                        {
+                            AudioSource music = GameObject.Find("Main Camera").GetComponentInChildren<AudioSource>();
+                            music.volume = volumeSlider.value;
+                        });
+                        break;
+                }
             }
         }
     }
