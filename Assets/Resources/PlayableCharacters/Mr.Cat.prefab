@@ -781,7 +781,7 @@ Transform:
   m_GameObject: {fileID: 147544}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.19999981, y: 3.54466116e-17, z: -21.8999996}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalScale: {x: 6.67000008, y: 6.67000008, z: 6.67000008}
   m_Children:
   - {fileID: 422648}
   - {fileID: 403194}
@@ -1422,12 +1422,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
-  currentHealth: 0
+  _currentHealth: 0
   healthSlider: {fileID: 0}
   damageImage: {fileID: 0}
+  deathClip: {fileID: 8300000, guid: a9ab4d04f2673794a9f4431bff06401a, type: 3}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: .100000001}
-  deathClip: {fileID: 8300000, guid: a9ab4d04f2673794a9f4431bff06401a, type: 3}
+  playerAudio: {fileID: 0}
+  isDead: 0
 --- !u!114 &11485454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1531,11 +1533,11 @@ NavMeshAgent:
   m_GameObject: {fileID: 147544}
   m_Enabled: 0
   m_Radius: .180000007
-  m_Speed: 20
+  m_Speed: 7
   m_Acceleration: 60
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 5
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1556,7 +1558,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Speed
-      value: 20
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Height
@@ -1576,7 +1578,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_StoppingDistance
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_audioClip
@@ -1589,6 +1591,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_PlayOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 6.67000008
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 6.67000008
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.z
+      value: 6.67000008
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
