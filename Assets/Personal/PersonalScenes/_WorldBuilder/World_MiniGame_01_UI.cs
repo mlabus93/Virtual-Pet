@@ -77,6 +77,16 @@ class World_MiniGame_01_UI : DynamicButtonAssignment
                     optionsBtn.gameObject.SetActive(true);
                 });
             }
+            if (btnName == "RestartBtn")
+            {
+                _buttons[i].onClick.AddListener(delegate
+                {
+                    Time.timeScale = 1;
+                    optionsPanel.gameObject.SetActive(false);
+                    optionsBtn.gameObject.SetActive(true);
+                    Application.LoadLevel(Application.loadedLevel);
+                });
+            }
             if (btnName == "ExitBtn")
             {
                 _buttons[i].onClick.AddListener(delegate
