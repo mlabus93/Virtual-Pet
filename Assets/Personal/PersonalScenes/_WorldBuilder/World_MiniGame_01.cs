@@ -133,7 +133,6 @@ namespace PersonalScripts
         {
             text.text = "Game Over!!";
             text.fontSize = 50;
-            _alreadyGavePoints = true;
             _gameOver = true;
 
             // checks if there is a manager in the scene
@@ -146,7 +145,10 @@ namespace PersonalScripts
             // handles glitch where player consistently gets points before returning
             // to main game
             if (!_alreadyGavePoints)
-                _gameManager.AddCoins(_score);
+            {
+                _alreadyGavePoints = true;
+                 _gameManager.AddCoins(_score);
+            }
             // save points
             _gameManager.Save();
         }
