@@ -28,7 +28,7 @@ namespace PersonalScripts
 
         public override void Start()
         {
-            ResetStatuses();
+            //ResetStatuses();
             SetandReturnOutfitSystem();
             _anim = GetComponent<Animator>();
             // sets up fox's preferences
