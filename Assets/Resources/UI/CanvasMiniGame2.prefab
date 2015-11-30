@@ -762,7 +762,7 @@ GameObject:
   - 224: {fileID: 22412990}
   - 114: {fileID: 11493674}
   m_Layer: 5
-  m_Name: SoundSlider
+  m_Name: VolumeSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3195,7 +3195,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Sound:'
+  m_Text: 'Volume:'
 --- !u!114 &11438682
 MonoBehaviour:
   m_ObjectHideFlags: 1

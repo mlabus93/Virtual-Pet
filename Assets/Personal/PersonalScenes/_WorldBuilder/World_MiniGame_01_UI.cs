@@ -81,7 +81,10 @@ class World_MiniGame_01_UI : DynamicButtonAssignment
             {
                 _buttons[i].onClick.AddListener(delegate
                 {
+                    World_MiniGame_01 wmg1 = GameObject.Find("managers").GetComponentInChildren<World_MiniGame_01>();
+                    wmg1.Quit();
                     Time.timeScale = 1;
+                    Application.LoadLevel("Main");
                 });
             }
         }
