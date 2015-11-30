@@ -230,6 +230,10 @@ namespace PersonalScripts
                 currentRandomTarget = oldTarget == null || oldTarget != currentRandomTarget ? currentRandomTarget : randomPositions[(newSpot + 1) % randomPositions.Length].transform;
                 randomTargetFound = false;
             }
+            if (nav == null)
+            {
+                SetupMoveAction();
+            }
             nav.SetDestination(currentRandomTarget.position);
         }
         void OnTriggerStay(Collider other)

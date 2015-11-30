@@ -205,7 +205,11 @@ public class World_MainGame_UI : DynamicButtonAssignment
                     });
                     break;
                 case "CloseMiniGameBtn":
-                    miniGamePanel.gameObject.SetActive(false);
+                    _buttons[i].onClick.AddListener(() =>
+                    {
+                        miniGamePanel.gameObject.SetActive(false);
+                        miniGameBtn.gameObject.SetActive(true);
+                    });
                     break;
             }
         }

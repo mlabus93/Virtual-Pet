@@ -12,6 +12,7 @@ namespace PersonalScripts
         public GameObject optionsPanel;
         public Button pauseBtn;
         public Button restartBtn;
+        public Button exitBtn;
         public Button quitBtn;
         public Button closeOptionsBtn;
         public Button tryAgainBtn;
@@ -24,7 +25,7 @@ namespace PersonalScripts
             SP = this;
             score = 0;
             bestScore = PlayerPrefs.GetInt("BestScorePlatforms", 0);
-            gameOver = GameObject.FindGameObjectWithTag("LevelManager");
+            gameOver = GameObject.Find("ScoreText");
             gameOver.gameObject.SetActive(false);
             SetButtons();
             SetPanels();
@@ -33,8 +34,8 @@ namespace PersonalScripts
         void OnGUI()
         {
             GUILayout.Space(3);
-            GUILayout.Label(" Score: " + score);
-            GUILayout.Label(" Highscore: " + bestScore);
+            //GUILayout.Label(" Score: " + score);
+            //GUILayout.Label(" Highscore: " + bestScore);
 
             if (World_MiniGame_02.gameState == GameState.gameover)
             {
@@ -49,15 +50,18 @@ namespace PersonalScripts
                 if (score > bestScore)
                 {
                     GUI.color = Color.red;
-                    GUILayout.Label("New highscore!");
+                    //GUILayout.Label("New highscore!");
                     GUI.color = Color.white;
                 }
                 //if (GUILayout.Button("Try again"))
                 //{
                 //    Application.LoadLevel(Application.loadedLevel);
                 //}
+                Text finalScore = gameOver.GetComponent<Text>();
+                finalScore.text = "Game Over!" + System.Environment.NewLine + "Score: " + score;
                 gameOver.gameObject.SetActive(true);
                 tryAgainBtn.gameObject.SetActive(true);
+                quitBtn.gameObject.SetActive(true);
 
                 GUILayout.FlexibleSpace();
                 GUILayout.EndVertical();
@@ -98,9 +102,13 @@ namespace PersonalScripts
                         break;
                     case "RestartBtn":
                         restartBtn = button;
+                        button.onClick.AddListener(delegate
+                        {
+                            Application.LoadLevel(Application.loadedLevel);
+                        });
                         break;
                     case "ExitBtn":
-                        quitBtn = button;
+                        exitBtn = button;
                         button.onClick.AddListener(delegate
                         {
                             Time.timeScale = 1;
@@ -122,6 +130,16 @@ namespace PersonalScripts
                         {
                             tryAgainBtn.gameObject.SetActive(false);
                             Application.LoadLevel(Application.loadedLevel);
+                        });
+                        break;
+                    case "QuitBtn":
+                        quitBtn = button;
+                        quitBtn.gameObject.SetActive(false);
+                        button.onClick.AddListener(delegate
+                        {
+                            Time.timeScale = 1;
+                            //GameObject.FindObjectOfType<Canvas>().GetComponent<LevelManager>().ReturnToMain();
+                            Application.LoadLevel("Main");
                         });
                         break;
                 }
