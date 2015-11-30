@@ -76,8 +76,10 @@ namespace PersonalScripts
             {
                 _alreadyGavePoints = true;
                 World_MiniGame_02_UI.score += score;
+                //Moving here to fix bug with crazy amount of money, if user waits on gameover points will continously add 
+                _gameManager.AddCoins(World_MiniGame_02_UI.score);
+                _gameManager.Save();
             }
-            _gameManager.AddCoins(World_MiniGame_02_UI.score);
             FindObjectOfType<AudioSource>().Stop();
             foreach (AudioSource src in FindObjectsOfType<AudioSource>())
             {
