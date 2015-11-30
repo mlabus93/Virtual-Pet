@@ -7,6 +7,8 @@ using UnityEngine.UI;
 class World_MiniGame_01_UI : DynamicButtonAssignment
 {
     Button optionsBtn;
+    Slider[] sliders;
+    Slider volumeSlider;
     int outfitIndex = 0;
 
     public override void SetupButtons()
@@ -83,6 +85,7 @@ class World_MiniGame_01_UI : DynamicButtonAssignment
                 });
             }
         }
+        SetupSliders();
     }
 
     public void SetupPanels()
@@ -100,6 +103,29 @@ class World_MiniGame_01_UI : DynamicButtonAssignment
                 case "OptionsPanel":
                     optionsPanel = panel;
                     break;
+            }
+        }
+    }
+
+    void SetupSliders()
+    {
+        if (sliders == null)
+        {
+            sliders = GameObject.FindObjectsOfType<Slider>();
+            foreach (var slider in sliders)
+            {
+                string sliderName = slider.name;
+                switch (sliderName)
+                {
+                    case "VolumeSlider":
+                        volumeSlider = slider;
+                        slider.onValueChanged.AddListener(delegate
+                        {
+                            AudioSource music = GameObject.Find("managers").GetComponentInChildren<AudioSource>();
+                            music.volume = volumeSlider.value;
+                        });
+                        break;
+                }
             }
         }
     }
