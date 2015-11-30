@@ -36,6 +36,7 @@ public class Player1StickMovement : MonoBehaviour {
 
     void FixedUpdate()
     {
+        
         // rotate about the y axis and activate animator
         _anim.SetFloat("Speed", CrossPlatformInputManager.GetAxis("Horizontal"));
         transform.Rotate(0, CrossPlatformInputManager.GetAxis("Horizontal") * _rotateSpeed, 0);
@@ -43,6 +44,7 @@ public class Player1StickMovement : MonoBehaviour {
         // move transform and set animate var
         _anim.SetFloat("Speed", Mathf.Abs(CrossPlatformInputManager.GetAxis("Vertical")));
         transform.Translate(new Vector3(0, 0, CrossPlatformInputManager.GetAxis("Vertical") * _speed));
+        Debug.Log("Speed is: " + CrossPlatformInputManager.GetAxis("Horizontal"));
     }
 
     void CheckGroundStatus()

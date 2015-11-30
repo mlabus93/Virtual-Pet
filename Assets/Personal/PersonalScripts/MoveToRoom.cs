@@ -7,7 +7,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
-
+using UnityEngine;
 public class MoveToRoom : MonoBehaviour {
     public GameObject cameraObject;
 

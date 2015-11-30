@@ -15,7 +15,13 @@ namespace PersonalScripts
             // Note: should be present in all World_* scripts
             if (FindObjectOfType<AnimalGameManager>() == null)
             {
-                _manager = gameObject.AddComponent<AnimalGameManager>();
+                //_manager = gameObject.AddComponent<AnimalGameManager>();
+                GameObject newManager = new GameObject();
+                newManager.name = "manager";
+                newManager = Instantiate(newManager) as GameObject;
+                newManager.AddComponent<AnimalGameManager>();
+                _manager = newManager.GetComponent<AnimalGameManager>();
+                _manager.Load();
             }
             else
             {

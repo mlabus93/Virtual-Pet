@@ -194,6 +194,9 @@ public class World_MainGame_UI : DynamicButtonAssignment
                     hauntedGameBtn = _buttons[i];
                     _buttons[i].onClick.AddListener(() =>
                     {
+                        PersonalScripts.AnimalGameManager man = FindObjectOfType<PersonalScripts.AnimalGameManager>();
+                        Destroy(man.PlayerAnimalObject);
+                        man.PlayerAnimalObject = null;
                         uiManager.GetComponent<SceneSwapper>().LoadScene("HauntedMiniGame");
                     });
                     break;
