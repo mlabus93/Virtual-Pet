@@ -13,9 +13,19 @@ using PersonalScripts;
 public class PickUpWeapon : MonoBehaviour {
     public int _weapon = 0;
     public AudioSource _audioSource;
+    public float destroyIn = 10;
+
     void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
+    }
+
+    void Update()
+    {
+        destroyIn -= Time.deltaTime;
+        // deletes object from scene
+        if (destroyIn <= 0f)
+            Destroy(gameObject);
     }
 
     void OnTriggerEnter(Collider other)

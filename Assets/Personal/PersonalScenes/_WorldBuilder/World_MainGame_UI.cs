@@ -187,14 +187,14 @@ public class World_MainGame_UI : DynamicButtonAssignment
                     hauntedGameBtn = _buttons[i];
                     _buttons[i].onClick.AddListener(() =>
                     {
-                        uiManager.GetComponent<SceneSwapper>().LoadScene(4);
+                        uiManager.GetComponent<SceneSwapper>().LoadScene("HauntedMiniGame");
                     });
                     break;
                 case "JumpGameBtn":
                     jumpGameBtn = _buttons[i];
                     _buttons[i].onClick.AddListener(() =>
                     {
-                        uiManager.GetComponent<SceneSwapper>().LoadScene(5);
+                        uiManager.GetComponent<SceneSwapper>().LoadScene("Jumpgame");
                     });
                     break;
                 case "CloseMiniGameBtn":

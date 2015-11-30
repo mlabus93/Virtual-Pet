@@ -68,14 +68,16 @@ public class Player1StickMovement : MonoBehaviour {
 
     public void Jump(float jumpForce)
     {
-        
-        //_isGrounded = true;
         if (_isGrounded)
         {
-            _anim.SetTrigger("Jump");
-            //transform.position += Vector3.up * 2F;
-            transform.position = Vector3.Lerp(transform.position, transform.position + (Vector3.up * 30f), .05f);
-            //transform.Translate(new Vector3(0, jumpForce, 0));
+            PersonalScripts.PlayerHealth playHealth = GetComponent<PersonalScripts.PlayerHealth>();
+            if (playHealth != null)
+                if (playHealth.currentHealth > 0)
+                {
+                    _anim.SetTrigger("Jump");
+                    transform.position = Vector3.Lerp(transform.position, transform.position + (Vector3.up * 30f), .05f);
+                }
+
         }
             
     }
