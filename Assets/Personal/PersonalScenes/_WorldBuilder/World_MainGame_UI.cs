@@ -25,6 +25,8 @@ public class World_MainGame_UI : DynamicButtonAssignment
     Button closeMiniGamePanelBtn;
     GameObject miniGamePanel;
     Text coinText;
+    Slider[] _sliders;
+    Slider volumeSlider;
 
     public override void SetupButtons()
     {
@@ -33,10 +35,15 @@ public class World_MainGame_UI : DynamicButtonAssignment
         {
             _buttons = GameObject.FindObjectsOfType<Button>();
         }
+        if (_sliders == null)
+        {
+            SetupSliders();
+        }
         if (_panels == null)
         {
             SetupPanels();
         }
+        
         GameObject uiManager = GameObject.FindGameObjectWithTag("UIManager");
         Canvas canvasMain = GameObject.FindObjectOfType<Canvas>();
         UIController uiController = canvasMain.GetComponent<UIController>();
@@ -231,6 +238,26 @@ public class World_MainGame_UI : DynamicButtonAssignment
                     break;
                 case "MiniGamePanel":
                     miniGamePanel = panel;
+                    break;
+            }
+        }
+    }
+
+    public void SetupSliders()
+    {
+        _sliders = GameObject.FindObjectsOfType<Slider>();
+        foreach (var slider in _sliders)
+        {
+            string sliderName = slider.name;
+            switch (sliderName)
+            {
+                case "VolumeSlider":
+                    volumeSlider = slider;
+                    slider.onValueChanged.AddListener(delegate
+                    {
+                        AudioSource music = GameObject.Find("Overhead").GetComponentInChildren<AudioSource>();
+                        music.volume = volumeSlider.value;
+                    });
                     break;
             }
         }
