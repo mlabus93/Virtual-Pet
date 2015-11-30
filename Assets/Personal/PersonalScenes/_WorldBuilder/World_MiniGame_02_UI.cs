@@ -112,6 +112,7 @@ namespace PersonalScripts
                         button.onClick.AddListener(delegate
                         {
                             Time.timeScale = 1;
+                            Application.LoadLevel("Main");
                         });
                         break;
                     case "CloseOptionsBtn":

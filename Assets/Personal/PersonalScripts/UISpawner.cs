@@ -15,6 +15,7 @@ public class UISpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        Time.timeScale = 1;
         if (Application.loadedLevelName == "Jumpgame")
         {
             SpawnUI();
