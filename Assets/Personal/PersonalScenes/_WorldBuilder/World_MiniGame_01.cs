@@ -65,6 +65,14 @@ namespace PersonalScripts
             _buttonSetup.SetupPanels();
         }
 
+        public void Quit()
+        {
+            foreach (AudioSource src in FindObjectsOfType<AudioSource>())
+            {
+                src.Stop();
+            }
+        }
+
         void Update()
         {
             if (_gameManager.PlayerAnimalObject != null)
