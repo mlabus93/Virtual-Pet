@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿// Project: Pet Pals
+// File: World_MiniGame_02_UI.cs
+// Modification History:
+// Author           Date
+// Jean-Baptiste	11/28/15
+// Labus			11/29/15
+
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 

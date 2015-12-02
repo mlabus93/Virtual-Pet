@@ -1,4 +1,13 @@
-﻿using UnityEngine;
+﻿// Project: Pet Pals
+// File: World_MainGame.cs
+// Modification History:
+// Author           Date
+// Jean-Baptiste    11/22/15
+// Jean-Baptiste    11/26/15
+// Mirvil           11/27/15
+// Jean-Baptiste    11/29/15
+
+using UnityEngine;
 using System.Collections;
 
 namespace PersonalScripts

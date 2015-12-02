@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿// Project: Pet Pals
+// File: World_CharacterSelect_UI.cs
+// Modification History:
+// Author           Date
+// Labus            11/24/15
+
+using UnityEngine;
 using System.Collections;
 using PersonalScripts;
 
